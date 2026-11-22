@@ -43,3 +43,33 @@ variable "jenkins_hostname" {
   type        = string
   default     = "jenkins.127.0.0.1.nip.io"
 }
+
+variable "git_branch" {
+  description = "Branch the pipeline job builds"
+  type        = string
+  default     = "main"
+}
+
+variable "storage_class" {
+  description = "StorageClass for Jenkins home"
+  type        = string
+  default     = "standard"
+}
+
+variable "jenkins_storage_size" {
+  description = "Size of the Jenkins home volume"
+  type        = string
+  default     = "8Gi"
+}
+
+variable "jenkins_chart_version" {
+  description = "Pinned version of the jenkins Helm chart"
+  type        = string
+  default     = "5.13.3"
+}
+
+variable "jenkins_image_tag" {
+  description = "Pinned Jenkins controller image tag (LTS)"
+  type        = string
+  default     = "2.580.2-jdk25"
+}

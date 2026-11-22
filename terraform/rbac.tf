@@ -123,3 +123,33 @@ resource "kubernetes_role_binding_v1" "deployer" {
     namespace = local.ns_agents
   }
 }
+
+resource "kubernetes_role_v1" "casc_reload" {
+  metadata {
+    name      = "jenkins-casc-reload"
+    namespace = local.ns_jenkins
+  }
+
+  rule {
+    api_groups = [""]
+    resources  = ["configmaps"]
+    verbs      = ["get", "list", "watch"]
+  }
+}
+
+resource "kubernetes_role_binding_v1" "casc_reload" {
+  metadata {
+    name      = "jenkins-casc-reload"
+    namespace = local.ns_jenkins
+  }
+  role_ref {
+    api_group = "rbac.authorization.k8s.io"
+    kind      = "Role"
+    name      = kubernetes_role_v1.casc_reload.metadata[0].name
+  }
+  subject {
+    kind      = "ServiceAccount"
+    name      = kubernetes_service_account_v1.jenkins.metadata[0].name
+    namespace = local.ns_jenkins
+  }
+}

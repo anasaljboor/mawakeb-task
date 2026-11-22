@@ -1,0 +1,129 @@
+fullnameOverride: jenkins
+
+controller:
+  image:
+    tag: "${jenkins_image_tag}"
+
+  numExecutors: 0
+  testEnabled: false
+  jenkinsUrl: "http://${jenkins_hostname}"
+
+  admin:
+    createSecret: false
+    existingSecret: "${admin_secret}"
+
+  podSecurityContextOverride:
+    runAsUser: 1000
+    runAsGroup: 1000
+    runAsNonRoot: true
+    fsGroup: 1000
+    fsGroupChangePolicy: OnRootMismatch
+    seccompProfile:
+      type: RuntimeDefault
+
+  nodeSelector:
+    workload: apps
+
+  resources:
+    requests:
+      cpu: 500m
+      memory: 1Gi
+    limits:
+      cpu: "2"
+      memory: 2Gi
+  javaOpts: "-XX:MaxRAMPercentage=75"
+
+  installPlugins:
+%{ for p in plugins ~}
+    - ${p}
+%{ endfor ~}
+  installLatestPlugins: false
+  installLatestSpecifiedPlugins: false
+  overwritePlugins: true
+
+  additionalExistingSecrets:
+    - name: "${dockerhub_secret}"
+      keyName: username
+    - name: "${dockerhub_secret}"
+      keyName: token
+
+  ingress:
+    enabled: true
+    ingressClassName: traefik
+    hostName: "${jenkins_hostname}"
+
+  JCasC:
+    defaultConfig: true
+    configScripts:
+      credentials: |
+        credentials:
+          system:
+            domainCredentials:
+              - credentials:
+                  - usernamePassword:
+                      scope: GLOBAL
+                      id: dockerhub
+                      description: Docker Hub push token
+                      username: "$${${dockerhub_secret}-username}"
+                      password: "$${${dockerhub_secret}-token}"
+      jobs: |
+        jobs:
+          - script: >
+              pipelineJob('beacon') {
+                description('Build, test, scan, publish and deploy simple-java-app')
+                properties {
+                  pipelineTriggers {
+                    triggers {
+                      pollSCM {
+                        scmpoll_spec('H/2 * * * *')
+                      }
+                    }
+                  }
+                }
+                definition {
+                  cpsScm {
+                    lightweight(true)
+                    scriptPath('Jenkinsfile')
+                    scm {
+                      git {
+                        remote {
+                          url('${git_repo_url}')
+                        }
+                        branch('*/${git_branch}')
+                      }
+                    }
+                  }
+                }
+              }
+
+agent:
+  enabled: true
+  namespace: "${ns_agents}"
+  useDefaultServiceAccount: false
+  serviceAccount: "${agent_sa}"
+  jenkinsUrl: "http://jenkins.${ns_jenkins}.svc.cluster.local:8080"
+  jenkinsTunnel: "jenkins-agent.${ns_jenkins}.svc.cluster.local:50000"
+  nodeSelector:
+    workload: builds
+  yamlMergeStrategy: merge
+  yamlTemplate: |-
+    spec:
+      tolerations:
+        - key: dedicated
+          operator: Equal
+          value: builds
+          effect: NoSchedule
+
+persistence:
+  enabled: true
+  existingClaim: "${home_claim}"
+
+rbac:
+  create: false
+
+serviceAccount:
+  create: false
+  name: "${controller_sa}"
+
+serviceAccountAgent:
+  create: false
