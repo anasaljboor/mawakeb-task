@@ -1,0 +1,6 @@
+yes  create pods -n jenkins-agents --as=system:serviceaccount:jenkins:jenkins
+no  create pods -n beacon --as=system:serviceaccount:jenkins:jenkins
+yes  patch deployments -n beacon --as=system:serviceaccount:jenkins-agents:beacon-deployer
+no  delete deployments -n beacon --as=system:serviceaccount:jenkins-agents:beacon-deployer
+no  get secrets -n beacon --as=system:serviceaccount:jenkins-agents:beacon-deployer
+no  list pods -n beacon --as=system:serviceaccount:jenkins-agents:jenkins-agent

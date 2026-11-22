@@ -7,3 +7,4 @@ reports/
 !*.tfvars.example
 .idea/
 .DS_Store
+tfplan
