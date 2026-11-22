@@ -15,6 +15,10 @@ locals {
       name  = var.app_namespace
       level = "restricted"
     }
+    ingress = {
+      name  = var.ingress_namespace
+      level = "restricted"
+    }
   }
 }
 

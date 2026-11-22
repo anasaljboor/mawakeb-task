@@ -73,3 +73,27 @@ variable "jenkins_image_tag" {
   type        = string
   default     = "2.580.2-jdk25"
 }
+
+variable "ingress_namespace" {
+  description = "Namespace for the ingress controller"
+  type        = string
+  default     = "traefik"
+}
+
+variable "traefik_chart_version" {
+  description = "Pinned version of the traefik Helm chart"
+  type        = string
+  default     = "42.4.1"
+}
+
+variable "ingress_http_node_port" {
+  description = "NodePort for HTTP; must match the containerPort mapped to localhost:80 in cluster/kind-config.yaml"
+  type        = number
+  default     = 30080
+}
+
+variable "ingress_https_node_port" {
+  description = "NodePort for HTTPS; must match the containerPort mapped to localhost:443 in cluster/kind-config.yaml"
+  type        = number
+  default     = 30443
+}

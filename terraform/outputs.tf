@@ -27,3 +27,8 @@ output "jenkins_chart_version" {
   description = "Deployed jenkins chart version"
   value       = helm_release.jenkins.version
 }
+
+output "ingress_class" {
+  description = "IngressClass served by Traefik"
+  value       = "traefik"
+}
