@@ -194,3 +194,14 @@ chart (`helm uninstall jenkins -n jenkins`) keeps `jenkins-home`, because Terraf
 - `jenkins-agents` is privileged for Docker-in-Docker; contained as described above. Rootless BuildKit would remove it.
 - A clean Trivy scan reflects one vulnerability-DB snapshot; it must be rerun, and base images bumped before they reach end of life.
 - `pod-security.kubernetes.io/enforce-version` is `latest`; pin it to the cluster version for stricter reproducibility.
+
+## Troubleshooting
+
+| Symptom | Cause | Fix |
+|---|---|---|
+| `curl http://jenkins.127.0.0.1.nip.io` → `000` / "connection reset", while `curl -k https://127.0.0.1` → `404` | Docker Desktop keeps a stale port-80 forward after `kind delete cluster` | Quit and reopen Docker Desktop (`osascript -e 'quit app "Docker Desktop"'`, then `open -a "Docker Desktop"`) |
+| After a Docker Desktop restart, `jenkins-0` stuck in `Init`, init log ends with `cp: overwrite '/var/jenkins_plugins/...'?` | Containers restart inside the same pod, so the plugin `emptyDir` is already populated | `kubectl delete pod jenkins-0 -n jenkins` (data is on the PVC) |
+| `503` from Traefik | Jenkins not ready yet, or Traefik has not seen the new pod | Wait; `kubectl get pods -n jenkins` |
+| Terraform prompts for `dockerhub_token` | New terminal without `TF_VAR_*` | `source scripts/secrets-env.sh` |
+| `Error: No configuration files` | Ran Terraform outside `terraform/` | Run from the repo root with `terraform -chdir=terraform ...` |
+| `helm_release` stuck / Ctrl+C pressed twice | Terraform killed before recording the release (`pending-install`, missing from state) | `helm uninstall <name> -n <ns>`, then plan and apply again |

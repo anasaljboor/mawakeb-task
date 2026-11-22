@@ -32,6 +32,14 @@ else
 fi
 
 url="$(terraform -chdir=terraform output -raw jenkins_url)"
-code="$(curl -s -o /dev/null -w '%{http_code}' "$url/login")"
+code=000
+for _ in $(seq 1 30); do
+  code="$(curl -s -o /dev/null -w '%{http_code}' --max-time 5 "$url/login" || true)"
+  [ "$code" = "200" ] && break
+  sleep 2
+done
 echo "Jenkins: $url (HTTP $code)"
-[ "$code" = "200" ]
+if [ "$code" != "200" ]; then
+  echo "Jenkins is not reachable through the ingress: see Troubleshooting in RUNBOOK.md" >&2
+  exit 1
+fi
