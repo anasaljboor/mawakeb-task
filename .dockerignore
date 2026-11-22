@@ -1,0 +1,7 @@
+.git
+target
+reports
+terraform
+k8s
+*.md
+docs
