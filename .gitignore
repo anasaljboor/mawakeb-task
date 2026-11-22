@@ -1,0 +1,9 @@
+target/
+reports/
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+!*.tfvars.example
+.idea/
+.DS_Store
