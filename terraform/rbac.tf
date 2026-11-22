@@ -5,8 +5,6 @@ locals {
   ns_app     = kubernetes_namespace_v1.this["app"].metadata[0].name
 }
 
-# ---------------------------------------------------------------- service accounts
-
 resource "kubernetes_service_account_v1" "jenkins" {
   metadata {
     name      = "jenkins"
@@ -89,7 +87,7 @@ resource "kubernetes_role_v1" "deployer" {
   }
   rule {
     api_groups = ["apps"]
-    resources  = ["replicasets"] # rollout status / rollout undo read revision history
+    resources  = ["replicasets"]
     verbs      = ["get", "list", "watch"]
   }
   rule {
@@ -104,7 +102,7 @@ resource "kubernetes_role_v1" "deployer" {
   }
   rule {
     api_groups = [""]
-    resources  = ["pods", "pods/log", "events"] # diagnostics when a rollout fails
+    resources  = ["pods", "pods/log", "events"]
     verbs      = ["get", "list", "watch"]
   }
 }

@@ -8,7 +8,7 @@ locals {
       level = "restricted"
     }
     agents = {
-      name = var.agents_namespace
+      name  = var.agents_namespace
       level = "privileged"
     }
     app = {
