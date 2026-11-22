@@ -5,3 +5,5 @@ terraform
 k8s
 *.md
 docs
+cluster
+scripts
