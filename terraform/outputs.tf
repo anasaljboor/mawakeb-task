@@ -32,3 +32,23 @@ output "ingress_class" {
   description = "IngressClass served by Traefik"
   value       = "traefik"
 }
+
+output "argocd_url" {
+  description = "ArgoCD UI (through the ingress controller)"
+  value       = "http://${var.argocd_hostname}"
+}
+
+output "argocd_admin_password_command" {
+  description = "Command that copies the generated ArgoCD admin password to the clipboard (the value itself is never output)"
+  value       = "kubectl get secret argocd-initial-admin-secret -n ${var.argocd_namespace} -o jsonpath='{.data.password}' | base64 -d | pbcopy"
+}
+
+output "grafana_url" {
+  description = "Grafana (through the ingress controller); dashboard Beacon at /d/beacon"
+  value       = "http://${var.grafana_hostname}/d/beacon"
+}
+
+output "grafana_admin_password_command" {
+  description = "Command that copies the Grafana admin password to the clipboard (the value itself is never output)"
+  value       = "kubectl get secret ${kubernetes_secret_v1.grafana_admin.metadata[0].name} -n ${var.monitoring_namespace} -o jsonpath='{.data.admin-password}' | base64 -d | pbcopy"
+}

@@ -1,0 +1,65 @@
+global:
+  domain: "${hostname}"
+  nodeSelector:
+    workload: apps
+
+crds:
+  keep: false
+
+configs:
+  params:
+    server.insecure: true
+  cm:
+    admin.enabled: true
+    exec.enabled: false
+    timeout.reconciliation: 60s
+    application.sync.impersonation.enabled: "true"
+
+dex:
+  enabled: false
+
+notifications:
+  enabled: false
+
+applicationSet:
+  replicas: 0
+
+controller:
+  resources:
+    requests:
+      cpu: 100m
+      memory: 256Mi
+    limits:
+      cpu: "1"
+      memory: 512Mi
+
+repoServer:
+  resources:
+    requests:
+      cpu: 50m
+      memory: 96Mi
+    limits:
+      cpu: 500m
+      memory: 256Mi
+
+server:
+  resources:
+    requests:
+      cpu: 50m
+      memory: 64Mi
+    limits:
+      cpu: 500m
+      memory: 256Mi
+  ingress:
+    enabled: true
+    ingressClassName: traefik
+    hostname: "${hostname}"
+
+redis:
+  resources:
+    requests:
+      cpu: 50m
+      memory: 32Mi
+    limits:
+      cpu: 250m
+      memory: 128Mi

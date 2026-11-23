@@ -10,6 +10,7 @@ trivy image \
   --scanners vuln \
   --pkg-types os,library \
   --exit-code 1 \
+  --timeout "${TRIVY_TIMEOUT:-15m}" \
   --format json --output "$OUT/trivy.json" \
   "$IMAGE" || status=$?
 

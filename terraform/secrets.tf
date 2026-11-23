@@ -43,3 +43,43 @@ resource "kubernetes_secret_v1" "dockerhub" {
   }
   data_wo_revision = var.secrets_revision
 }
+
+variable "github_token" {
+  description = "Fine-grained GitHub token, Contents read/write on the GitOps repository only. Supply via TF_VAR_github_token."
+  type        = string
+  sensitive   = true
+  ephemeral   = true
+}
+
+resource "kubernetes_secret_v1" "gitops" {
+  metadata {
+    name      = "gitops"
+    namespace = local.ns_jenkins
+  }
+
+  data_wo = {
+    username = "git"
+    token    = var.github_token
+  }
+  data_wo_revision = var.secrets_revision
+}
+
+variable "grafana_admin_password" {
+  description = "Grafana admin password. Supply via TF_VAR_grafana_admin_password."
+  type        = string
+  sensitive   = true
+  ephemeral   = true
+}
+
+resource "kubernetes_secret_v1" "grafana_admin" {
+  metadata {
+    name      = "grafana-admin"
+    namespace = kubernetes_namespace_v1.this["monitoring"].metadata[0].name
+  }
+
+  data_wo = {
+    "admin-user"     = "admin"
+    "admin-password" = var.grafana_admin_password
+  }
+  data_wo_revision = var.secrets_revision
+}

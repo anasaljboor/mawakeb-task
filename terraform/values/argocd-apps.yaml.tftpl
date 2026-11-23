@@ -1,0 +1,48 @@
+projects:
+  beacon:
+    namespace: "${ns_argocd}"
+    description: Beacon application, synced from the GitOps repository only
+    sourceRepos:
+      - "${gitops_repo_url}"
+    destinations:
+      - server: https://kubernetes.default.svc
+        namespace: "${ns_app}"
+    destinationServiceAccounts:
+      - server: https://kubernetes.default.svc
+        namespace: "${ns_app}"
+        defaultServiceAccount: "${sync_sa}"
+    clusterResourceWhitelist: []
+    namespaceResourceWhitelist:
+      - group: ""
+        kind: ConfigMap
+      - group: ""
+        kind: Service
+      - group: apps
+        kind: Deployment
+      - group: networking.k8s.io
+        kind: Ingress
+
+applications:
+  beacon:
+    namespace: "${ns_argocd}"
+    project: beacon
+    finalizers:
+      - resources-finalizer.argocd.argoproj.io
+    source:
+      repoURL: "${gitops_repo_url}"
+      targetRevision: "${gitops_branch}"
+      path: "${gitops_app_path}"
+    destination:
+      server: https://kubernetes.default.svc
+      namespace: "${ns_app}"
+    syncPolicy:
+      automated:
+        prune: true
+        selfHeal: true
+      retry:
+        limit: 3
+        backoff:
+          duration: 10s
+          factor: 2
+          maxDuration: 1m
+    revisionHistoryLimit: 10

@@ -1,0 +1,75 @@
+controller:
+  type: deployment
+  replicas: 1
+  nodeSelector:
+    workload: apps
+  podSecurityContext:
+    runAsNonRoot: true
+    runAsUser: 473
+    runAsGroup: 473
+    fsGroup: 473
+    seccompProfile:
+      type: RuntimeDefault
+
+alloy:
+  stabilityLevel: generally-available
+  mounts:
+    varlog: false
+    dockercontainers: false
+  securityContext:
+    allowPrivilegeEscalation: false
+    readOnlyRootFilesystem: false
+    runAsNonRoot: true
+    runAsUser: 473
+    runAsGroup: 473
+    capabilities:
+      drop:
+        - ALL
+    seccompProfile:
+      type: RuntimeDefault
+  resources:
+    requests:
+      cpu: 20m
+      memory: 64Mi
+    limits:
+      cpu: 300m
+      memory: 192Mi
+  configMap:
+    content: |-
+      discovery.kubernetes "pods" {
+        role = "pod"
+        namespaces {
+          names = [${log_namespaces}]
+        }
+      }
+
+      discovery.relabel "pods" {
+        targets = discovery.kubernetes.pods.targets
+        rule {
+          source_labels = ["__meta_kubernetes_namespace"]
+          target_label  = "namespace"
+        }
+        rule {
+          source_labels = ["__meta_kubernetes_pod_name"]
+          target_label  = "pod"
+        }
+        rule {
+          source_labels = ["__meta_kubernetes_pod_container_name"]
+          target_label  = "container"
+        }
+        rule {
+          source_labels = ["__meta_kubernetes_pod_label_app_kubernetes_io_name"]
+          target_label  = "app"
+        }
+      }
+
+      loki.source.kubernetes "pods" {
+        targets    = discovery.relabel.pods.output
+        forward_to = [loki.write.default.receiver]
+      }
+
+      loki.write "default" {
+        endpoint {
+          url = "http://loki.${ns_monitoring}.svc.cluster.local:3100/loki/api/v1/push"
+        }
+      }

@@ -46,6 +46,10 @@ controller:
       keyName: username
     - name: "${dockerhub_secret}"
       keyName: token
+    - name: "${gitops_secret}"
+      keyName: username
+    - name: "${gitops_secret}"
+      keyName: token
 
   ingress:
     enabled: true
@@ -66,6 +70,16 @@ controller:
                     value: "${app_hostname}"
                   - key: INGRESS_URL
                     value: "http://traefik.${ns_ingress}.svc.cluster.local"
+                  - key: GITOPS_REPO
+                    value: "${gitops_repo_url}"
+                  - key: GITOPS_BRANCH
+                    value: "${gitops_branch}"
+                  - key: GITOPS_APP_PATH
+                    value: "${gitops_app_path}"
+                  - key: ARGOCD_NAMESPACE
+                    value: "${ns_argocd}"
+                  - key: ARGOCD_APP
+                    value: beacon
       credentials: |
         credentials:
           system:
@@ -77,6 +91,12 @@ controller:
                       description: Docker Hub push token
                       username: "$${${dockerhub_secret}-username}"
                       password: "$${${dockerhub_secret}-token}"
+                  - usernamePassword:
+                      scope: GLOBAL
+                      id: gitops
+                      description: GitHub token for the GitOps repository (contents read/write)
+                      username: "$${${gitops_secret}-username}"
+                      password: "$${${gitops_secret}-token}"
       jobs: |
         jobs:
           - script: >

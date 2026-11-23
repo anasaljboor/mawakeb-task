@@ -31,6 +31,11 @@ resource "helm_release" "jenkins" {
       plugins           = local.jenkins_plugins
       image_repo        = "docker.io/${var.dockerhub_username}/beacon"
       app_hostname      = var.app_hostname
+      gitops_secret     = kubernetes_secret_v1.gitops.metadata[0].name
+      gitops_repo_url   = var.gitops_repo_url
+      gitops_branch     = var.gitops_branch
+      gitops_app_path   = var.gitops_app_path
+      ns_argocd         = kubernetes_namespace_v1.this["argocd"].metadata[0].name
     })
   ]
 

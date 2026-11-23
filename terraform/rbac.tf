@@ -82,28 +82,49 @@ resource "kubernetes_role_v1" "deployer" {
 
   rule {
     api_groups = ["apps"]
-    resources  = ["deployments"]
-    verbs      = ["get", "list", "watch", "create", "update", "patch"]
-  }
-  rule {
-    api_groups = ["apps"]
-    resources  = ["replicasets"]
+    resources  = ["deployments", "replicasets"]
     verbs      = ["get", "list", "watch"]
   }
   rule {
     api_groups = [""]
-    resources  = ["services", "configmaps"]
-    verbs      = ["get", "list", "watch", "create", "update", "patch"]
+    resources  = ["pods", "pods/log", "events", "services", "configmaps"]
+    verbs      = ["get", "list", "watch"]
   }
   rule {
     api_groups = ["networking.k8s.io"]
     resources  = ["ingresses"]
-    verbs      = ["get", "list", "watch", "create", "update", "patch"]
-  }
-  rule {
-    api_groups = [""]
-    resources  = ["pods", "pods/log", "events"]
     verbs      = ["get", "list", "watch"]
+  }
+}
+
+resource "kubernetes_role_v1" "deployer_argocd" {
+  metadata {
+    name      = "beacon-app-reader"
+    namespace = kubernetes_namespace_v1.this["argocd"].metadata[0].name
+  }
+
+  rule {
+    api_groups     = ["argoproj.io"]
+    resources      = ["applications"]
+    resource_names = ["beacon"]
+    verbs          = ["get", "watch"]
+  }
+}
+
+resource "kubernetes_role_binding_v1" "deployer_argocd" {
+  metadata {
+    name      = "beacon-app-reader"
+    namespace = kubernetes_namespace_v1.this["argocd"].metadata[0].name
+  }
+  role_ref {
+    api_group = "rbac.authorization.k8s.io"
+    kind      = "Role"
+    name      = kubernetes_role_v1.deployer_argocd.metadata[0].name
+  }
+  subject {
+    kind      = "ServiceAccount"
+    name      = kubernetes_service_account_v1.deployer.metadata[0].name
+    namespace = local.ns_agents
   }
 }
 
@@ -151,5 +172,63 @@ resource "kubernetes_role_binding_v1" "casc_reload" {
     kind      = "ServiceAccount"
     name      = kubernetes_service_account_v1.jenkins.metadata[0].name
     namespace = local.ns_jenkins
+  }
+}
+
+resource "kubernetes_service_account_v1" "argocd_sync" {
+  metadata {
+    name      = "argocd-sync"
+    namespace = local.ns_app
+  }
+  automount_service_account_token = false
+}
+
+resource "kubernetes_role_v1" "argocd_sync" {
+  metadata {
+    name      = "argocd-sync"
+    namespace = local.ns_app
+  }
+
+  rule {
+    api_groups = ["apps"]
+    resources  = ["deployments"]
+    verbs      = ["get", "list", "watch", "create", "update", "patch", "delete"]
+  }
+  rule {
+    api_groups = ["apps"]
+    resources  = ["replicasets"]
+    verbs      = ["get", "list", "watch"]
+  }
+  rule {
+    api_groups = [""]
+    resources  = ["services", "configmaps"]
+    verbs      = ["get", "list", "watch", "create", "update", "patch", "delete"]
+  }
+  rule {
+    api_groups = ["networking.k8s.io"]
+    resources  = ["ingresses"]
+    verbs      = ["get", "list", "watch", "create", "update", "patch", "delete"]
+  }
+  rule {
+    api_groups = [""]
+    resources  = ["pods", "events"]
+    verbs      = ["get", "list", "watch"]
+  }
+}
+
+resource "kubernetes_role_binding_v1" "argocd_sync" {
+  metadata {
+    name      = "argocd-sync"
+    namespace = local.ns_app
+  }
+  role_ref {
+    api_group = "rbac.authorization.k8s.io"
+    kind      = "Role"
+    name      = kubernetes_role_v1.argocd_sync.metadata[0].name
+  }
+  subject {
+    kind      = "ServiceAccount"
+    name      = kubernetes_service_account_v1.argocd_sync.metadata[0].name
+    namespace = local.ns_app
   }
 }

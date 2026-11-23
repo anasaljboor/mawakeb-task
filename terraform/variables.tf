@@ -103,3 +103,80 @@ variable "app_hostname" {
   type        = string
   default     = "beacon.127.0.0.1.nip.io"
 }
+
+variable "argocd_namespace" {
+  description = "Namespace for ArgoCD"
+  type        = string
+  default     = "argocd"
+}
+
+variable "argocd_chart_version" {
+  description = "Pinned version of the argo-cd Helm chart"
+  type        = string
+  default     = "10.18.2"
+}
+
+variable "argocd_apps_chart_version" {
+  description = "Pinned version of the argocd-apps Helm chart (Applications and AppProjects)"
+  type        = string
+  default     = "2.0.8"
+}
+
+variable "argocd_hostname" {
+  description = "Hostname the ArgoCD UI is served on through the ingress controller"
+  type        = string
+  default     = "argocd.127.0.0.1.nip.io"
+}
+
+variable "gitops_repo_url" {
+  description = "GitOps repository ArgoCD reconciles and Jenkins commits image digests to"
+  type        = string
+}
+
+variable "gitops_branch" {
+  description = "Branch of the GitOps repository ArgoCD tracks"
+  type        = string
+  default     = "main"
+}
+
+variable "gitops_app_path" {
+  description = "Path of the beacon application inside the GitOps repository"
+  type        = string
+  default     = "apps/beacon"
+}
+
+variable "monitoring_namespace" {
+  description = "Namespace for Prometheus, Grafana, Loki and Alloy"
+  type        = string
+  default     = "monitoring"
+}
+
+variable "kube_prometheus_stack_chart_version" {
+  description = "Pinned version of the kube-prometheus-stack Helm chart (bundles grafana-community chart 14.5.0)"
+  type        = string
+  default     = "93.9.0"
+}
+
+variable "loki_chart_version" {
+  description = "Pinned version of the loki Helm chart"
+  type        = string
+  default     = "7.7.0"
+}
+
+variable "alloy_chart_version" {
+  description = "Pinned version of the alloy Helm chart"
+  type        = string
+  default     = "1.16.0"
+}
+
+variable "grafana_hostname" {
+  description = "Hostname Grafana is served on through the ingress controller"
+  type        = string
+  default     = "grafana.127.0.0.1.nip.io"
+}
+
+variable "prometheus_retention" {
+  description = "How long Prometheus keeps samples (kept short to fit a laptop)"
+  type        = string
+  default     = "2d"
+}

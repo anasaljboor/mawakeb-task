@@ -35,6 +35,13 @@ class QuestApplicationTests {
         assertThat(get("/actuator/env").statusCode()).isEqualTo(404);
         assertThat(get("/actuator/heapdump").statusCode()).isEqualTo(404);
     }
+    @Test void prometheusMetricsAreExposedForScraping() throws Exception {
+        get("/");
+        var response = get("/actuator/prometheus");
+        assertThat(response.statusCode()).isEqualTo(200);
+        assertThat(response.body()).contains("http_server_requests_seconds_count", "jvm_memory_used_bytes");
+        assertThat(get("/actuator/metrics").statusCode()).isEqualTo(404);
+    }
     @Test void blankAndMissingNamesHaveSafeDefaults() {
         assertThat(new GreetingController(" ").greeting()).isEqualTo("hello traveler");
         assertThat(new GreetingController("traveler").greeting()).isEqualTo("hello traveler");
