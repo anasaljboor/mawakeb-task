@@ -19,6 +19,10 @@ locals {
       name  = var.ingress_namespace
       level = "restricted"
     }
+    argocd = {
+      name  = var.argocd_namespace
+      level = "restricted"
+    }
   }
 }
 

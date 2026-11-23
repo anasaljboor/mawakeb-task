@@ -20,7 +20,16 @@ if [ -z "${TF_VAR_jenkins_admin_password:-}" ]; then
   export TF_VAR_jenkins_admin_password
 fi
 
+if [ -z "${TF_VAR_github_token:-}" ]; then
+  TF_VAR_github_token="$(_beacon_existing gitops token)"
+  if [ -z "$TF_VAR_github_token" ]; then
+    printf 'GitHub fine-grained token (beacon-gitops, Contents read/write): '
+    stty -echo; read -r TF_VAR_github_token; stty echo; echo
+  fi
+  export TF_VAR_github_token
+fi
+
 unset -f _beacon_existing
-[ -n "$TF_VAR_dockerhub_token" ] && [ -n "$TF_VAR_jenkins_admin_password" ] \
-  && echo "Secrets loaded: TF_VAR_dockerhub_token, TF_VAR_jenkins_admin_password" \
+[ -n "$TF_VAR_dockerhub_token" ] && [ -n "$TF_VAR_jenkins_admin_password" ] && [ -n "$TF_VAR_github_token" ] \
+  && echo "Secrets loaded: TF_VAR_dockerhub_token, TF_VAR_jenkins_admin_password, TF_VAR_github_token" \
   || echo "WARNING: a secret is empty; do not run terraform apply"

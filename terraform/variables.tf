@@ -103,3 +103,44 @@ variable "app_hostname" {
   type        = string
   default     = "beacon.127.0.0.1.nip.io"
 }
+
+variable "argocd_namespace" {
+  description = "Namespace for ArgoCD"
+  type        = string
+  default     = "argocd"
+}
+
+variable "argocd_chart_version" {
+  description = "Pinned version of the argo-cd Helm chart"
+  type        = string
+  default     = "10.18.2"
+}
+
+variable "argocd_apps_chart_version" {
+  description = "Pinned version of the argocd-apps Helm chart (Applications and AppProjects)"
+  type        = string
+  default     = "2.0.8"
+}
+
+variable "argocd_hostname" {
+  description = "Hostname the ArgoCD UI is served on through the ingress controller"
+  type        = string
+  default     = "argocd.127.0.0.1.nip.io"
+}
+
+variable "gitops_repo_url" {
+  description = "GitOps repository ArgoCD reconciles and Jenkins commits image digests to"
+  type        = string
+}
+
+variable "gitops_branch" {
+  description = "Branch of the GitOps repository ArgoCD tracks"
+  type        = string
+  default     = "main"
+}
+
+variable "gitops_app_path" {
+  description = "Path of the beacon application inside the GitOps repository"
+  type        = string
+  default     = "apps/beacon"
+}

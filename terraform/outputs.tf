@@ -32,3 +32,13 @@ output "ingress_class" {
   description = "IngressClass served by Traefik"
   value       = "traefik"
 }
+
+output "argocd_url" {
+  description = "ArgoCD UI (through the ingress controller)"
+  value       = "http://${var.argocd_hostname}"
+}
+
+output "argocd_admin_password_command" {
+  description = "Command that copies the generated ArgoCD admin password to the clipboard (the value itself is never output)"
+  value       = "kubectl get secret argocd-initial-admin-secret -n ${var.argocd_namespace} -o jsonpath='{.data.password}' | base64 -d | pbcopy"
+}

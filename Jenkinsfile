@@ -138,7 +138,7 @@ pipeline {
               }
               sh 'git log -1 --format="commit:  %H%nauthor:  %an%ndate:    %cI%nsubject: %s"'
             }
-            stash name: 'deploy-files', includes: 'k8s/**,scripts/**'
+            stash name: 'deploy-files', includes: 'scripts/**'
           }
         }
 
@@ -203,7 +203,7 @@ pipeline {
       }
     }
 
-    stage('5. Deploy') {
+    stage('5. Promote via GitOps') {
       agent {
         kubernetes {
           yaml DEPLOY_POD
@@ -212,23 +212,24 @@ pipeline {
       }
       options {
         lock(resource: 'beacon-production')
-        timeout(time: 10, unit: 'MINUTES')
+        timeout(time: 15, unit: 'MINUTES')
       }
       steps {
         unstash 'deploy-files'
         script {
           env.PREVIOUS_IMAGE = sh(returnStdout: true, script: "kubectl get deployment beacon -n beacon -o jsonpath='{.spec.template.spec.containers[0].image}' 2>/dev/null || true").trim()
-          env.EXPECTED_NAME = sh(returnStdout: true, script: "sed -n 's/^ *YOUR_NAME: *//p' k8s/configmap.yaml").trim()
-          echo "Previous image: ${env.PREVIOUS_IMAGE ?: '<none>'}\nDeploying:      ${env.IMAGE_REF}"
-
-          def deploy = sh(returnStatus: true, script: '''
-            CHANGE_CAUSE="jenkins build=$BUILD_NUMBER commit=$SHORT_SHA image=$IMAGE_REF" \
-            SMOKE_TEST="bash scripts/smoke-test.sh '$INGRESS_URL' '$EXPECTED_NAME' '$APP_HOSTNAME'" \
-            ROLLOUT_TIMEOUT=180s bash scripts/deploy.sh "$IMAGE_REF"
-          ''')
-          if (deploy != 0) {
-            env.DEPLOY_RESULT = 'failed-previous-revision-restored'
-            error "Deploy of ${env.IMAGE_REF} failed (rollout or smoke test); previous revision ${env.PREVIOUS_IMAGE ?: '<none: first deploy>'} restored. See deploy.sh output above."
+          echo "Running now: ${env.PREVIOUS_IMAGE ?: '<none>'}\nPromoting:   ${env.IMAGE_REF}"
+          def promote
+          withCredentials([usernamePassword(credentialsId: 'gitops', usernameVariable: 'GITOPS_USER', passwordVariable: 'GITOPS_TOKEN')]) {
+            promote = sh(returnStatus: true, script: '''
+              COMMIT_MESSAGE="deploy $IMAGE_REF (jenkins build $BUILD_NUMBER, source commit $SHORT_SHA)" \
+              SYNC_TIMEOUT=300 bash scripts/gitops-promote.sh "$IMAGE_REF"
+            ''')
+          }
+          env.GITOPS_COMMIT = fileExists('gitops-commit.txt') ? readFile('gitops-commit.txt').trim() : ''
+          if (promote != 0) {
+            env.DEPLOY_RESULT = 'failed-reverted-in-git'
+            error "Promotion of ${env.IMAGE_REF} failed (ArgoCD sync/health or smoke test); GitOps commit ${env.GITOPS_COMMIT ?: '<none>'} reverted, previous image ${env.PREVIOUS_IMAGE ?: '<none>'} restored by ArgoCD."
           }
           env.DEPLOY_RESULT = 'success'
         }
@@ -245,12 +246,14 @@ pipeline {
               image          : env.IMAGE_TAG,
               imageRef       : env.IMAGE_REF,
               digest         : env.IMAGE_DIGEST,
+              gitopsRepo     : env.GITOPS_REPO,
+              gitopsCommit   : env.GITOPS_COMMIT,
               previousImage  : env.PREVIOUS_IMAGE,
               trivyVersion   : env.TRIVY_VERSION,
               trivyDbUpdated : env.TRIVY_DB_UPDATED,
               recordedAt     : recordedAt
             ]
-            sh 'cat release.json; kubectl rollout history deployment/beacon -n beacon | tail -5 || true'
+            sh 'cat release.json; kubectl get application beacon -n argocd || true'
           }
           archiveArtifacts artifacts: 'release.json', fingerprint: true
         }
