@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: beacon-config
+  namespace: beacon
+  labels:
+    app.kubernetes.io/name: beacon
+    app.kubernetes.io/part-of: beacon-lab
+data:
+  YOUR_NAME: anas
