@@ -19,3 +19,25 @@ resource "kubernetes_persistent_volume_claim_v1" "jenkins_home" {
 
   wait_until_bound = false
 }
+
+resource "kubernetes_persistent_volume_claim_v1" "trivy_cache" {
+  metadata {
+    name      = "trivy-cache"
+    namespace = local.ns_agents
+    labels = {
+      "app.kubernetes.io/part-of" = "beacon-lab"
+    }
+  }
+
+  spec {
+    access_modes       = ["ReadWriteOnce"]
+    storage_class_name = var.storage_class
+    resources {
+      requests = {
+        storage = "3Gi"
+      }
+    }
+  }
+
+  wait_until_bound = false
+}

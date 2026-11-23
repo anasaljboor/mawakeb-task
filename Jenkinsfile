@@ -53,14 +53,19 @@ spec:
       args: ["infinity"]
       env:
         - {name: DOCKER_HOST, value: "unix:///var/run/dind/docker.sock"}
+        - {name: TRIVY_CACHE_DIR, value: /trivy-cache}
       resources:
         requests: {cpu: 200m, memory: 512Mi}
         limits: {cpu: "2", memory: 2Gi}
       volumeMounts:
         - {name: dind-sock, mountPath: /var/run/dind}
+        - {name: trivy-cache, mountPath: /trivy-cache}
   volumes:
     - {name: dind-sock, emptyDir: {}}
     - {name: dind-storage, emptyDir: {}}
+    - name: trivy-cache
+      persistentVolumeClaim:
+        claimName: trivy-cache
 """
 
 def DEPLOY_POD = """
