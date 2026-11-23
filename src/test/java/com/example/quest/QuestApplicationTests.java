@@ -23,7 +23,7 @@ class QuestApplicationTests {
     @Test void greetingUsesConfiguredNameAndPlainText() throws Exception {
         var response = get("/");
         assertThat(response.statusCode()).isEqualTo(200);
-        assertThat(response.body()).isEqualTo("hello WRONG");
+        assertThat(response.body()).isEqualTo("hello explorer");
         assertThat(response.headers().firstValue("content-type").orElse("")).startsWith("text/plain");
     }
     @Test void healthIsAvailableWithoutDetails() throws Exception {
