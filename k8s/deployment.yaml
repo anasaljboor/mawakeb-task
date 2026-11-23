@@ -69,7 +69,7 @@ spec:
             failureThreshold: 45
           readinessProbe:
             httpGet:
-              path: /actuator/health/readiness
+              path: /does-not-exist
               port: http
             periodSeconds: 5
             failureThreshold: 3
