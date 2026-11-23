@@ -23,6 +23,10 @@ locals {
       name  = var.argocd_namespace
       level = "restricted"
     }
+    monitoring = {
+      name  = var.monitoring_namespace
+      level = "restricted"
+    }
   }
 }
 

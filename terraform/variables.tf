@@ -144,3 +144,39 @@ variable "gitops_app_path" {
   type        = string
   default     = "apps/beacon"
 }
+
+variable "monitoring_namespace" {
+  description = "Namespace for Prometheus, Grafana, Loki and Alloy"
+  type        = string
+  default     = "monitoring"
+}
+
+variable "kube_prometheus_stack_chart_version" {
+  description = "Pinned version of the kube-prometheus-stack Helm chart (bundles grafana-community chart 14.5.0)"
+  type        = string
+  default     = "93.9.0"
+}
+
+variable "loki_chart_version" {
+  description = "Pinned version of the loki Helm chart"
+  type        = string
+  default     = "7.7.0"
+}
+
+variable "alloy_chart_version" {
+  description = "Pinned version of the alloy Helm chart"
+  type        = string
+  default     = "1.16.0"
+}
+
+variable "grafana_hostname" {
+  description = "Hostname Grafana is served on through the ingress controller"
+  type        = string
+  default     = "grafana.127.0.0.1.nip.io"
+}
+
+variable "prometheus_retention" {
+  description = "How long Prometheus keeps samples (kept short to fit a laptop)"
+  type        = string
+  default     = "2d"
+}
