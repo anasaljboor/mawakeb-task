@@ -41,6 +41,7 @@ spec:
       args: ["infinity"]
       env:
         - {name: DOCKER_HOST, value: "unix:///var/run/dind/docker.sock"}
+        - {name: BUILDX_GIT_INFO, value: "false"}
       resources:
         requests: {cpu: 100m, memory: 128Mi}
         limits: {cpu: 500m, memory: 512Mi}
@@ -220,26 +221,14 @@ pipeline {
           env.EXPECTED_NAME = sh(returnStdout: true, script: "sed -n 's/^ *YOUR_NAME: *//p' k8s/configmap.yaml").trim()
           echo "Previous image: ${env.PREVIOUS_IMAGE ?: '<none>'}\nDeploying:      ${env.IMAGE_REF}"
 
-          def rollout = sh(returnStatus: true, script: '''
+          def deploy = sh(returnStatus: true, script: '''
             CHANGE_CAUSE="jenkins build=$BUILD_NUMBER commit=$SHORT_SHA image=$IMAGE_REF" \
+            SMOKE_TEST="bash scripts/smoke-test.sh '$INGRESS_URL' '$EXPECTED_NAME' '$APP_HOSTNAME'" \
             ROLLOUT_TIMEOUT=180s bash scripts/deploy.sh "$IMAGE_REF"
           ''')
-          if (rollout != 0) {
-            env.DEPLOY_RESULT = 'rollout-failed-rolled-back'
-            error "Rollout of ${env.IMAGE_REF} failed; deploy.sh restored ${env.PREVIOUS_IMAGE ?: 'nothing (first deploy)'}"
-          }
-
-          def smoke = sh(returnStatus: true, script: 'bash scripts/smoke-test.sh "$INGRESS_URL" "$EXPECTED_NAME" "$APP_HOSTNAME"')
-          if (smoke != 0) {
-            env.DEPLOY_RESULT = 'smoke-failed-rolled-back'
-            if (env.PREVIOUS_IMAGE && env.PREVIOUS_IMAGE != env.IMAGE_REF) {
-              sh '''
-                CHANGE_CAUSE="jenkins build=$BUILD_NUMBER rollback after failed smoke test of $IMAGE_REF" \
-                bash scripts/deploy.sh "$PREVIOUS_IMAGE"
-                bash scripts/smoke-test.sh "$INGRESS_URL" "$EXPECTED_NAME" "$APP_HOSTNAME"
-              '''
-            }
-            error "Smoke test failed for ${env.IMAGE_REF}; restored ${env.PREVIOUS_IMAGE ?: 'nothing (first deploy)'}"
+          if (deploy != 0) {
+            env.DEPLOY_RESULT = 'failed-previous-revision-restored'
+            error "Deploy of ${env.IMAGE_REF} failed (rollout or smoke test); previous revision ${env.PREVIOUS_IMAGE ?: '<none: first deploy>'} restored. See deploy.sh output above."
           }
           env.DEPLOY_RESULT = 'success'
         }
