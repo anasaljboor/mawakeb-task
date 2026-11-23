@@ -55,6 +55,17 @@ controller:
   JCasC:
     defaultConfig: true
     configScripts:
+      globals: |
+        jenkins:
+          globalNodeProperties:
+            - envVars:
+                env:
+                  - key: IMAGE_REPO
+                    value: "${image_repo}"
+                  - key: APP_HOSTNAME
+                    value: "${app_hostname}"
+                  - key: INGRESS_URL
+                    value: "http://traefik.${ns_ingress}.svc.cluster.local"
       credentials: |
         credentials:
           system:

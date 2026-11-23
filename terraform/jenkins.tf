@@ -22,12 +22,15 @@ resource "helm_release" "jenkins" {
       git_branch        = var.git_branch
       ns_agents         = local.ns_agents
       ns_jenkins        = local.ns_jenkins
+      ns_ingress        = kubernetes_namespace_v1.this["ingress"].metadata[0].name
       controller_sa     = kubernetes_service_account_v1.jenkins.metadata[0].name
       agent_sa          = kubernetes_service_account_v1.agent.metadata[0].name
       home_claim        = kubernetes_persistent_volume_claim_v1.jenkins_home.metadata[0].name
       admin_secret      = kubernetes_secret_v1.jenkins_admin.metadata[0].name
       dockerhub_secret  = kubernetes_secret_v1.dockerhub.metadata[0].name
       plugins           = local.jenkins_plugins
+      image_repo        = "docker.io/${var.dockerhub_username}/beacon"
+      app_hostname      = var.app_hostname
     })
   ]
 
