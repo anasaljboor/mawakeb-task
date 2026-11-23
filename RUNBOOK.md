@@ -1,6 +1,6 @@
 # Beacon of Release — Runbook
 
-Rebuild the lab from this repository alone. Status: Chapters 1–3 complete.
+Rebuild the lab from this repository alone. Status: Chapters 1–4 complete.
 
 ## Architecture
 
@@ -178,6 +178,42 @@ kind load docker-image beacon:$TAG --name beacon
 Change the greeting: edit `YOUR_NAME` in `k8s/configmap.yaml`, deploy, then
 `kubectl rollout restart deployment/beacon -n beacon` (env vars are read at start-up).
 
+## Chapter 4 — pipeline
+
+[Jenkinsfile](Jenkinsfile) at the repository root, Declarative, no executors on the controller, every agent image pinned.
+
+| # | Gate | Where | Fails closed on |
+|---|---|---|---|
+| 1 | Checkout requested revision, print commit | build pod, `jnlp` | — |
+| 2 | `docker build` runs Maven tests; `--target test-results` exports reports first; `junit` in `post { always }` | build pod, `docker` → DinD | any test failure (Docker `verified` stage) |
+| 3 | `scripts/scan.sh` (Trivy OS + Java libraries); archives `trivy.json`, `trivy-version.json` (scanner version, DB `UpdatedAt`), `image-id.txt` | build pod, `trivy` | any finding **or** scanner error |
+| 4 | `withCredentials(dockerhub)` → push `IMAGE_REPO:<12-char sha>` → read `@sha256` digest | build pod, `docker` | login/push error |
+| 5 | `scripts/deploy.sh <repo@sha256>` with `SMOKE_TEST` through Traefik (`Host: beacon.127.0.0.1.nip.io`), rollout timeout 180 s | deploy pod, `kubectl` | rollout timeout or smoke failure |
+| 6 | On failure: re-apply the previous last-applied Deployment (full spec), smoke-test it, fail the build with the reason. Always: `release.json` (commit, image, digest, previous image, Trivy version and DB time, result) | deploy pod | — |
+
+`IMAGE_REPO`, `APP_HOSTNAME`, `INGRESS_URL` are Jenkins global variables set by JCasC from `terraform.tfvars`, so the
+Jenkinsfile has no account-specific values. The Docker Hub repository must be **public**, or Kind cannot pull it.
+
+**How agents build images.** Each build pod runs a Docker-in-Docker sidecar (`docker:29.5.3-dind`, privileged). Its
+socket is on a pod-local `emptyDir` (`unix:///var/run/dind/docker.sock`), never on TCP, so only containers in that
+pod can reach it; image storage is an `emptyDir` deleted with the pod. Isolation: namespace `jenkins-agents` is the
+only one where PSA allows privileged pods; pods land only on the tainted `builds` node; the build pod runs as
+`jenkins-agent` with no API token. Risk that remains: a privileged container can escape to its node, so a malicious
+Dockerfile could compromise `beacon-worker2` (not the controller, not the app node). Rootless BuildKit would remove it.
+
+**Deploy identity.** A separate deploy pod runs as `beacon-deployer` (Role in `beacon` only, no delete, no secrets) and
+is fully PSA-restricted (non-root, no escalation, capabilities dropped).
+
+**No racing deployments.** `disableConcurrentBuilds()` on the job plus `lock('beacon-production')` on the deploy stage.
+
+**Triggers.** SCM polling every 2 minutes. Polling batches commits: only the newest commit is built, so wait for a build
+before pushing the next change you want tested. A fresh Jenkins needs one first build (Build Now, or
+`POST /job/beacon/build`) before polling works, because a Pipeline job only polls repositories a previous build
+checked out.
+
+**Gate demonstrations:** [docs/evidence/ch4-pipeline.md](docs/evidence/ch4-pipeline.md) — failing test (#4), Log4Shell (#6),
+broken readiness probe rolled back (#10); the digest scanned, recorded and running are identical (#11).
+
 ## Verification evidence
 
 | Claim | Evidence |
@@ -187,6 +223,7 @@ Change the greeting: edit `YOUR_NAME` in `k8s/configmap.yaml`, deploy, then
 | Least privilege | [docs/evidence/rbac-can-i.txt](docs/evidence/rbac-can-i.txt) |
 | Idempotent Terraform | second `terraform plan -detailed-exitcode` → exit 0 |
 | Jenkins from code | job `beacon`, credential `dockerhub`, cloud namespace `jenkins-agents`, 79 plugins, 0 load errors |
+| Pipeline gates fail closed; exact digest shipped | [docs/evidence/ch4-pipeline.md](docs/evidence/ch4-pipeline.md): builds #2–#11 |
 | App reachable through Ingress, healthy, self-healing, safe rollback | [docs/evidence/ch3-verification.txt](docs/evidence/ch3-verification.txt): one pod deleted under load 104/104 OK; failed rollout rolled back under load 189/189 OK |
 
 ## Teardown
@@ -223,6 +260,9 @@ chart (`helm uninstall jenkins -n jenkins`) keeps `jenkins-home`, because Terraf
 - `jenkins-agents` is privileged for Docker-in-Docker; contained as described above. Rootless BuildKit would remove it.
 - A clean Trivy scan reflects one vulnerability-DB snapshot; it must be rerun, and base images bumped before they reach end of life.
 - `pod-security.kubernetes.io/enforce-version` is `latest`; pin it to the cluster version for stricter reproducibility.
+- Builds start from an empty DinD: Maven dependencies and the Trivy DB are downloaded every time (about 5 minutes per
+  build). Trade-off chosen for isolation; a cache volume or registry/Maven mirror would speed it up.
+- Rollback restores the previous Deployment spec; a ConfigMap change in a failed release is not reverted automatically.
 
 ## Troubleshooting
 

@@ -97,3 +97,9 @@ variable "ingress_https_node_port" {
   type        = number
   default     = 30443
 }
+
+variable "app_hostname" {
+  description = "Hostname the application is served on through the ingress controller"
+  type        = string
+  default     = "beacon.127.0.0.1.nip.io"
+}

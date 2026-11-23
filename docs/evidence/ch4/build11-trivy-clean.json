@@ -1,0 +1,2118 @@
+{
+  "SchemaVersion": 2,
+  "Trivy": {
+    "Version": "0.76.2"
+  },
+  "ReportID": "01a20613-46d5-750f-8564-15ccbeb0c805",
+  "CreatedAt": "2026-11-23T01:44:16.341334972Z",
+  "ArtifactID": "sha256:288ce55ee11e947f74e37482171c232d281c266f9b8340eb581d268d80137244",
+  "ArtifactName": "docker.io/anasaljboor/beacon:1d5acd82d397",
+  "ArtifactType": "container_image",
+  "Metadata": {
+    "Size": 221910528,
+    "OS": {
+      "Family": "alpine",
+      "Name": "3.24.2"
+    },
+    "ImageID": "sha256:d925de664878f209e4ac95a8298135a04543b286d7cb903b7c74e3287cff73f5",
+    "DiffIDs": [
+      "sha256:1b349a3334531b575b01d409540dd8aca14ef29abddacd50f36643d7c949db4b",
+      "sha256:c5b10f73b0e5d88834482d145a5637a7793a7f87aa76ac74299e89b1ca13de76",
+      "sha256:37eb992370edd872f78fd7e973e56ce7cc60fef44290439f436b90af177742ee",
+      "sha256:c8cd58538bb3dbd188539e43e12b926dae03875eaa23415c809e6f8635d39932"
+    ],
+    "RepoTags": [
+      "anasaljboor/beacon:1d5acd82d397"
+    ],
+    "RepoDigests": [
+      "anasaljboor/beacon@sha256:d925de664878f209e4ac95a8298135a04543b286d7cb903b7c74e3287cff73f5"
+    ],
+    "Reference": "anasaljboor/beacon:1d5acd82d397",
+    "ImageConfig": {
+      "architecture": "arm64",
+      "created": "2026-11-23T01:41:56.383218213Z",
+      "history": [
+        {
+          "created": "2026-09-17T20:37:05Z",
+          "created_by": "ADD alpine-minirootfs-3.24.2-aarch64.tar.gz / # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2026-09-17T20:37:05Z",
+          "created_by": "CMD [\"/bin/sh\"]",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        },
+        {
+          "created": "2026-11-23T01:41:56Z",
+          "created_by": "RUN /bin/sh -c apk upgrade --no-cache \u0026\u0026     apk add --no-cache openjdk17-jre-headless \u0026\u0026     addgroup -S -g 10001 app \u0026\u0026 adduser -S -u 10001 -G app app # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2026-11-23T01:41:56Z",
+          "created_by": "WORKDIR /app",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2026-11-23T01:41:56Z",
+          "created_by": "COPY /src/target/simple-java-app-1.0.0.jar app.jar # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2026-11-23T01:41:56Z",
+          "created_by": "USER 10001:10001",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        },
+        {
+          "created": "2026-11-23T01:41:56Z",
+          "created_by": "EXPOSE [8080/tcp]",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        },
+        {
+          "created": "2026-11-23T01:41:56Z",
+          "created_by": "ENV JAVA_TOOL_OPTIONS=-XX:MaxRAMPercentage=75 -Djava.io.tmpdir=/tmp",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        },
+        {
+          "created": "2026-11-23T01:41:56Z",
+          "created_by": "ENTRYPOINT [\"java\" \"-jar\" \"/app/app.jar\"]",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        }
+      ],
+      "os": "linux",
+      "rootfs": {
+        "type": "layers",
+        "diff_ids": [
+          "sha256:1b349a3334531b575b01d409540dd8aca14ef29abddacd50f36643d7c949db4b",
+          "sha256:c5b10f73b0e5d88834482d145a5637a7793a7f87aa76ac74299e89b1ca13de76",
+          "sha256:37eb992370edd872f78fd7e973e56ce7cc60fef44290439f436b90af177742ee",
+          "sha256:c8cd58538bb3dbd188539e43e12b926dae03875eaa23415c809e6f8635d39932"
+        ]
+      },
+      "config": {
+        "Entrypoint": [
+          "java",
+          "-jar",
+          "/app/app.jar"
+        ],
+        "Env": [
+          "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+          "JAVA_TOOL_OPTIONS=-XX:MaxRAMPercentage=75 -Djava.io.tmpdir=/tmp"
+        ],
+        "Labels": {
+          "org.opencontainers.image.revision": "1d5acd82d397e708d0f4e6a146ae64f469a6daa6",
+          "org.opencontainers.image.source": "https://github.com/anasaljboor/mawakeb-task.git"
+        },
+        "User": "10001:10001",
+        "WorkingDir": "/app",
+        "ExposedPorts": {
+          "8080/tcp": {}
+        }
+      }
+    },
+    "Layers": [
+      {
+        "Size": 8941568,
+        "Digest": "sha256:a9986cd6f37dbddae7862a6d4be71683472e7c2ea708e87db14f8a6393c00f00",
+        "DiffID": "sha256:1b349a3334531b575b01d409540dd8aca14ef29abddacd50f36643d7c949db4b"
+      },
+      {
+        "Size": 190922240,
+        "Digest": "sha256:f835ad9cd15df53bdb7cdbe757524a9a6521dd58803bfb938f87d0d595b77b07",
+        "DiffID": "sha256:c5b10f73b0e5d88834482d145a5637a7793a7f87aa76ac74299e89b1ca13de76"
+      },
+      {
+        "Size": 1536,
+        "Digest": "sha256:9c8fe8128f20fd2a41af0e48583fccc1794a60328ff53c7c125218b80238c122",
+        "DiffID": "sha256:37eb992370edd872f78fd7e973e56ce7cc60fef44290439f436b90af177742ee"
+      },
+      {
+        "Size": 22045184,
+        "Digest": "sha256:78d857ee18a255877e00b70396ebdd1c84e4533836377840d4061ebe2d6625cb",
+        "DiffID": "sha256:c8cd58538bb3dbd188539e43e12b926dae03875eaa23415c809e6f8635d39932"
+      }
+    ]
+  },
+  "Results": [
+    {
+      "Target": "docker.io/anasaljboor/beacon:1d5acd82d397 (alpine 3.24.2)",
+      "Class": "os-pkgs",
+      "Type": "alpine",
+      "Packages": [
+        {
+          "ID": "alpine-baselayout@3.7.2-r1",
+          "Name": "alpine-baselayout",
+          "Identifier": {
+            "PURL": "pkg:apk/alpine/alpine-baselayout@3.7.2-r1?arch=aarch64\u0026distro=3.24.2",
+            "UID": "304a3a90fc88fa6b"
+          },
+          "Version": "3.7.2-r1",
+          "Arch": "aarch64",
+          "SrcName": "alpine-baselayout",
+          "SrcVersion": "3.7.2-r1",
+          "Licenses": [
+            "GPL-2.0-only"
+          ],
+          "Maintainer": "Natanael Copa \u003cncopa@alpinelinux.org\u003e",
+          "DependsOn": [
+            "alpine-baselayout-data@3.7.2-r1",
+            "busybox-binsh@1.37.0-r31"
+          ],
+          "Layer": {
+            "Digest": "sha256:a9986cd6f37dbddae7862a6d4be71683472e7c2ea708e87db14f8a6393c00f00",
+            "DiffID": "sha256:1b349a3334531b575b01d409540dd8aca14ef29abddacd50f36643d7c949db4b"
+          },
+          "Digest": "sha1:ee13a18ee7e29d75872017403d59c0484dacd963",
+          "InstalledFiles": [
+            "etc/motd",
+            "etc/crontabs/root",
+            "etc/modprobe.d/aliases.conf",
+            "etc/modprobe.d/blacklist.conf",
+            "etc/modprobe.d/i386.conf",
+            "etc/profile.d/20locale.sh",
+            "etc/profile.d/README",
+            "etc/profile.d/color_prompt.sh.disabled",
+            "usr/lib/sysctl.d/00-alpine.conf",
+            "var/lock",
+            "var/run",
+            "var/spool/mail",
+            "var/spool/cron/crontabs"
+          ],
+          "AnalyzedBy": "apk"
+        },
+        {
+          "ID": "alpine-baselayout-data@3.7.2-r1",
+          "Name": "alpine-baselayout-data",
+          "Identifier": {
+            "PURL": "pkg:apk/alpine/alpine-baselayout-data@3.7.2-r1?arch=aarch64\u0026distro=3.24.2",
+            "UID": "9107750a7f29a381"
+          },
+          "Version": "3.7.2-r1",
+          "Arch": "aarch64",
+          "SrcName": "alpine-baselayout",
+          "SrcVersion": "3.7.2-r1",
+          "Licenses": [
+            "GPL-2.0-only"
+          ],
+          "Maintainer": "Natanael Copa \u003cncopa@alpinelinux.org\u003e",
+          "Layer": {
+            "Digest": "sha256:a9986cd6f37dbddae7862a6d4be71683472e7c2ea708e87db14f8a6393c00f00",
+            "DiffID": "sha256:1b349a3334531b575b01d409540dd8aca14ef29abddacd50f36643d7c949db4b"
+          },
+          "Digest": "sha1:3337c83d21c8eb114e0d4bb275e561dd3493bdb8",
+          "InstalledFiles": [
+            "etc/fstab",
+            "etc/group",
+            "etc/hostname",
+            "etc/hosts",
+            "etc/inittab",
+            "etc/modules",
+            "etc/mtab",
+            "etc/nsswitch.conf",
+            "etc/passwd",
+            "etc/profile",
+            "etc/protocols",
+            "etc/services",
+            "etc/shadow",
+            "etc/shells",
+            "etc/sysctl.conf"
+          ],
+          "AnalyzedBy": "apk"
+        },
+        {
+          "ID": "alpine-keys@2.6-r0",
+          "Name": "alpine-keys",
+          "Identifier": {
+            "PURL": "pkg:apk/alpine/alpine-keys@2.6-r0?arch=aarch64\u0026distro=3.24.2",
+            "UID": "fd9daa4d0a52a3c0"
+          },
+          "Version": "2.6-r0",
+          "Arch": "aarch64",
+          "SrcName": "alpine-keys",
+          "SrcVersion": "2.6-r0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Maintainer": "Natanael Copa \u003cncopa@alpinelinux.org\u003e",
+          "Layer": {
+            "Digest": "sha256:a9986cd6f37dbddae7862a6d4be71683472e7c2ea708e87db14f8a6393c00f00",
+            "DiffID": "sha256:1b349a3334531b575b01d409540dd8aca14ef29abddacd50f36643d7c949db4b"
+          },
+          "Digest": "sha1:6440d281ac88714d96ea12641cc6ab93cdec1b8c",
+          "InstalledFiles": [
+            "etc/apk/keys/alpine-devel@lists.alpinelinux.org-58199dcc.rsa.pub",
+            "etc/apk/keys/alpine-devel@lists.alpinelinux.org-616ae350.rsa.pub",
+            "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-4a6a0840.rsa.pub",
+            "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-5243ef4b.rsa.pub",
+            "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-524d27bb.rsa.pub",
+            "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-5261cecb.rsa.pub",
+            "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-58199dcc.rsa.pub",
+            "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-58cbb476.rsa.pub",
+            "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-58e4f17d.rsa.pub",
+            "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-5e69ca50.rsa.pub",
+            "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-60ac2099.rsa.pub",
+            "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-6165ee59.rsa.pub",
+            "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-61666e3f.rsa.pub",
+            "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-616a9724.rsa.pub",
+            "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-616abc23.rsa.pub",
+            "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-616ac3bc.rsa.pub",
+            "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-616adfeb.rsa.pub",
+            "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-616ae350.rsa.pub",
+            "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-616db30d.rsa.pub",
+            "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-66ba20fe.rsa.pub",
+            "usr/share/apk/keys/aarch64/alpine-devel@lists.alpinelinux.org-58199dcc.rsa.pub",
+            "usr/share/apk/keys/aarch64/alpine-devel@lists.alpinelinux.org-616ae350.rsa.pub",
+            "usr/share/apk/keys/armhf/alpine-devel@lists.alpinelinux.org-524d27bb.rsa.pub",
+            "usr/share/apk/keys/armhf/alpine-devel@lists.alpinelinux.org-616a9724.rsa.pub",
+            "usr/share/apk/keys/armv7/alpine-devel@lists.alpinelinux.org-524d27bb.rsa.pub",
+            "usr/share/apk/keys/armv7/alpine-devel@lists.alpinelinux.org-616adfeb.rsa.pub",
+            "usr/share/apk/keys/loongarch64/alpine-devel@lists.alpinelinux.org-66ba20fe.rsa.pub",
+            "usr/share/apk/keys/mips64/alpine-devel@lists.alpinelinux.org-5e69ca50.rsa.pub",
+            "usr/share/apk/keys/ppc64le/alpine-devel@lists.alpinelinux.org-58cbb476.rsa.pub",
+            "usr/share/apk/keys/ppc64le/alpine-devel@lists.alpinelinux.org-616abc23.rsa.pub",
+            "usr/share/apk/keys/riscv64/alpine-devel@lists.alpinelinux.org-60ac2099.rsa.pub",
+            "usr/share/apk/keys/riscv64/alpine-devel@lists.alpinelinux.org-616db30d.rsa.pub",
+            "usr/share/apk/keys/s390x/alpine-devel@lists.alpinelinux.org-58e4f17d.rsa.pub",
+            "usr/share/apk/keys/s390x/alpine-devel@lists.alpinelinux.org-616ac3bc.rsa.pub",
+            "usr/share/apk/keys/x86/alpine-devel@lists.alpinelinux.org-4a6a0840.rsa.pub",
+            "usr/share/apk/keys/x86/alpine-devel@lists.alpinelinux.org-5243ef4b.rsa.pub",
+            "usr/share/apk/keys/x86/alpine-devel@lists.alpinelinux.org-61666e3f.rsa.pub",
+            "usr/share/apk/keys/x86_64/alpine-devel@lists.alpinelinux.org-4a6a0840.rsa.pub",
+            "usr/share/apk/keys/x86_64/alpine-devel@lists.alpinelinux.org-5261cecb.rsa.pub",
+            "usr/share/apk/keys/x86_64/alpine-devel@lists.alpinelinux.org-6165ee59.rsa.pub"
+          ],
+          "AnalyzedBy": "apk"
+        },
+        {
+          "ID": "alpine-release@3.24.4-r0",
+          "Name": "alpine-release",
+          "Identifier": {
+            "PURL": "pkg:apk/alpine/alpine-release@3.24.4-r0?arch=aarch64\u0026distro=3.24.2",
+            "UID": "d2d2bbf4c6f8db5d"
+          },
+          "Version": "3.24.4-r0",
+          "Arch": "aarch64",
+          "SrcName": "alpine-base",
+          "SrcVersion": "3.24.4-r0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Maintainer": "Natanael Copa \u003cncopa@alpinelinux.org\u003e",
+          "DependsOn": [
+            "alpine-keys@2.6-r0"
+          ],
+          "Layer": {
+            "Digest": "sha256:f835ad9cd15df53bdb7cdbe757524a9a6521dd58803bfb938f87d0d595b77b07",
+            "DiffID": "sha256:c5b10f73b0e5d88834482d145a5637a7793a7f87aa76ac74299e89b1ca13de76"
+          },
+          "Digest": "sha1:b6b3380f9ec9838992806dd532a9aa581eb524fd",
+          "InstalledFiles": [
+            "etc/alpine-release",
+            "etc/issue",
+            "etc/os-release",
+            "etc/secfixes.d/alpine",
+            "usr/lib/os-release"
+          ],
+          "AnalyzedBy": "apk"
+        },
+        {
+          "ID": "apk-tools@3.0.9-r0",
+          "Name": "apk-tools",
+          "Identifier": {
+            "PURL": "pkg:apk/alpine/apk-tools@3.0.9-r0?arch=aarch64\u0026distro=3.24.2",
+            "UID": "752aa0df3a51d7ae"
+          },
+          "Version": "3.0.9-r0",
+          "Arch": "aarch64",
+          "SrcName": "apk-tools",
+          "SrcVersion": "3.0.9-r0",
+          "Licenses": [
+            "GPL-2.0-only"
+          ],
+          "Maintainer": "Natanael Copa \u003cncopa@alpinelinux.org\u003e",
+          "DependsOn": [
+            "ca-certificates-bundle@20261020-r0",
+            "libapk@3.0.9-r0",
+            "libcrypto3@3.5.9-r1",
+            "musl@1.2.6-r3",
+            "zlib@1.4-r0"
+          ],
+          "Layer": {
+            "Digest": "sha256:f835ad9cd15df53bdb7cdbe757524a9a6521dd58803bfb938f87d0d595b77b07",
+            "DiffID": "sha256:c5b10f73b0e5d88834482d145a5637a7793a7f87aa76ac74299e89b1ca13de76"
+          },
+          "Digest": "sha1:df07d00ad4740c053ba097ea6098ecd8356377f4",
+          "InstalledFiles": [
+            "sbin/apk"
+          ],
+          "AnalyzedBy": "apk"
+        },
+        {
+          "ID": "busybox@1.37.0-r31",
+          "Name": "busybox",
+          "Identifier": {
+            "PURL": "pkg:apk/alpine/busybox@1.37.0-r31?arch=aarch64\u0026distro=3.24.2",
+            "UID": "6ab72dc13861ad6e"
+          },
+          "Version": "1.37.0-r31",
+          "Arch": "aarch64",
+          "SrcName": "busybox",
+          "SrcVersion": "1.37.0-r31",
+          "Licenses": [
+            "GPL-2.0-only"
+          ],
+          "Maintainer": "Sören Tempel \u003csoeren+alpine@soeren-tempel.net\u003e",
+          "DependsOn": [
+            "musl@1.2.6-r3"
+          ],
+          "Layer": {
+            "Digest": "sha256:a9986cd6f37dbddae7862a6d4be71683472e7c2ea708e87db14f8a6393c00f00",
+            "DiffID": "sha256:1b349a3334531b575b01d409540dd8aca14ef29abddacd50f36643d7c949db4b"
+          },
+          "Digest": "sha1:71cffc2981f2d54b3937c25be2f5169b3fb04532",
+          "InstalledFiles": [
+            "bin/busybox",
+            "etc/securetty",
+            "etc/busybox-paths.d/busybox",
+            "etc/logrotate.d/acpid",
+            "etc/network/if-up.d/dad",
+            "etc/udhcpc/udhcpc.conf",
+            "usr/share/udhcpc/default.script"
+          ],
+          "AnalyzedBy": "apk"
+        },
+        {
+          "ID": "busybox-binsh@1.37.0-r31",
+          "Name": "busybox-binsh",
+          "Identifier": {
+            "PURL": "pkg:apk/alpine/busybox-binsh@1.37.0-r31?arch=aarch64\u0026distro=3.24.2",
+            "UID": "dd2aa04cf600f874"
+          },
+          "Version": "1.37.0-r31",
+          "Arch": "aarch64",
+          "SrcName": "busybox",
+          "SrcVersion": "1.37.0-r31",
+          "Licenses": [
+            "GPL-2.0-only"
+          ],
+          "Maintainer": "Sören Tempel \u003csoeren+alpine@soeren-tempel.net\u003e",
+          "DependsOn": [
+            "busybox@1.37.0-r31"
+          ],
+          "Layer": {
+            "Digest": "sha256:a9986cd6f37dbddae7862a6d4be71683472e7c2ea708e87db14f8a6393c00f00",
+            "DiffID": "sha256:1b349a3334531b575b01d409540dd8aca14ef29abddacd50f36643d7c949db4b"
+          },
+          "Digest": "sha1:6b1f7722a3e7bb97d04e8ef906fd72c0667ba5d0",
+          "InstalledFiles": [
+            "bin/sh"
+          ],
+          "AnalyzedBy": "apk"
+        },
+        {
+          "ID": "ca-certificates@20261020-r0",
+          "Name": "ca-certificates",
+          "Identifier": {
+            "PURL": "pkg:apk/alpine/ca-certificates@20261020-r0?arch=aarch64\u0026distro=3.24.2",
+            "UID": "42e363647d09ca61"
+          },
+          "Version": "20261020-r0",
+          "Arch": "aarch64",
+          "SrcName": "ca-certificates",
+          "SrcVersion": "20261020-r0",
+          "Licenses": [
+            "MPL-2.0",
+            "MIT"
+          ],
+          "Maintainer": "Natanael Copa \u003cncopa@alpinelinux.org\u003e",
+          "DependsOn": [
+            "busybox-binsh@1.37.0-r31",
+            "libcrypto3@3.5.9-r1",
+            "musl@1.2.6-r3"
+          ],
+          "Layer": {
+            "Digest": "sha256:f835ad9cd15df53bdb7cdbe757524a9a6521dd58803bfb938f87d0d595b77b07",
+            "DiffID": "sha256:c5b10f73b0e5d88834482d145a5637a7793a7f87aa76ac74299e89b1ca13de76"
+          },
+          "Digest": "sha1:a6ef95d903a909d82579946e87aa64be29f3b363",
+          "InstalledFiles": [
+            "etc/ca-certificates.conf",
+            "etc/apk/protected_paths.d/ca-certificates.list",
+            "etc/ca-certificates/update.d/certhash",
+            "usr/bin/c_rehash",
+            "usr/sbin/update-ca-certificates",
+            "usr/share/ca-certificates/mozilla/ACCVRAIZ1.crt",
+            "usr/share/ca-certificates/mozilla/AC_RAIZ_FNMT-RCM.crt",
+            "usr/share/ca-certificates/mozilla/AC_RAIZ_FNMT-RCM_SERVIDORES_SEGUROS.crt",
+            "usr/share/ca-certificates/mozilla/ANF_Secure_Server_Root_CA.crt",
+            "usr/share/ca-certificates/mozilla/Actalis_Authentication_Root_CA.crt",
+            "usr/share/ca-certificates/mozilla/Amazon_Root_CA_1.crt",
+            "usr/share/ca-certificates/mozilla/Amazon_Root_CA_2.crt",
+            "usr/share/ca-certificates/mozilla/Amazon_Root_CA_3.crt",
+            "usr/share/ca-certificates/mozilla/Amazon_Root_CA_4.crt",
+            "usr/share/ca-certificates/mozilla/Atos_TrustedRoot_Root_CA_ECC_TLS_2021.crt",
+            "usr/share/ca-certificates/mozilla/Atos_TrustedRoot_Root_CA_RSA_TLS_2021.crt",
+            "usr/share/ca-certificates/mozilla/Autoridad_de_Certificacion_Firmaprofesional_CIF_A62634068.crt",
+            "usr/share/ca-certificates/mozilla/BJCA_Global_Root_CA1.crt",
+            "usr/share/ca-certificates/mozilla/BJCA_Global_Root_CA2.crt",
+            "usr/share/ca-certificates/mozilla/Buypass_Class_2_Root_CA.crt",
+            "usr/share/ca-certificates/mozilla/Buypass_Class_3_Root_CA.crt",
+            "usr/share/ca-certificates/mozilla/CA_Disig_Root_R2.crt",
+            "usr/share/ca-certificates/mozilla/CFCA_EV_ROOT.crt",
+            "usr/share/ca-certificates/mozilla/COMODO_ECC_Certification_Authority.crt",
+            "usr/share/ca-certificates/mozilla/COMODO_RSA_Certification_Authority.crt",
+            "usr/share/ca-certificates/mozilla/Certainly_Root_E1.crt",
+            "usr/share/ca-certificates/mozilla/Certainly_Root_R1.crt",
+            "usr/share/ca-certificates/mozilla/Certigna_Root_CA.crt",
+            "usr/share/ca-certificates/mozilla/Certum_EC-384_CA.crt",
+            "usr/share/ca-certificates/mozilla/Certum_Trusted_Network_CA.crt",
+            "usr/share/ca-certificates/mozilla/Certum_Trusted_Network_CA_2.crt",
+            "usr/share/ca-certificates/mozilla/Certum_Trusted_Root_CA.crt",
+            "usr/share/ca-certificates/mozilla/D-TRUST_BR_Root_CA_1_2020.crt",
+            "usr/share/ca-certificates/mozilla/D-TRUST_BR_Root_CA_2_2023.crt",
+            "usr/share/ca-certificates/mozilla/D-TRUST_EV_Root_CA_1_2020.crt",
+            "usr/share/ca-certificates/mozilla/D-TRUST_EV_Root_CA_2_2023.crt",
+            "usr/share/ca-certificates/mozilla/D-TRUST_Root_Class_3_CA_2_2009.crt",
+            "usr/share/ca-certificates/mozilla/D-TRUST_Root_Class_3_CA_2_EV_2009.crt",
+            "usr/share/ca-certificates/mozilla/DigiCert_Assured_ID_Root_G2.crt",
+            "usr/share/ca-certificates/mozilla/DigiCert_Assured_ID_Root_G3.crt",
+            "usr/share/ca-certificates/mozilla/DigiCert_Global_Root_G2.crt",
+            "usr/share/ca-certificates/mozilla/DigiCert_Global_Root_G3.crt",
+            "usr/share/ca-certificates/mozilla/DigiCert_TLS_ECC_P384_Root_G5.crt",
+            "usr/share/ca-certificates/mozilla/DigiCert_TLS_RSA4096_Root_G5.crt",
+            "usr/share/ca-certificates/mozilla/DigiCert_Trusted_Root_G4.crt",
+            "usr/share/ca-certificates/mozilla/GDCA_TrustAUTH_R5_ROOT.crt",
+            "usr/share/ca-certificates/mozilla/GTS_Root_R1.crt",
+            "usr/share/ca-certificates/mozilla/GTS_Root_R3.crt",
+            "usr/share/ca-certificates/mozilla/GTS_Root_R4.crt",
+            "usr/share/ca-certificates/mozilla/GlobalSign_ECC_Root_CA_-_R4.crt",
+            "usr/share/ca-certificates/mozilla/GlobalSign_ECC_Root_CA_-_R5.crt",
+            "usr/share/ca-certificates/mozilla/GlobalSign_Root_CA_-_R3.crt",
+            "usr/share/ca-certificates/mozilla/GlobalSign_Root_CA_-_R6.crt",
+            "usr/share/ca-certificates/mozilla/GlobalSign_Root_E46.crt",
+            "usr/share/ca-certificates/mozilla/GlobalSign_Root_R46.crt",
+            "usr/share/ca-certificates/mozilla/Go_Daddy_Root_Certificate_Authority_-_G2.crt",
+            "usr/share/ca-certificates/mozilla/HARICA_TLS_ECC_Root_CA_2021.crt",
+            "usr/share/ca-certificates/mozilla/HARICA_TLS_RSA_Root_CA_2021.crt",
+            "usr/share/ca-certificates/mozilla/Hellenic_Academic_and_Research_Institutions_ECC_RootCA_2015.crt",
+            "usr/share/ca-certificates/mozilla/Hellenic_Academic_and_Research_Institutions_RootCA_2015.crt",
+            "usr/share/ca-certificates/mozilla/HiPKI_Root_CA_-_G1.crt",
+            "usr/share/ca-certificates/mozilla/Hongkong_Post_Root_CA_3.crt",
+            "usr/share/ca-certificates/mozilla/ISRG_Root_X1.crt",
+            "usr/share/ca-certificates/mozilla/ISRG_Root_X2.crt",
+            "usr/share/ca-certificates/mozilla/IdenTrust_Commercial_Root_CA_1.crt",
+            "usr/share/ca-certificates/mozilla/IdenTrust_Public_Sector_Root_CA_1.crt",
+            "usr/share/ca-certificates/mozilla/Izenpe.com.crt",
+            "usr/share/ca-certificates/mozilla/Microsec_e-Szigno_Root_CA_2009.crt",
+            "usr/share/ca-certificates/mozilla/Microsoft_ECC_Root_Certificate_Authority_2017.crt",
+            "usr/share/ca-certificates/mozilla/Microsoft_RSA_Root_Certificate_Authority_2017.crt",
+            "usr/share/ca-certificates/mozilla/NAVER_Global_Root_Certification_Authority.crt",
+            "usr/share/ca-certificates/mozilla/NetLock_Arany_=Class_Gold=_Főtanúsítvány.crt",
+            "usr/share/ca-certificates/mozilla/OISTE_Server_Root_ECC_G1.crt",
+            "usr/share/ca-certificates/mozilla/OISTE_Server_Root_RSA_G1.crt",
+            "usr/share/ca-certificates/mozilla/OISTE_WISeKey_Global_Root_GB_CA.crt",
+            "usr/share/ca-certificates/mozilla/OISTE_WISeKey_Global_Root_GC_CA.crt",
+            "usr/share/ca-certificates/mozilla/QuoVadis_Root_CA_1_G3.crt",
+            "usr/share/ca-certificates/mozilla/QuoVadis_Root_CA_2_G3.crt",
+            "usr/share/ca-certificates/mozilla/QuoVadis_Root_CA_3_G3.crt",
+            "usr/share/ca-certificates/mozilla/SECOM_TLS_ECC_Root_CA_2024.crt",
+            "usr/share/ca-certificates/mozilla/SECOM_TLS_RSA_Root_CA_2024.crt",
+            "usr/share/ca-certificates/mozilla/SSL.com_EV_Root_Certification_Authority_ECC.crt",
+            "usr/share/ca-certificates/mozilla/SSL.com_EV_Root_Certification_Authority_RSA_R2.crt",
+            "usr/share/ca-certificates/mozilla/SSL.com_Root_Certification_Authority_ECC.crt",
+            "usr/share/ca-certificates/mozilla/SSL.com_Root_Certification_Authority_RSA.crt",
+            "usr/share/ca-certificates/mozilla/SSL.com_TLS_ECC_Root_CA_2022.crt",
+            "usr/share/ca-certificates/mozilla/SSL.com_TLS_RSA_Root_CA_2022.crt",
+            "usr/share/ca-certificates/mozilla/SZAFIR_ROOT_CA2.crt",
+            "usr/share/ca-certificates/mozilla/Sectigo_Public_Server_Authentication_Root_E46.crt",
+            "usr/share/ca-certificates/mozilla/Sectigo_Public_Server_Authentication_Root_R46.crt",
+            "usr/share/ca-certificates/mozilla/SecureSign_Root_CA14.crt",
+            "usr/share/ca-certificates/mozilla/SecureSign_Root_CA15.crt",
+            "usr/share/ca-certificates/mozilla/Security_Communication_ECC_RootCA1.crt",
+            "usr/share/ca-certificates/mozilla/Security_Communication_RootCA2.crt",
+            "usr/share/ca-certificates/mozilla/Starfield_Root_Certificate_Authority_-_G2.crt",
+            "usr/share/ca-certificates/mozilla/Starfield_Services_Root_Certificate_Authority_-_G2.crt",
+            "usr/share/ca-certificates/mozilla/SwissSign_RSA_TLS_Root_CA_2022_-_1.crt",
+            "usr/share/ca-certificates/mozilla/T-TeleSec_GlobalRoot_Class_2.crt",
+            "usr/share/ca-certificates/mozilla/T-TeleSec_GlobalRoot_Class_3.crt",
+            "usr/share/ca-certificates/mozilla/TUBITAK_Kamu_SM_SSL_Kok_Sertifikasi_-_Surum_1.crt",
+            "usr/share/ca-certificates/mozilla/TWCA_CYBER_Root_CA.crt",
+            "usr/share/ca-certificates/mozilla/TWCA_Global_Root_CA.crt",
+            "usr/share/ca-certificates/mozilla/TWCA_Root_Certification_Authority.crt",
+            "usr/share/ca-certificates/mozilla/Telekom_Security_TLS_ECC_Root_2020.crt",
+            "usr/share/ca-certificates/mozilla/Telekom_Security_TLS_RSA_Root_2023.crt",
+            "usr/share/ca-certificates/mozilla/Telia_EC_TLS_Root_CA_v3.crt",
+            "usr/share/ca-certificates/mozilla/Telia_RSA_TLS_Root_CA_v3.crt",
+            "usr/share/ca-certificates/mozilla/Telia_Root_CA_v2.crt",
+            "usr/share/ca-certificates/mozilla/TrustAsia_Global_Root_CA_G3.crt",
+            "usr/share/ca-certificates/mozilla/TrustAsia_Global_Root_CA_G4.crt",
+            "usr/share/ca-certificates/mozilla/TrustAsia_TLS_ECC_Root_CA.crt",
+            "usr/share/ca-certificates/mozilla/TrustAsia_TLS_RSA_Root_CA.crt",
+            "usr/share/ca-certificates/mozilla/TunTrust_Root_CA.crt",
+            "usr/share/ca-certificates/mozilla/UCA_Extended_Validation_Root.crt",
+            "usr/share/ca-certificates/mozilla/UCA_Global_G2_Root.crt",
+            "usr/share/ca-certificates/mozilla/USERTrust_ECC_Certification_Authority.crt",
+            "usr/share/ca-certificates/mozilla/USERTrust_RSA_Certification_Authority.crt",
+            "usr/share/ca-certificates/mozilla/certSIGN_Root_CA_G2.crt",
+            "usr/share/ca-certificates/mozilla/e-Szigno_Root_CA_2017.crt",
+            "usr/share/ca-certificates/mozilla/e-Szigno_TLS_Root_CA_2023.crt",
+            "usr/share/ca-certificates/mozilla/emSign_Root_CA_-_G1.crt",
+            "usr/share/ca-certificates/mozilla/vTrus_ECC_Root_CA.crt",
+            "usr/share/ca-certificates/mozilla/vTrus_Root_CA.crt"
+          ],
+          "AnalyzedBy": "apk"
+        },
+        {
+          "ID": "ca-certificates-bundle@20261020-r0",
+          "Name": "ca-certificates-bundle",
+          "Identifier": {
+            "PURL": "pkg:apk/alpine/ca-certificates-bundle@20261020-r0?arch=aarch64\u0026distro=3.24.2",
+            "UID": "8c8506518dd3fac9"
+          },
+          "Version": "20261020-r0",
+          "Arch": "aarch64",
+          "SrcName": "ca-certificates",
+          "SrcVersion": "20261020-r0",
+          "Licenses": [
+            "MPL-2.0",
+            "MIT"
+          ],
+          "Maintainer": "Natanael Copa \u003cncopa@alpinelinux.org\u003e",
+          "Layer": {
+            "Digest": "sha256:f835ad9cd15df53bdb7cdbe757524a9a6521dd58803bfb938f87d0d595b77b07",
+            "DiffID": "sha256:c5b10f73b0e5d88834482d145a5637a7793a7f87aa76ac74299e89b1ca13de76"
+          },
+          "Digest": "sha1:d53ced4643e66fc2388cab5ea6b4ac688bb7296f",
+          "InstalledFiles": [
+            "etc/ssl/cert.pem",
+            "etc/ssl/certs/ca-certificates.crt",
+            "etc/ssl1.1/cert.pem",
+            "etc/ssl1.1/certs"
+          ],
+          "AnalyzedBy": "apk"
+        },
+        {
+          "ID": "java-cacerts@1.1-r0",
+          "Name": "java-cacerts",
+          "Identifier": {
+            "PURL": "pkg:apk/alpine/java-cacerts@1.1-r0?arch=aarch64\u0026distro=3.24.2",
+            "UID": "f1112bf65a27cb23"
+          },
+          "Version": "1.1-r0",
+          "Arch": "aarch64",
+          "SrcName": "java-cacerts",
+          "SrcVersion": "1.1-r0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Maintainer": "Natanael Copa \u003cncopa@alpinelinux.org\u003e",
+          "DependsOn": [
+            "busybox-binsh@1.37.0-r31",
+            "ca-certificates@20261020-r0",
+            "p11-kit-trust@0.26.2-r0",
+            "p11-kit@0.26.2-r0"
+          ],
+          "Layer": {
+            "Digest": "sha256:f835ad9cd15df53bdb7cdbe757524a9a6521dd58803bfb938f87d0d595b77b07",
+            "DiffID": "sha256:c5b10f73b0e5d88834482d145a5637a7793a7f87aa76ac74299e89b1ca13de76"
+          },
+          "Digest": "sha1:7db6589fb86690eec757d0ce968092edc9bc08f9",
+          "InstalledFiles": [
+            "etc/ca-certificates/update.d/java-cacerts"
+          ],
+          "AnalyzedBy": "apk"
+        },
+        {
+          "ID": "java-common@1.0-r2",
+          "Name": "java-common",
+          "Identifier": {
+            "PURL": "pkg:apk/alpine/java-common@1.0-r2?arch=aarch64\u0026distro=3.24.2",
+            "UID": "66df048f4d004925"
+          },
+          "Version": "1.0-r2",
+          "Arch": "aarch64",
+          "SrcName": "java-common",
+          "SrcVersion": "1.0-r2",
+          "Licenses": [
+            "GPL-2.0-or-later"
+          ],
+          "Maintainer": "Simon Frankenberger \u003csimon-alpine@fraho.eu\u003e",
+          "DependsOn": [
+            "busybox-binsh@1.37.0-r31"
+          ],
+          "Layer": {
+            "Digest": "sha256:f835ad9cd15df53bdb7cdbe757524a9a6521dd58803bfb938f87d0d595b77b07",
+            "DiffID": "sha256:c5b10f73b0e5d88834482d145a5637a7793a7f87aa76ac74299e89b1ca13de76"
+          },
+          "Digest": "sha1:f36837e06047fd98ed0deb9e0e8bb2b181097887",
+          "InstalledFiles": [
+            "usr/bin/java"
+          ],
+          "AnalyzedBy": "apk"
+        },
+        {
+          "ID": "libapk@3.0.9-r0",
+          "Name": "libapk",
+          "Identifier": {
+            "PURL": "pkg:apk/alpine/libapk@3.0.9-r0?arch=aarch64\u0026distro=3.24.2",
+            "UID": "b0972d6f16bebafd"
+          },
+          "Version": "3.0.9-r0",
+          "Arch": "aarch64",
+          "SrcName": "apk-tools",
+          "SrcVersion": "3.0.9-r0",
+          "Licenses": [
+            "GPL-2.0-only"
+          ],
+          "Maintainer": "Natanael Copa \u003cncopa@alpinelinux.org\u003e",
+          "DependsOn": [
+            "libcrypto3@3.5.9-r1",
+            "libssl3@3.5.9-r1",
+            "musl@1.2.6-r3",
+            "zlib@1.4-r0"
+          ],
+          "Layer": {
+            "Digest": "sha256:f835ad9cd15df53bdb7cdbe757524a9a6521dd58803bfb938f87d0d595b77b07",
+            "DiffID": "sha256:c5b10f73b0e5d88834482d145a5637a7793a7f87aa76ac74299e89b1ca13de76"
+          },
+          "Digest": "sha1:768ecbe668787842f57b9613a87d3c794e29c49b",
+          "InstalledFiles": [
+            "usr/lib/libapk.so.3.0.0"
+          ],
+          "AnalyzedBy": "apk"
+        },
+        {
+          "ID": "libcrypto3@3.5.9-r1",
+          "Name": "libcrypto3",
+          "Identifier": {
+            "PURL": "pkg:apk/alpine/libcrypto3@3.5.9-r1?arch=aarch64\u0026distro=3.24.2",
+            "UID": "3197e2587d92bc97"
+          },
+          "Version": "3.5.9-r1",
+          "Arch": "aarch64",
+          "SrcName": "openssl",
+          "SrcVersion": "3.5.9-r1",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Maintainer": "Natanael Copa \u003cncopa@alpinelinux.org\u003e",
+          "DependsOn": [
+            "musl@1.2.6-r3"
+          ],
+          "Layer": {
+            "Digest": "sha256:f835ad9cd15df53bdb7cdbe757524a9a6521dd58803bfb938f87d0d595b77b07",
+            "DiffID": "sha256:c5b10f73b0e5d88834482d145a5637a7793a7f87aa76ac74299e89b1ca13de76"
+          },
+          "Digest": "sha1:8f9157f333d80d492cbc7a4b224e9beb29aa2993",
+          "InstalledFiles": [
+            "etc/ssl/ct_log_list.cnf",
+            "etc/ssl/ct_log_list.cnf.dist",
+            "etc/ssl/openssl.cnf",
+            "etc/ssl/openssl.cnf.dist",
+            "usr/lib/libcrypto.so.3",
+            "usr/lib/engines-3/afalg.so",
+            "usr/lib/engines-3/capi.so",
+            "usr/lib/engines-3/loader_attic.so",
+            "usr/lib/engines-3/padlock.so",
+            "usr/lib/ossl-modules/legacy.so"
+          ],
+          "AnalyzedBy": "apk"
+        },
+        {
+          "ID": "libffi@3.5.2-r1",
+          "Name": "libffi",
+          "Identifier": {
+            "PURL": "pkg:apk/alpine/libffi@3.5.2-r1?arch=aarch64\u0026distro=3.24.2",
+            "UID": "7287fe6887fa026e"
+          },
+          "Version": "3.5.2-r1",
+          "Arch": "aarch64",
+          "SrcName": "libffi",
+          "SrcVersion": "3.5.2-r1",
+          "Licenses": [
+            "MIT"
+          ],
+          "Maintainer": "Natanael Copa \u003cncopa@alpinelinux.org\u003e",
+          "DependsOn": [
+            "musl@1.2.6-r3"
+          ],
+          "Layer": {
+            "Digest": "sha256:f835ad9cd15df53bdb7cdbe757524a9a6521dd58803bfb938f87d0d595b77b07",
+            "DiffID": "sha256:c5b10f73b0e5d88834482d145a5637a7793a7f87aa76ac74299e89b1ca13de76"
+          },
+          "Digest": "sha1:baaa3a1f7a8c6582f59bdb3ea5dcea090978af40",
+          "InstalledFiles": [
+            "usr/lib/libffi.so.8",
+            "usr/lib/libffi.so.8.2.0"
+          ],
+          "AnalyzedBy": "apk"
+        },
+        {
+          "ID": "libssl3@3.5.9-r1",
+          "Name": "libssl3",
+          "Identifier": {
+            "PURL": "pkg:apk/alpine/libssl3@3.5.9-r1?arch=aarch64\u0026distro=3.24.2",
+            "UID": "e9c9392132b52421"
+          },
+          "Version": "3.5.9-r1",
+          "Arch": "aarch64",
+          "SrcName": "openssl",
+          "SrcVersion": "3.5.9-r1",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Maintainer": "Natanael Copa \u003cncopa@alpinelinux.org\u003e",
+          "DependsOn": [
+            "libcrypto3@3.5.9-r1",
+            "musl@1.2.6-r3"
+          ],
+          "Layer": {
+            "Digest": "sha256:f835ad9cd15df53bdb7cdbe757524a9a6521dd58803bfb938f87d0d595b77b07",
+            "DiffID": "sha256:c5b10f73b0e5d88834482d145a5637a7793a7f87aa76ac74299e89b1ca13de76"
+          },
+          "Digest": "sha1:28d9205fc10dcdb1088683000e38fa61a2261cc2",
+          "InstalledFiles": [
+            "usr/lib/libssl.so.3"
+          ],
+          "AnalyzedBy": "apk"
+        },
+        {
+          "ID": "libtasn1@4.21.0-r0",
+          "Name": "libtasn1",
+          "Identifier": {
+            "PURL": "pkg:apk/alpine/libtasn1@4.21.0-r0?arch=aarch64\u0026distro=3.24.2",
+            "UID": "78baf83907fe6902"
+          },
+          "Version": "4.21.0-r0",
+          "Arch": "aarch64",
+          "SrcName": "libtasn1",
+          "SrcVersion": "4.21.0-r0",
+          "Licenses": [
+            "LGPL-2.1-or-later"
+          ],
+          "Maintainer": "Natanael Copa \u003cncopa@alpinelinux.org\u003e",
+          "DependsOn": [
+            "musl@1.2.6-r3"
+          ],
+          "Layer": {
+            "Digest": "sha256:f835ad9cd15df53bdb7cdbe757524a9a6521dd58803bfb938f87d0d595b77b07",
+            "DiffID": "sha256:c5b10f73b0e5d88834482d145a5637a7793a7f87aa76ac74299e89b1ca13de76"
+          },
+          "Digest": "sha1:411c59abac766b94c3f2fbcd3d51860957514066",
+          "InstalledFiles": [
+            "usr/lib/libtasn1.so.6",
+            "usr/lib/libtasn1.so.6.6.5"
+          ],
+          "AnalyzedBy": "apk"
+        },
+        {
+          "ID": "musl@1.2.6-r3",
+          "Name": "musl",
+          "Identifier": {
+            "PURL": "pkg:apk/alpine/musl@1.2.6-r3?arch=aarch64\u0026distro=3.24.2",
+            "UID": "b836d5e005347926"
+          },
+          "Version": "1.2.6-r3",
+          "Arch": "aarch64",
+          "SrcName": "musl",
+          "SrcVersion": "1.2.6-r3",
+          "Licenses": [
+            "MIT"
+          ],
+          "Maintainer": "Natanael Copa \u003cncopa@alpinelinux.org\u003e",
+          "Layer": {
+            "Digest": "sha256:f835ad9cd15df53bdb7cdbe757524a9a6521dd58803bfb938f87d0d595b77b07",
+            "DiffID": "sha256:c5b10f73b0e5d88834482d145a5637a7793a7f87aa76ac74299e89b1ca13de76"
+          },
+          "Digest": "sha1:2f159d022523c7a6b78729a6632985cb7714fbe6",
+          "InstalledFiles": [
+            "lib/ld-musl-aarch64.so.1",
+            "lib/libc.musl-aarch64.so.1"
+          ],
+          "AnalyzedBy": "apk"
+        },
+        {
+          "ID": "musl-utils@1.2.6-r3",
+          "Name": "musl-utils",
+          "Identifier": {
+            "PURL": "pkg:apk/alpine/musl-utils@1.2.6-r3?arch=aarch64\u0026distro=3.24.2",
+            "UID": "10298f539cdcabfb"
+          },
+          "Version": "1.2.6-r3",
+          "Arch": "aarch64",
+          "SrcName": "musl",
+          "SrcVersion": "1.2.6-r3",
+          "Licenses": [
+            "MIT",
+            "BSD-2-Clause",
+            "GPL-2.0-or-later"
+          ],
+          "Maintainer": "Natanael Copa \u003cncopa@alpinelinux.org\u003e",
+          "DependsOn": [
+            "musl@1.2.6-r3",
+            "scanelf@1.3.9-r1"
+          ],
+          "Layer": {
+            "Digest": "sha256:f835ad9cd15df53bdb7cdbe757524a9a6521dd58803bfb938f87d0d595b77b07",
+            "DiffID": "sha256:c5b10f73b0e5d88834482d145a5637a7793a7f87aa76ac74299e89b1ca13de76"
+          },
+          "Digest": "sha1:c38121afffd1f2dd7681f7ac66058a3cd723d030",
+          "InstalledFiles": [
+            "sbin/ldconfig",
+            "usr/bin/getconf",
+            "usr/bin/getent",
+            "usr/bin/iconv",
+            "usr/bin/ldd"
+          ],
+          "AnalyzedBy": "apk"
+        },
+        {
+          "ID": "openjdk17-jre-headless@17.0.21.1_p2-r0",
+          "Name": "openjdk17-jre-headless",
+          "Identifier": {
+            "PURL": "pkg:apk/alpine/openjdk17-jre-headless@17.0.21.1_p2-r0?arch=aarch64\u0026distro=3.24.2",
+            "UID": "bcf328a01318ec"
+          },
+          "Version": "17.0.21.1_p2-r0",
+          "Arch": "aarch64",
+          "SrcName": "openjdk17",
+          "SrcVersion": "17.0.21.1_p2-r0",
+          "Licenses": [
+            "GPL-2.0-with-classpath-exception"
+          ],
+          "Maintainer": "Simon Frankenberger \u003csimon-alpine@fraho.eu\u003e",
+          "DependsOn": [
+            "java-cacerts@1.1-r0",
+            "java-common@1.0-r2",
+            "musl@1.2.6-r3",
+            "zlib@1.4-r0"
+          ],
+          "Layer": {
+            "Digest": "sha256:f835ad9cd15df53bdb7cdbe757524a9a6521dd58803bfb938f87d0d595b77b07",
+            "DiffID": "sha256:c5b10f73b0e5d88834482d145a5637a7793a7f87aa76ac74299e89b1ca13de76"
+          },
+          "Digest": "sha1:53d5415d86142f74468df3e194a72a8317aa469c",
+          "InstalledFiles": [
+            "usr/lib/jvm/java-17-openjdk/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/README.md",
+            "usr/lib/jvm/java-17-openjdk/jre",
+            "usr/lib/jvm/java-17-openjdk/release",
+            "usr/lib/jvm/java-17-openjdk/bin/java",
+            "usr/lib/jvm/java-17-openjdk/bin/jfr",
+            "usr/lib/jvm/java-17-openjdk/bin/jrunscript",
+            "usr/lib/jvm/java-17-openjdk/bin/keytool",
+            "usr/lib/jvm/java-17-openjdk/bin/rmiregistry",
+            "usr/lib/jvm/java-17-openjdk/conf/logging.properties",
+            "usr/lib/jvm/java-17-openjdk/conf/net.properties",
+            "usr/lib/jvm/java-17-openjdk/conf/sound.properties",
+            "usr/lib/jvm/java-17-openjdk/conf/management/jmxremote.access",
+            "usr/lib/jvm/java-17-openjdk/conf/management/jmxremote.password.template",
+            "usr/lib/jvm/java-17-openjdk/conf/management/management.properties",
+            "usr/lib/jvm/java-17-openjdk/conf/sdp/sdp.conf.template",
+            "usr/lib/jvm/java-17-openjdk/conf/security/java.policy",
+            "usr/lib/jvm/java-17-openjdk/conf/security/java.security",
+            "usr/lib/jvm/java-17-openjdk/conf/security/policy/README.txt",
+            "usr/lib/jvm/java-17-openjdk/conf/security/policy/limited/default_US_export.policy",
+            "usr/lib/jvm/java-17-openjdk/conf/security/policy/limited/default_local.policy",
+            "usr/lib/jvm/java-17-openjdk/conf/security/policy/limited/exempt_local.policy",
+            "usr/lib/jvm/java-17-openjdk/conf/security/policy/unlimited/default_US_export.policy",
+            "usr/lib/jvm/java-17-openjdk/conf/security/policy/unlimited/default_local.policy",
+            "usr/lib/jvm/java-17-openjdk/legal/java.base/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/java.base/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/java.base/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/java.base/aes.md",
+            "usr/lib/jvm/java-17-openjdk/legal/java.base/asm.md",
+            "usr/lib/jvm/java-17-openjdk/legal/java.base/c-libutl.md",
+            "usr/lib/jvm/java-17-openjdk/legal/java.base/cldr.md",
+            "usr/lib/jvm/java-17-openjdk/legal/java.base/gcc.md",
+            "usr/lib/jvm/java-17-openjdk/legal/java.base/icu.md",
+            "usr/lib/jvm/java-17-openjdk/legal/java.base/public_suffix.md",
+            "usr/lib/jvm/java-17-openjdk/legal/java.base/siphash.md",
+            "usr/lib/jvm/java-17-openjdk/legal/java.base/unicode.md",
+            "usr/lib/jvm/java-17-openjdk/legal/java.compiler/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/java.compiler/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/java.compiler/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/java.datatransfer/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/java.datatransfer/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/java.datatransfer/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/java.desktop/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/java.desktop/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/java.desktop/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/java.desktop/colorimaging.md",
+            "usr/lib/jvm/java-17-openjdk/legal/java.desktop/harfbuzz.md",
+            "usr/lib/jvm/java-17-openjdk/legal/java.desktop/mesa3d.md",
+            "usr/lib/jvm/java-17-openjdk/legal/java.desktop/pipewire.md",
+            "usr/lib/jvm/java-17-openjdk/legal/java.desktop/xwd.md",
+            "usr/lib/jvm/java-17-openjdk/legal/java.instrument/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/java.instrument/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/java.instrument/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/java.logging/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/java.logging/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/java.logging/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/java.management/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/java.management/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/java.management/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/java.management.rmi/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/java.management.rmi/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/java.management.rmi/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/java.naming/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/java.naming/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/java.naming/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/java.net.http/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/java.net.http/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/java.net.http/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/java.prefs/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/java.prefs/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/java.prefs/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/java.rmi/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/java.rmi/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/java.rmi/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/java.scripting/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/java.scripting/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/java.scripting/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/java.se/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/java.se/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/java.se/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/java.security.jgss/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/java.security.jgss/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/java.security.jgss/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/java.security.sasl/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/java.security.sasl/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/java.security.sasl/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/java.smartcardio/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/java.smartcardio/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/java.smartcardio/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/java.smartcardio/pcsclite.md",
+            "usr/lib/jvm/java-17-openjdk/legal/java.sql/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/java.sql/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/java.sql/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/java.sql.rowset/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/java.sql.rowset/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/java.sql.rowset/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/java.transaction.xa/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/java.transaction.xa/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/java.transaction.xa/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/java.xml/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/java.xml/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/java.xml/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/java.xml/bcel.md",
+            "usr/lib/jvm/java-17-openjdk/legal/java.xml/dom.md",
+            "usr/lib/jvm/java-17-openjdk/legal/java.xml/jcup.md",
+            "usr/lib/jvm/java-17-openjdk/legal/java.xml/xalan.md",
+            "usr/lib/jvm/java-17-openjdk/legal/java.xml/xerces.md",
+            "usr/lib/jvm/java-17-openjdk/legal/java.xml.crypto/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/java.xml.crypto/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/java.xml.crypto/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/java.xml.crypto/santuario.md",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.accessibility/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.accessibility/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.accessibility/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.attach/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.attach/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.attach/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.charsets/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.charsets/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.charsets/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.compiler/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.compiler/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.compiler/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.crypto.cryptoki/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.crypto.cryptoki/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.crypto.cryptoki/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.crypto.cryptoki/pkcs11cryptotoken.md",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.crypto.cryptoki/pkcs11wrapper.md",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.crypto.ec/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.crypto.ec/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.crypto.ec/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.dynalink/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.dynalink/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.dynalink/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.dynalink/dynalink.md",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.editpad/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.editpad/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.editpad/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.hotspot.agent/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.hotspot.agent/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.hotspot.agent/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.httpserver/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.httpserver/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.httpserver/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.incubator.foreign/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.incubator.foreign/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.incubator.foreign/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.incubator.vector/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.incubator.vector/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.incubator.vector/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.internal.ed/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.internal.ed/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.internal.ed/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.internal.jvmstat/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.internal.jvmstat/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.internal.jvmstat/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.internal.le/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.internal.le/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.internal.le/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.internal.le/jline.md",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.internal.opt/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.internal.opt/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.internal.opt/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.internal.opt/jopt-simple.md",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.internal.vm.ci/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.internal.vm.ci/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.internal.vm.ci/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.internal.vm.compiler/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.internal.vm.compiler/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.internal.vm.compiler/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.internal.vm.compiler.management/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.internal.vm.compiler.management/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.internal.vm.compiler.management/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.jartool/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.jartool/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.jartool/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.javadoc/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.javadoc/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.javadoc/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.javadoc/jquery.md",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.javadoc/jqueryUI.md",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.jcmd/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.jcmd/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.jcmd/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.jconsole/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.jconsole/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.jconsole/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.jdeps/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.jdeps/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.jdeps/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.jdi/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.jdi/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.jdi/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.jdwp.agent/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.jdwp.agent/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.jdwp.agent/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.jfr/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.jfr/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.jfr/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.jlink/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.jlink/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.jlink/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.jpackage/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.jpackage/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.jpackage/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.jshell/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.jshell/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.jshell/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.jsobject/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.jsobject/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.jsobject/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.jstatd/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.jstatd/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.jstatd/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.localedata/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.localedata/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.localedata/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.localedata/cldr.md",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.localedata/thaidict.md",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.management/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.management/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.management/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.management.agent/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.management.agent/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.management.agent/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.management.jfr/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.management.jfr/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.management.jfr/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.naming.dns/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.naming.dns/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.naming.dns/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.naming.rmi/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.naming.rmi/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.naming.rmi/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.net/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.net/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.net/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.nio.mapmode/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.nio.mapmode/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.nio.mapmode/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.random/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.random/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.random/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.sctp/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.sctp/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.sctp/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.security.auth/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.security.auth/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.security.auth/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.security.jgss/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.security.jgss/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.security.jgss/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.unsupported/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.unsupported/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.unsupported/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.unsupported.desktop/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.unsupported.desktop/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.unsupported.desktop/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.xml.dom/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.xml.dom/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.xml.dom/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.zipfs/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.zipfs/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.zipfs/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/lib/classlist",
+            "usr/lib/jvm/java-17-openjdk/lib/jexec",
+            "usr/lib/jvm/java-17-openjdk/lib/jrt-fs.jar",
+            "usr/lib/jvm/java-17-openjdk/lib/jspawnhelper",
+            "usr/lib/jvm/java-17-openjdk/lib/jvm.cfg",
+            "usr/lib/jvm/java-17-openjdk/lib/libattach.so",
+            "usr/lib/jvm/java-17-openjdk/lib/libawt.so",
+            "usr/lib/jvm/java-17-openjdk/lib/libawt_headless.so",
+            "usr/lib/jvm/java-17-openjdk/lib/libdt_socket.so",
+            "usr/lib/jvm/java-17-openjdk/lib/libextnet.so",
+            "usr/lib/jvm/java-17-openjdk/lib/libinstrument.so",
+            "usr/lib/jvm/java-17-openjdk/lib/libj2gss.so",
+            "usr/lib/jvm/java-17-openjdk/lib/libj2pcsc.so",
+            "usr/lib/jvm/java-17-openjdk/lib/libj2pkcs11.so",
+            "usr/lib/jvm/java-17-openjdk/lib/libjaas.so",
+            "usr/lib/jvm/java-17-openjdk/lib/libjava.so",
+            "usr/lib/jvm/java-17-openjdk/lib/libjdwp.so",
+            "usr/lib/jvm/java-17-openjdk/lib/libjimage.so",
+            "usr/lib/jvm/java-17-openjdk/lib/libjli.so",
+            "usr/lib/jvm/java-17-openjdk/lib/libjsig.so",
+            "usr/lib/jvm/java-17-openjdk/lib/libmanagement.so",
+            "usr/lib/jvm/java-17-openjdk/lib/libmanagement_agent.so",
+            "usr/lib/jvm/java-17-openjdk/lib/libmanagement_ext.so",
+            "usr/lib/jvm/java-17-openjdk/lib/libmlib_image.so",
+            "usr/lib/jvm/java-17-openjdk/lib/libnet.so",
+            "usr/lib/jvm/java-17-openjdk/lib/libnio.so",
+            "usr/lib/jvm/java-17-openjdk/lib/libprefs.so",
+            "usr/lib/jvm/java-17-openjdk/lib/librmi.so",
+            "usr/lib/jvm/java-17-openjdk/lib/libsaproc.so",
+            "usr/lib/jvm/java-17-openjdk/lib/libsctp.so",
+            "usr/lib/jvm/java-17-openjdk/lib/libsyslookup.so",
+            "usr/lib/jvm/java-17-openjdk/lib/libverify.so",
+            "usr/lib/jvm/java-17-openjdk/lib/libzip.so",
+            "usr/lib/jvm/java-17-openjdk/lib/modules",
+            "usr/lib/jvm/java-17-openjdk/lib/psfont.properties.ja",
+            "usr/lib/jvm/java-17-openjdk/lib/psfontj2d.properties",
+            "usr/lib/jvm/java-17-openjdk/lib/tzdb.dat",
+            "usr/lib/jvm/java-17-openjdk/lib/jfr/default.jfc",
+            "usr/lib/jvm/java-17-openjdk/lib/jfr/profile.jfc",
+            "usr/lib/jvm/java-17-openjdk/lib/security/blocked.certs",
+            "usr/lib/jvm/java-17-openjdk/lib/security/cacerts",
+            "usr/lib/jvm/java-17-openjdk/lib/security/default.policy",
+            "usr/lib/jvm/java-17-openjdk/lib/security/public_suffix_list.dat",
+            "usr/lib/jvm/java-17-openjdk/lib/server/classes.jsa",
+            "usr/lib/jvm/java-17-openjdk/lib/server/classes_nocoops.jsa",
+            "usr/lib/jvm/java-17-openjdk/lib/server/libjsig.so",
+            "usr/lib/jvm/java-17-openjdk/lib/server/libjvm.so"
+          ],
+          "AnalyzedBy": "apk"
+        },
+        {
+          "ID": "p11-kit@0.26.2-r0",
+          "Name": "p11-kit",
+          "Identifier": {
+            "PURL": "pkg:apk/alpine/p11-kit@0.26.2-r0?arch=aarch64\u0026distro=3.24.2",
+            "UID": "a989b30f470a9d73"
+          },
+          "Version": "0.26.2-r0",
+          "Arch": "aarch64",
+          "SrcName": "p11-kit",
+          "SrcVersion": "0.26.2-r0",
+          "Licenses": [
+            "BSD-3-Clause"
+          ],
+          "Maintainer": "Patrycja Rosa \u003calpine@ptrcnull.me\u003e",
+          "DependsOn": [
+            "libffi@3.5.2-r1",
+            "libtasn1@4.21.0-r0",
+            "musl@1.2.6-r3"
+          ],
+          "Layer": {
+            "Digest": "sha256:f835ad9cd15df53bdb7cdbe757524a9a6521dd58803bfb938f87d0d595b77b07",
+            "DiffID": "sha256:c5b10f73b0e5d88834482d145a5637a7793a7f87aa76ac74299e89b1ca13de76"
+          },
+          "Digest": "sha1:6ed520f836d1fb6c0dff740e9b7b7d3ce5b4ba2a",
+          "InstalledFiles": [
+            "etc/pkcs11/pkcs11.conf.example",
+            "usr/bin/p11-kit",
+            "usr/lib/libp11-kit.so.0",
+            "usr/lib/libp11-kit.so.0.4.8",
+            "usr/libexec/p11-kit/p11-kit-remote",
+            "usr/libexec/p11-kit/trust-extract-compat"
+          ],
+          "AnalyzedBy": "apk"
+        },
+        {
+          "ID": "p11-kit-trust@0.26.2-r0",
+          "Name": "p11-kit-trust",
+          "Identifier": {
+            "PURL": "pkg:apk/alpine/p11-kit-trust@0.26.2-r0?arch=aarch64\u0026distro=3.24.2",
+            "UID": "72b906cd8786c94"
+          },
+          "Version": "0.26.2-r0",
+          "Arch": "aarch64",
+          "SrcName": "p11-kit",
+          "SrcVersion": "0.26.2-r0",
+          "Licenses": [
+            "BSD-3-Clause"
+          ],
+          "Maintainer": "Patrycja Rosa \u003calpine@ptrcnull.me\u003e",
+          "DependsOn": [
+            "libtasn1@4.21.0-r0",
+            "musl@1.2.6-r3",
+            "p11-kit@0.26.2-r0"
+          ],
+          "Layer": {
+            "Digest": "sha256:f835ad9cd15df53bdb7cdbe757524a9a6521dd58803bfb938f87d0d595b77b07",
+            "DiffID": "sha256:c5b10f73b0e5d88834482d145a5637a7793a7f87aa76ac74299e89b1ca13de76"
+          },
+          "Digest": "sha1:da6b8158c857a3dd084850eac96f5385d654dbe2",
+          "InstalledFiles": [
+            "usr/bin/trust",
+            "usr/lib/pkcs11/p11-kit-trust.so",
+            "usr/share/p11-kit/modules/p11-kit-trust.module"
+          ],
+          "AnalyzedBy": "apk"
+        },
+        {
+          "ID": "scanelf@1.3.9-r1",
+          "Name": "scanelf",
+          "Identifier": {
+            "PURL": "pkg:apk/alpine/scanelf@1.3.9-r1?arch=aarch64\u0026distro=3.24.2",
+            "UID": "80fc822077279234"
+          },
+          "Version": "1.3.9-r1",
+          "Arch": "aarch64",
+          "SrcName": "pax-utils",
+          "SrcVersion": "1.3.9-r1",
+          "Licenses": [
+            "GPL-2.0-only"
+          ],
+          "Maintainer": "Natanael Copa \u003cncopa@alpinelinux.org\u003e",
+          "DependsOn": [
+            "musl@1.2.6-r3"
+          ],
+          "Layer": {
+            "Digest": "sha256:a9986cd6f37dbddae7862a6d4be71683472e7c2ea708e87db14f8a6393c00f00",
+            "DiffID": "sha256:1b349a3334531b575b01d409540dd8aca14ef29abddacd50f36643d7c949db4b"
+          },
+          "Digest": "sha1:dc8c1ca6362d648f03640184baf8914b62b643fb",
+          "InstalledFiles": [
+            "usr/bin/scanelf"
+          ],
+          "AnalyzedBy": "apk"
+        },
+        {
+          "ID": "ssl_client@1.37.0-r31",
+          "Name": "ssl_client",
+          "Identifier": {
+            "PURL": "pkg:apk/alpine/ssl_client@1.37.0-r31?arch=aarch64\u0026distro=3.24.2",
+            "UID": "6b76a58bb4704ebd"
+          },
+          "Version": "1.37.0-r31",
+          "Arch": "aarch64",
+          "SrcName": "busybox",
+          "SrcVersion": "1.37.0-r31",
+          "Licenses": [
+            "GPL-2.0-only"
+          ],
+          "Maintainer": "Sören Tempel \u003csoeren+alpine@soeren-tempel.net\u003e",
+          "DependsOn": [
+            "libcrypto3@3.5.9-r1",
+            "libssl3@3.5.9-r1",
+            "musl@1.2.6-r3"
+          ],
+          "Layer": {
+            "Digest": "sha256:a9986cd6f37dbddae7862a6d4be71683472e7c2ea708e87db14f8a6393c00f00",
+            "DiffID": "sha256:1b349a3334531b575b01d409540dd8aca14ef29abddacd50f36643d7c949db4b"
+          },
+          "Digest": "sha1:4107c3f70dda302e0c3ed46299419245a8a280b4",
+          "InstalledFiles": [
+            "usr/bin/ssl_client"
+          ],
+          "AnalyzedBy": "apk"
+        },
+        {
+          "ID": "zlib@1.4-r0",
+          "Name": "zlib",
+          "Identifier": {
+            "PURL": "pkg:apk/alpine/zlib@1.4-r0?arch=aarch64\u0026distro=3.24.2",
+            "UID": "2d019f912b8adc24"
+          },
+          "Version": "1.4-r0",
+          "Arch": "aarch64",
+          "SrcName": "zlib",
+          "SrcVersion": "1.4-r0",
+          "Licenses": [
+            "Zlib"
+          ],
+          "Maintainer": "Natanael Copa \u003cncopa@alpinelinux.org\u003e",
+          "DependsOn": [
+            "musl@1.2.6-r3"
+          ],
+          "Layer": {
+            "Digest": "sha256:f835ad9cd15df53bdb7cdbe757524a9a6521dd58803bfb938f87d0d595b77b07",
+            "DiffID": "sha256:c5b10f73b0e5d88834482d145a5637a7793a7f87aa76ac74299e89b1ca13de76"
+          },
+          "Digest": "sha1:7009c8146f90855e208cdf0b60f35df08bfec1c3",
+          "InstalledFiles": [
+            "usr/lib/libz.so.1",
+            "usr/lib/libz.so.1.4"
+          ],
+          "AnalyzedBy": "apk"
+        }
+      ]
+    },
+    {
+      "Target": "Java",
+      "Class": "lang-pkgs",
+      "Type": "jar",
+      "Packages": [
+        {
+          "Name": "ch.qos.logback:logback-classic",
+          "Identifier": {
+            "PURL": "pkg:maven/ch.qos.logback/logback-classic@1.5.38",
+            "UID": "22cfb9fd130673a2"
+          },
+          "Version": "1.5.38",
+          "Licenses": [
+            "EPL-2.0",
+            "LGPL-2.1-only"
+          ],
+          "Layer": {
+            "Digest": "sha256:78d857ee18a255877e00b70396ebdd1c84e4533836377840d4061ebe2d6625cb",
+            "DiffID": "sha256:c8cd58538bb3dbd188539e43e12b926dae03875eaa23415c809e6f8635d39932"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/logback-classic-1.5.38.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "ch.qos.logback:logback-core",
+          "Identifier": {
+            "PURL": "pkg:maven/ch.qos.logback/logback-core@1.5.38",
+            "UID": "8ea0a432d66c6efc"
+          },
+          "Version": "1.5.38",
+          "Licenses": [
+            "EPL-2.0",
+            "LGPL-2.1-only"
+          ],
+          "Layer": {
+            "Digest": "sha256:78d857ee18a255877e00b70396ebdd1c84e4533836377840d4061ebe2d6625cb",
+            "DiffID": "sha256:c8cd58538bb3dbd188539e43e12b926dae03875eaa23415c809e6f8635d39932"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/logback-core-1.5.38.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "com.example:simple-java-app",
+          "Identifier": {
+            "PURL": "pkg:maven/com.example/simple-java-app@1.0.0",
+            "UID": "2d13effabeda3586"
+          },
+          "Version": "1.0.0",
+          "Layer": {
+            "Digest": "sha256:78d857ee18a255877e00b70396ebdd1c84e4533836377840d4061ebe2d6625cb",
+            "DiffID": "sha256:c8cd58538bb3dbd188539e43e12b926dae03875eaa23415c809e6f8635d39932"
+          },
+          "FilePath": "app/app.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "com.fasterxml.jackson.core:jackson-annotations",
+          "Identifier": {
+            "PURL": "pkg:maven/com.fasterxml.jackson.core/jackson-annotations@2.21",
+            "UID": "63e952e911fda08e"
+          },
+          "Version": "2.21",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:78d857ee18a255877e00b70396ebdd1c84e4533836377840d4061ebe2d6625cb",
+            "DiffID": "sha256:c8cd58538bb3dbd188539e43e12b926dae03875eaa23415c809e6f8635d39932"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/jackson-annotations-2.21.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "commons-logging:commons-logging",
+          "Identifier": {
+            "PURL": "pkg:maven/commons-logging/commons-logging@1.3.6",
+            "UID": "1619762e80600bb9"
+          },
+          "Version": "1.3.6",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:78d857ee18a255877e00b70396ebdd1c84e4533836377840d4061ebe2d6625cb",
+            "DiffID": "sha256:c8cd58538bb3dbd188539e43e12b926dae03875eaa23415c809e6f8635d39932"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/commons-logging-1.3.6.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "io.micrometer:micrometer-commons",
+          "Identifier": {
+            "PURL": "pkg:maven/io.micrometer/micrometer-commons@1.17.2",
+            "UID": "ad6cdfe3e47278cf"
+          },
+          "Version": "1.17.2",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:78d857ee18a255877e00b70396ebdd1c84e4533836377840d4061ebe2d6625cb",
+            "DiffID": "sha256:c8cd58538bb3dbd188539e43e12b926dae03875eaa23415c809e6f8635d39932"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/micrometer-commons-1.17.2.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "io.micrometer:micrometer-core",
+          "Identifier": {
+            "PURL": "pkg:maven/io.micrometer/micrometer-core@1.17.2",
+            "UID": "ea35c1118c12e974"
+          },
+          "Version": "1.17.2",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:78d857ee18a255877e00b70396ebdd1c84e4533836377840d4061ebe2d6625cb",
+            "DiffID": "sha256:c8cd58538bb3dbd188539e43e12b926dae03875eaa23415c809e6f8635d39932"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/micrometer-core-1.17.2.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "io.micrometer:micrometer-jakarta9",
+          "Identifier": {
+            "PURL": "pkg:maven/io.micrometer/micrometer-jakarta9@1.17.2",
+            "UID": "87b21b27ad6c1e78"
+          },
+          "Version": "1.17.2",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:78d857ee18a255877e00b70396ebdd1c84e4533836377840d4061ebe2d6625cb",
+            "DiffID": "sha256:c8cd58538bb3dbd188539e43e12b926dae03875eaa23415c809e6f8635d39932"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/micrometer-jakarta9-1.17.2.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "io.micrometer:micrometer-observation",
+          "Identifier": {
+            "PURL": "pkg:maven/io.micrometer/micrometer-observation@1.17.2",
+            "UID": "af595a0bb211f8c"
+          },
+          "Version": "1.17.2",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:78d857ee18a255877e00b70396ebdd1c84e4533836377840d4061ebe2d6625cb",
+            "DiffID": "sha256:c8cd58538bb3dbd188539e43e12b926dae03875eaa23415c809e6f8635d39932"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/micrometer-observation-1.17.2.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "jakarta.annotation:jakarta.annotation-api",
+          "Identifier": {
+            "PURL": "pkg:maven/jakarta.annotation/jakarta.annotation-api@3.0.0",
+            "UID": "45b01f07f691bf02"
+          },
+          "Version": "3.0.0",
+          "Licenses": [
+            "EPL-2.0",
+            "GPL-2.0-with-classpath-exception"
+          ],
+          "Layer": {
+            "Digest": "sha256:78d857ee18a255877e00b70396ebdd1c84e4533836377840d4061ebe2d6625cb",
+            "DiffID": "sha256:c8cd58538bb3dbd188539e43e12b926dae03875eaa23415c809e6f8635d39932"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/jakarta.annotation-api-3.0.0.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "org.apache.logging.log4j:log4j-api",
+          "Identifier": {
+            "PURL": "pkg:maven/org.apache.logging.log4j/log4j-api@2.25.5",
+            "UID": "ac302f7f486be7b"
+          },
+          "Version": "2.25.5",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:78d857ee18a255877e00b70396ebdd1c84e4533836377840d4061ebe2d6625cb",
+            "DiffID": "sha256:c8cd58538bb3dbd188539e43e12b926dae03875eaa23415c809e6f8635d39932"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/log4j-api-2.25.5.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "org.apache.logging.log4j:log4j-to-slf4j",
+          "Identifier": {
+            "PURL": "pkg:maven/org.apache.logging.log4j/log4j-to-slf4j@2.25.5",
+            "UID": "4dea70b92dd74466"
+          },
+          "Version": "2.25.5",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:78d857ee18a255877e00b70396ebdd1c84e4533836377840d4061ebe2d6625cb",
+            "DiffID": "sha256:c8cd58538bb3dbd188539e43e12b926dae03875eaa23415c809e6f8635d39932"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/log4j-to-slf4j-2.25.5.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "org.apache.tomcat.embed:tomcat-embed-core",
+          "Identifier": {
+            "PURL": "pkg:maven/org.apache.tomcat.embed/tomcat-embed-core@11.0.27",
+            "UID": "43a4cc43421701a3"
+          },
+          "Version": "11.0.27",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:78d857ee18a255877e00b70396ebdd1c84e4533836377840d4061ebe2d6625cb",
+            "DiffID": "sha256:c8cd58538bb3dbd188539e43e12b926dae03875eaa23415c809e6f8635d39932"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/tomcat-embed-core-11.0.27.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "org.apache.tomcat.embed:tomcat-embed-el",
+          "Identifier": {
+            "PURL": "pkg:maven/org.apache.tomcat.embed/tomcat-embed-el@11.0.27",
+            "UID": "ad5db9184ed13bae"
+          },
+          "Version": "11.0.27",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:78d857ee18a255877e00b70396ebdd1c84e4533836377840d4061ebe2d6625cb",
+            "DiffID": "sha256:c8cd58538bb3dbd188539e43e12b926dae03875eaa23415c809e6f8635d39932"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/tomcat-embed-el-11.0.27.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "org.apache.tomcat.embed:tomcat-embed-websocket",
+          "Identifier": {
+            "PURL": "pkg:maven/org.apache.tomcat.embed/tomcat-embed-websocket@11.0.27",
+            "UID": "2595a691d66385b3"
+          },
+          "Version": "11.0.27",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:78d857ee18a255877e00b70396ebdd1c84e4533836377840d4061ebe2d6625cb",
+            "DiffID": "sha256:c8cd58538bb3dbd188539e43e12b926dae03875eaa23415c809e6f8635d39932"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/tomcat-embed-websocket-11.0.27.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "org.hdrhistogram:HdrHistogram",
+          "Identifier": {
+            "PURL": "pkg:maven/org.hdrhistogram/HdrHistogram@2.2.2",
+            "UID": "7cb935aa43fca745"
+          },
+          "Version": "2.2.2",
+          "Licenses": [
+            "CC0-1.0",
+            "BSD-2-Clause"
+          ],
+          "Layer": {
+            "Digest": "sha256:78d857ee18a255877e00b70396ebdd1c84e4533836377840d4061ebe2d6625cb",
+            "DiffID": "sha256:c8cd58538bb3dbd188539e43e12b926dae03875eaa23415c809e6f8635d39932"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/HdrHistogram-2.2.2.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "org.jspecify:jspecify",
+          "Identifier": {
+            "PURL": "pkg:maven/org.jspecify/jspecify@1.0.1",
+            "UID": "e9ab7d1b2ce2b2fe"
+          },
+          "Version": "1.0.1",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:78d857ee18a255877e00b70396ebdd1c84e4533836377840d4061ebe2d6625cb",
+            "DiffID": "sha256:c8cd58538bb3dbd188539e43e12b926dae03875eaa23415c809e6f8635d39932"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/jspecify-1.0.1.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "org.slf4j:jul-to-slf4j",
+          "Identifier": {
+            "PURL": "pkg:maven/org.slf4j/jul-to-slf4j@2.0.20",
+            "UID": "e17af8778fd5f877"
+          },
+          "Version": "2.0.20",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:78d857ee18a255877e00b70396ebdd1c84e4533836377840d4061ebe2d6625cb",
+            "DiffID": "sha256:c8cd58538bb3dbd188539e43e12b926dae03875eaa23415c809e6f8635d39932"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/jul-to-slf4j-2.0.20.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "org.slf4j:slf4j-api",
+          "Identifier": {
+            "PURL": "pkg:maven/org.slf4j/slf4j-api@2.0.20",
+            "UID": "ecbc2d0fddfc63ec"
+          },
+          "Version": "2.0.20",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:78d857ee18a255877e00b70396ebdd1c84e4533836377840d4061ebe2d6625cb",
+            "DiffID": "sha256:c8cd58538bb3dbd188539e43e12b926dae03875eaa23415c809e6f8635d39932"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/slf4j-api-2.0.20.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "org.springframework.boot:spring-boot",
+          "Identifier": {
+            "PURL": "pkg:maven/org.springframework.boot/spring-boot@4.1.2",
+            "UID": "938c3a413a16f7f3"
+          },
+          "Version": "4.1.2",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:78d857ee18a255877e00b70396ebdd1c84e4533836377840d4061ebe2d6625cb",
+            "DiffID": "sha256:c8cd58538bb3dbd188539e43e12b926dae03875eaa23415c809e6f8635d39932"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/spring-boot-4.1.2.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "org.springframework.boot:spring-boot-actuator",
+          "Identifier": {
+            "PURL": "pkg:maven/org.springframework.boot/spring-boot-actuator@4.1.2",
+            "UID": "3659372196482bf2"
+          },
+          "Version": "4.1.2",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:78d857ee18a255877e00b70396ebdd1c84e4533836377840d4061ebe2d6625cb",
+            "DiffID": "sha256:c8cd58538bb3dbd188539e43e12b926dae03875eaa23415c809e6f8635d39932"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/spring-boot-actuator-4.1.2.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "org.springframework.boot:spring-boot-actuator-autoconfigure",
+          "Identifier": {
+            "PURL": "pkg:maven/org.springframework.boot/spring-boot-actuator-autoconfigure@4.1.2",
+            "UID": "f4fac71f06d7ae26"
+          },
+          "Version": "4.1.2",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:78d857ee18a255877e00b70396ebdd1c84e4533836377840d4061ebe2d6625cb",
+            "DiffID": "sha256:c8cd58538bb3dbd188539e43e12b926dae03875eaa23415c809e6f8635d39932"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/spring-boot-actuator-autoconfigure-4.1.2.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "org.springframework.boot:spring-boot-autoconfigure",
+          "Identifier": {
+            "PURL": "pkg:maven/org.springframework.boot/spring-boot-autoconfigure@4.1.2",
+            "UID": "39c3952f48da9db2"
+          },
+          "Version": "4.1.2",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:78d857ee18a255877e00b70396ebdd1c84e4533836377840d4061ebe2d6625cb",
+            "DiffID": "sha256:c8cd58538bb3dbd188539e43e12b926dae03875eaa23415c809e6f8635d39932"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/spring-boot-autoconfigure-4.1.2.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "org.springframework.boot:spring-boot-health",
+          "Identifier": {
+            "PURL": "pkg:maven/org.springframework.boot/spring-boot-health@4.1.2",
+            "UID": "2bea7115f96da141"
+          },
+          "Version": "4.1.2",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:78d857ee18a255877e00b70396ebdd1c84e4533836377840d4061ebe2d6625cb",
+            "DiffID": "sha256:c8cd58538bb3dbd188539e43e12b926dae03875eaa23415c809e6f8635d39932"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/spring-boot-health-4.1.2.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "org.springframework.boot:spring-boot-http-converter",
+          "Identifier": {
+            "PURL": "pkg:maven/org.springframework.boot/spring-boot-http-converter@4.1.2",
+            "UID": "4b3ef06b628a39d7"
+          },
+          "Version": "4.1.2",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:78d857ee18a255877e00b70396ebdd1c84e4533836377840d4061ebe2d6625cb",
+            "DiffID": "sha256:c8cd58538bb3dbd188539e43e12b926dae03875eaa23415c809e6f8635d39932"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/spring-boot-http-converter-4.1.2.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "org.springframework.boot:spring-boot-jackson",
+          "Identifier": {
+            "PURL": "pkg:maven/org.springframework.boot/spring-boot-jackson@4.1.2",
+            "UID": "84d04cd990b95d60"
+          },
+          "Version": "4.1.2",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:78d857ee18a255877e00b70396ebdd1c84e4533836377840d4061ebe2d6625cb",
+            "DiffID": "sha256:c8cd58538bb3dbd188539e43e12b926dae03875eaa23415c809e6f8635d39932"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/spring-boot-jackson-4.1.2.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "org.springframework.boot:spring-boot-jarmode-tools",
+          "Identifier": {
+            "PURL": "pkg:maven/org.springframework.boot/spring-boot-jarmode-tools@4.1.2",
+            "UID": "f88ecce99e4ac986"
+          },
+          "Version": "4.1.2",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:78d857ee18a255877e00b70396ebdd1c84e4533836377840d4061ebe2d6625cb",
+            "DiffID": "sha256:c8cd58538bb3dbd188539e43e12b926dae03875eaa23415c809e6f8635d39932"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/spring-boot-jarmode-tools-4.1.2.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "org.springframework.boot:spring-boot-micrometer-metrics",
+          "Identifier": {
+            "PURL": "pkg:maven/org.springframework.boot/spring-boot-micrometer-metrics@4.1.2",
+            "UID": "4d81aad05c4b5fdf"
+          },
+          "Version": "4.1.2",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:78d857ee18a255877e00b70396ebdd1c84e4533836377840d4061ebe2d6625cb",
+            "DiffID": "sha256:c8cd58538bb3dbd188539e43e12b926dae03875eaa23415c809e6f8635d39932"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/spring-boot-micrometer-metrics-4.1.2.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "org.springframework.boot:spring-boot-micrometer-observation",
+          "Identifier": {
+            "PURL": "pkg:maven/org.springframework.boot/spring-boot-micrometer-observation@4.1.2",
+            "UID": "72188d9e3c0344b2"
+          },
+          "Version": "4.1.2",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:78d857ee18a255877e00b70396ebdd1c84e4533836377840d4061ebe2d6625cb",
+            "DiffID": "sha256:c8cd58538bb3dbd188539e43e12b926dae03875eaa23415c809e6f8635d39932"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/spring-boot-micrometer-observation-4.1.2.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "org.springframework.boot:spring-boot-servlet",
+          "Identifier": {
+            "PURL": "pkg:maven/org.springframework.boot/spring-boot-servlet@4.1.2",
+            "UID": "e495f93cbee38f8e"
+          },
+          "Version": "4.1.2",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:78d857ee18a255877e00b70396ebdd1c84e4533836377840d4061ebe2d6625cb",
+            "DiffID": "sha256:c8cd58538bb3dbd188539e43e12b926dae03875eaa23415c809e6f8635d39932"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/spring-boot-servlet-4.1.2.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "org.springframework.boot:spring-boot-tomcat",
+          "Identifier": {
+            "PURL": "pkg:maven/org.springframework.boot/spring-boot-tomcat@4.1.2",
+            "UID": "78b5ad934337d1e2"
+          },
+          "Version": "4.1.2",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:78d857ee18a255877e00b70396ebdd1c84e4533836377840d4061ebe2d6625cb",
+            "DiffID": "sha256:c8cd58538bb3dbd188539e43e12b926dae03875eaa23415c809e6f8635d39932"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/spring-boot-tomcat-4.1.2.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "org.springframework.boot:spring-boot-web-server",
+          "Identifier": {
+            "PURL": "pkg:maven/org.springframework.boot/spring-boot-web-server@4.1.2",
+            "UID": "dfb87418856e96d9"
+          },
+          "Version": "4.1.2",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:78d857ee18a255877e00b70396ebdd1c84e4533836377840d4061ebe2d6625cb",
+            "DiffID": "sha256:c8cd58538bb3dbd188539e43e12b926dae03875eaa23415c809e6f8635d39932"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/spring-boot-web-server-4.1.2.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "org.springframework.boot:spring-boot-webmvc",
+          "Identifier": {
+            "PURL": "pkg:maven/org.springframework.boot/spring-boot-webmvc@4.1.2",
+            "UID": "638dae0fc5f756cb"
+          },
+          "Version": "4.1.2",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:78d857ee18a255877e00b70396ebdd1c84e4533836377840d4061ebe2d6625cb",
+            "DiffID": "sha256:c8cd58538bb3dbd188539e43e12b926dae03875eaa23415c809e6f8635d39932"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/spring-boot-webmvc-4.1.2.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "org.springframework:spring-aop",
+          "Identifier": {
+            "PURL": "pkg:maven/org.springframework/spring-aop@7.0.10",
+            "UID": "898170215efe9c58"
+          },
+          "Version": "7.0.10",
+          "Licenses": [
+            "Apache-2.0",
+            "BSD-3-Clause"
+          ],
+          "Layer": {
+            "Digest": "sha256:78d857ee18a255877e00b70396ebdd1c84e4533836377840d4061ebe2d6625cb",
+            "DiffID": "sha256:c8cd58538bb3dbd188539e43e12b926dae03875eaa23415c809e6f8635d39932"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/spring-aop-7.0.10.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "org.springframework:spring-beans",
+          "Identifier": {
+            "PURL": "pkg:maven/org.springframework/spring-beans@7.0.10",
+            "UID": "a7ccdde5f3db071a"
+          },
+          "Version": "7.0.10",
+          "Licenses": [
+            "Apache-2.0",
+            "BSD-3-Clause"
+          ],
+          "Layer": {
+            "Digest": "sha256:78d857ee18a255877e00b70396ebdd1c84e4533836377840d4061ebe2d6625cb",
+            "DiffID": "sha256:c8cd58538bb3dbd188539e43e12b926dae03875eaa23415c809e6f8635d39932"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/spring-beans-7.0.10.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "org.springframework:spring-context",
+          "Identifier": {
+            "PURL": "pkg:maven/org.springframework/spring-context@7.0.10",
+            "UID": "7641864889b4cc66"
+          },
+          "Version": "7.0.10",
+          "Licenses": [
+            "Apache-2.0",
+            "BSD-3-Clause"
+          ],
+          "Layer": {
+            "Digest": "sha256:78d857ee18a255877e00b70396ebdd1c84e4533836377840d4061ebe2d6625cb",
+            "DiffID": "sha256:c8cd58538bb3dbd188539e43e12b926dae03875eaa23415c809e6f8635d39932"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/spring-context-7.0.10.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "org.springframework:spring-core",
+          "Identifier": {
+            "PURL": "pkg:maven/org.springframework/spring-core@7.0.10",
+            "UID": "4291e085dc38c61b"
+          },
+          "Version": "7.0.10",
+          "Licenses": [
+            "Apache-2.0",
+            "BSD-3-Clause"
+          ],
+          "Layer": {
+            "Digest": "sha256:78d857ee18a255877e00b70396ebdd1c84e4533836377840d4061ebe2d6625cb",
+            "DiffID": "sha256:c8cd58538bb3dbd188539e43e12b926dae03875eaa23415c809e6f8635d39932"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/spring-core-7.0.10.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "org.springframework:spring-expression",
+          "Identifier": {
+            "PURL": "pkg:maven/org.springframework/spring-expression@7.0.10",
+            "UID": "595f145cf987b1e1"
+          },
+          "Version": "7.0.10",
+          "Licenses": [
+            "Apache-2.0",
+            "BSD-3-Clause"
+          ],
+          "Layer": {
+            "Digest": "sha256:78d857ee18a255877e00b70396ebdd1c84e4533836377840d4061ebe2d6625cb",
+            "DiffID": "sha256:c8cd58538bb3dbd188539e43e12b926dae03875eaa23415c809e6f8635d39932"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/spring-expression-7.0.10.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "org.springframework:spring-web",
+          "Identifier": {
+            "PURL": "pkg:maven/org.springframework/spring-web@7.0.10",
+            "UID": "a7d31e99c9e8badc"
+          },
+          "Version": "7.0.10",
+          "Licenses": [
+            "Apache-2.0",
+            "BSD-3-Clause"
+          ],
+          "Layer": {
+            "Digest": "sha256:78d857ee18a255877e00b70396ebdd1c84e4533836377840d4061ebe2d6625cb",
+            "DiffID": "sha256:c8cd58538bb3dbd188539e43e12b926dae03875eaa23415c809e6f8635d39932"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/spring-web-7.0.10.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "org.springframework:spring-webmvc",
+          "Identifier": {
+            "PURL": "pkg:maven/org.springframework/spring-webmvc@7.0.10",
+            "UID": "27ae51f2b0e68faf"
+          },
+          "Version": "7.0.10",
+          "Licenses": [
+            "Apache-2.0",
+            "BSD-3-Clause"
+          ],
+          "Layer": {
+            "Digest": "sha256:78d857ee18a255877e00b70396ebdd1c84e4533836377840d4061ebe2d6625cb",
+            "DiffID": "sha256:c8cd58538bb3dbd188539e43e12b926dae03875eaa23415c809e6f8635d39932"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/spring-webmvc-7.0.10.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "org.yaml:snakeyaml",
+          "Identifier": {
+            "PURL": "pkg:maven/org.yaml/snakeyaml@2.6",
+            "UID": "77b25ab2a7820645"
+          },
+          "Version": "2.6",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:78d857ee18a255877e00b70396ebdd1c84e4533836377840d4061ebe2d6625cb",
+            "DiffID": "sha256:c8cd58538bb3dbd188539e43e12b926dae03875eaa23415c809e6f8635d39932"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/snakeyaml-2.6.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "tools.jackson.core:jackson-core",
+          "Identifier": {
+            "PURL": "pkg:maven/tools.jackson.core/jackson-core@3.1.7",
+            "UID": "28ad3f2a5a93c4a7"
+          },
+          "Version": "3.1.7",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:78d857ee18a255877e00b70396ebdd1c84e4533836377840d4061ebe2d6625cb",
+            "DiffID": "sha256:c8cd58538bb3dbd188539e43e12b926dae03875eaa23415c809e6f8635d39932"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/jackson-core-3.1.7.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "tools.jackson.core:jackson-databind",
+          "Identifier": {
+            "PURL": "pkg:maven/tools.jackson.core/jackson-databind@3.1.7",
+            "UID": "5c972dd26551928a"
+          },
+          "Version": "3.1.7",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:78d857ee18a255877e00b70396ebdd1c84e4533836377840d4061ebe2d6625cb",
+            "DiffID": "sha256:c8cd58538bb3dbd188539e43e12b926dae03875eaa23415c809e6f8635d39932"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/jackson-databind-3.1.7.jar",
+          "AnalyzedBy": "jar"
+        }
+      ]
+    }
+  ]
+}

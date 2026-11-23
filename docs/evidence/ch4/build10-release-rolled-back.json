@@ -1,0 +1,13 @@
+{
+  "result": "failed-previous-revision-restored",
+  "build": "10",
+  "buildUrl": "http://jenkins.127.0.0.1.nip.io/job/beacon/10/",
+  "commit": "389196c73a3f5dac9dc91f179813cccb2a53d490",
+  "image": "docker.io/anasaljboor/beacon:389196c73a3f",
+  "imageRef": "docker.io/anasaljboor/beacon@sha256:e5ee371b6862f131103d2022954a166c58975802e0426cbc2aca37cd1fd6d86e",
+  "digest": "sha256:e5ee371b6862f131103d2022954a166c58975802e0426cbc2aca37cd1fd6d86e",
+  "previousImage": "docker.io/anasaljboor/beacon@sha256:dd5eb46fcf633448a706983c05d43d5c5a213c774d31c504330574ad86b6701e",
+  "trivyVersion": "0.76.2",
+  "trivyDbUpdated": "2026-11-23T01:05:17.578400694Z",
+  "recordedAt": "2026-11-23T01:36:39Z"
+}
