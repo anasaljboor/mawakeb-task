@@ -1,0 +1,2833 @@
+{
+  "SchemaVersion": 2,
+  "Trivy": {
+    "Version": "0.76.2"
+  },
+  "ReportID": "01a205f1-7fcb-7c56-9c1f-83db7033e979",
+  "CreatedAt": "2026-11-23T01:07:22.699810045Z",
+  "ArtifactID": "sha256:845dad4b453ccb2855201d2e8654c8afc7d58b99037d2f46389e7b5d00971850",
+  "ArtifactName": "docker.io/anasaljboor/beacon:06b35ac82c1c",
+  "ArtifactType": "container_image",
+  "Metadata": {
+    "Size": 223656448,
+    "OS": {
+      "Family": "alpine",
+      "Name": "3.24.2"
+    },
+    "ImageID": "sha256:c4e557e148f2bbd5e21ad826b6918e6fa17985c0c58058ff594b4ed812b3c16f",
+    "DiffIDs": [
+      "sha256:1b349a3334531b575b01d409540dd8aca14ef29abddacd50f36643d7c949db4b",
+      "sha256:9efd236dab259c8b77c652e6d183b9ec724f176920cb7ab8bc50048d8476e463",
+      "sha256:5af714c330722922269f858ba4f9d8c124e9493d03bd6a420b14fd02b037a540",
+      "sha256:1d9e07179aeeebbcd8d3eef090bc66fe1789ff2db0c11d4f59aad0e974204c94"
+    ],
+    "RepoTags": [
+      "anasaljboor/beacon:06b35ac82c1c"
+    ],
+    "RepoDigests": [
+      "anasaljboor/beacon@sha256:c4e557e148f2bbd5e21ad826b6918e6fa17985c0c58058ff594b4ed812b3c16f"
+    ],
+    "Reference": "anasaljboor/beacon:06b35ac82c1c",
+    "ImageConfig": {
+      "architecture": "arm64",
+      "created": "2026-11-23T01:05:58.511474048Z",
+      "history": [
+        {
+          "created": "2026-09-17T20:37:05Z",
+          "created_by": "ADD alpine-minirootfs-3.24.2-aarch64.tar.gz / # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2026-09-17T20:37:05Z",
+          "created_by": "CMD [\"/bin/sh\"]",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        },
+        {
+          "created": "2026-11-23T01:05:58Z",
+          "created_by": "RUN /bin/sh -c apk upgrade --no-cache \u0026\u0026     apk add --no-cache openjdk17-jre-headless \u0026\u0026     addgroup -S -g 10001 app \u0026\u0026 adduser -S -u 10001 -G app app # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2026-11-23T01:05:58Z",
+          "created_by": "WORKDIR /app",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2026-11-23T01:05:58Z",
+          "created_by": "COPY /src/target/simple-java-app-1.0.0.jar app.jar # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2026-11-23T01:05:58Z",
+          "created_by": "USER 10001:10001",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        },
+        {
+          "created": "2026-11-23T01:05:58Z",
+          "created_by": "EXPOSE [8080/tcp]",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        },
+        {
+          "created": "2026-11-23T01:05:58Z",
+          "created_by": "ENV JAVA_TOOL_OPTIONS=-XX:MaxRAMPercentage=75 -Djava.io.tmpdir=/tmp",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        },
+        {
+          "created": "2026-11-23T01:05:58Z",
+          "created_by": "ENTRYPOINT [\"java\" \"-jar\" \"/app/app.jar\"]",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        }
+      ],
+      "os": "linux",
+      "rootfs": {
+        "type": "layers",
+        "diff_ids": [
+          "sha256:1b349a3334531b575b01d409540dd8aca14ef29abddacd50f36643d7c949db4b",
+          "sha256:9efd236dab259c8b77c652e6d183b9ec724f176920cb7ab8bc50048d8476e463",
+          "sha256:5af714c330722922269f858ba4f9d8c124e9493d03bd6a420b14fd02b037a540",
+          "sha256:1d9e07179aeeebbcd8d3eef090bc66fe1789ff2db0c11d4f59aad0e974204c94"
+        ]
+      },
+      "config": {
+        "Entrypoint": [
+          "java",
+          "-jar",
+          "/app/app.jar"
+        ],
+        "Env": [
+          "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+          "JAVA_TOOL_OPTIONS=-XX:MaxRAMPercentage=75 -Djava.io.tmpdir=/tmp"
+        ],
+        "Labels": {
+          "org.opencontainers.image.revision": "06b35ac82c1cec323ffa11d044a5ed3e3205fdfa",
+          "org.opencontainers.image.source": "https://github.com/anasaljboor/mawakeb-task.git"
+        },
+        "User": "10001:10001",
+        "WorkingDir": "/app",
+        "ExposedPorts": {
+          "8080/tcp": {}
+        }
+      }
+    },
+    "Layers": [
+      {
+        "Size": 8941568,
+        "Digest": "sha256:a9986cd6f37dbddae7862a6d4be71683472e7c2ea708e87db14f8a6393c00f00",
+        "DiffID": "sha256:1b349a3334531b575b01d409540dd8aca14ef29abddacd50f36643d7c949db4b"
+      },
+      {
+        "Size": 190922240,
+        "Digest": "sha256:bfc0cef2495b951e62df800ce033d842431ca2d962eab4c46c3ece8e352d544d",
+        "DiffID": "sha256:9efd236dab259c8b77c652e6d183b9ec724f176920cb7ab8bc50048d8476e463"
+      },
+      {
+        "Size": 1536,
+        "Digest": "sha256:5fcb3dbec202a181961a4847fca29b63b5bf67f137d90c3f5fdd4209f9d9f508",
+        "DiffID": "sha256:5af714c330722922269f858ba4f9d8c124e9493d03bd6a420b14fd02b037a540"
+      },
+      {
+        "Size": 23791104,
+        "Digest": "sha256:4658c035ed6d0dce5f3a6fb34270fac78b64bd150f99365272bda0be05f64269",
+        "DiffID": "sha256:1d9e07179aeeebbcd8d3eef090bc66fe1789ff2db0c11d4f59aad0e974204c94"
+      }
+    ]
+  },
+  "Results": [
+    {
+      "Target": "docker.io/anasaljboor/beacon:06b35ac82c1c (alpine 3.24.2)",
+      "Class": "os-pkgs",
+      "Type": "alpine",
+      "Packages": [
+        {
+          "ID": "alpine-baselayout@3.7.2-r1",
+          "Name": "alpine-baselayout",
+          "Identifier": {
+            "PURL": "pkg:apk/alpine/alpine-baselayout@3.7.2-r1?arch=aarch64\u0026distro=3.24.2",
+            "UID": "304a3a90fc88fa6b"
+          },
+          "Version": "3.7.2-r1",
+          "Arch": "aarch64",
+          "SrcName": "alpine-baselayout",
+          "SrcVersion": "3.7.2-r1",
+          "Licenses": [
+            "GPL-2.0-only"
+          ],
+          "Maintainer": "Natanael Copa \u003cncopa@alpinelinux.org\u003e",
+          "DependsOn": [
+            "alpine-baselayout-data@3.7.2-r1",
+            "busybox-binsh@1.37.0-r31"
+          ],
+          "Layer": {
+            "Digest": "sha256:a9986cd6f37dbddae7862a6d4be71683472e7c2ea708e87db14f8a6393c00f00",
+            "DiffID": "sha256:1b349a3334531b575b01d409540dd8aca14ef29abddacd50f36643d7c949db4b"
+          },
+          "Digest": "sha1:ee13a18ee7e29d75872017403d59c0484dacd963",
+          "InstalledFiles": [
+            "etc/motd",
+            "etc/crontabs/root",
+            "etc/modprobe.d/aliases.conf",
+            "etc/modprobe.d/blacklist.conf",
+            "etc/modprobe.d/i386.conf",
+            "etc/profile.d/20locale.sh",
+            "etc/profile.d/README",
+            "etc/profile.d/color_prompt.sh.disabled",
+            "usr/lib/sysctl.d/00-alpine.conf",
+            "var/lock",
+            "var/run",
+            "var/spool/mail",
+            "var/spool/cron/crontabs"
+          ],
+          "AnalyzedBy": "apk"
+        },
+        {
+          "ID": "alpine-baselayout-data@3.7.2-r1",
+          "Name": "alpine-baselayout-data",
+          "Identifier": {
+            "PURL": "pkg:apk/alpine/alpine-baselayout-data@3.7.2-r1?arch=aarch64\u0026distro=3.24.2",
+            "UID": "9107750a7f29a381"
+          },
+          "Version": "3.7.2-r1",
+          "Arch": "aarch64",
+          "SrcName": "alpine-baselayout",
+          "SrcVersion": "3.7.2-r1",
+          "Licenses": [
+            "GPL-2.0-only"
+          ],
+          "Maintainer": "Natanael Copa \u003cncopa@alpinelinux.org\u003e",
+          "Layer": {
+            "Digest": "sha256:a9986cd6f37dbddae7862a6d4be71683472e7c2ea708e87db14f8a6393c00f00",
+            "DiffID": "sha256:1b349a3334531b575b01d409540dd8aca14ef29abddacd50f36643d7c949db4b"
+          },
+          "Digest": "sha1:3337c83d21c8eb114e0d4bb275e561dd3493bdb8",
+          "InstalledFiles": [
+            "etc/fstab",
+            "etc/group",
+            "etc/hostname",
+            "etc/hosts",
+            "etc/inittab",
+            "etc/modules",
+            "etc/mtab",
+            "etc/nsswitch.conf",
+            "etc/passwd",
+            "etc/profile",
+            "etc/protocols",
+            "etc/services",
+            "etc/shadow",
+            "etc/shells",
+            "etc/sysctl.conf"
+          ],
+          "AnalyzedBy": "apk"
+        },
+        {
+          "ID": "alpine-keys@2.6-r0",
+          "Name": "alpine-keys",
+          "Identifier": {
+            "PURL": "pkg:apk/alpine/alpine-keys@2.6-r0?arch=aarch64\u0026distro=3.24.2",
+            "UID": "fd9daa4d0a52a3c0"
+          },
+          "Version": "2.6-r0",
+          "Arch": "aarch64",
+          "SrcName": "alpine-keys",
+          "SrcVersion": "2.6-r0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Maintainer": "Natanael Copa \u003cncopa@alpinelinux.org\u003e",
+          "Layer": {
+            "Digest": "sha256:a9986cd6f37dbddae7862a6d4be71683472e7c2ea708e87db14f8a6393c00f00",
+            "DiffID": "sha256:1b349a3334531b575b01d409540dd8aca14ef29abddacd50f36643d7c949db4b"
+          },
+          "Digest": "sha1:6440d281ac88714d96ea12641cc6ab93cdec1b8c",
+          "InstalledFiles": [
+            "etc/apk/keys/alpine-devel@lists.alpinelinux.org-58199dcc.rsa.pub",
+            "etc/apk/keys/alpine-devel@lists.alpinelinux.org-616ae350.rsa.pub",
+            "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-4a6a0840.rsa.pub",
+            "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-5243ef4b.rsa.pub",
+            "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-524d27bb.rsa.pub",
+            "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-5261cecb.rsa.pub",
+            "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-58199dcc.rsa.pub",
+            "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-58cbb476.rsa.pub",
+            "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-58e4f17d.rsa.pub",
+            "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-5e69ca50.rsa.pub",
+            "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-60ac2099.rsa.pub",
+            "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-6165ee59.rsa.pub",
+            "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-61666e3f.rsa.pub",
+            "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-616a9724.rsa.pub",
+            "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-616abc23.rsa.pub",
+            "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-616ac3bc.rsa.pub",
+            "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-616adfeb.rsa.pub",
+            "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-616ae350.rsa.pub",
+            "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-616db30d.rsa.pub",
+            "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-66ba20fe.rsa.pub",
+            "usr/share/apk/keys/aarch64/alpine-devel@lists.alpinelinux.org-58199dcc.rsa.pub",
+            "usr/share/apk/keys/aarch64/alpine-devel@lists.alpinelinux.org-616ae350.rsa.pub",
+            "usr/share/apk/keys/armhf/alpine-devel@lists.alpinelinux.org-524d27bb.rsa.pub",
+            "usr/share/apk/keys/armhf/alpine-devel@lists.alpinelinux.org-616a9724.rsa.pub",
+            "usr/share/apk/keys/armv7/alpine-devel@lists.alpinelinux.org-524d27bb.rsa.pub",
+            "usr/share/apk/keys/armv7/alpine-devel@lists.alpinelinux.org-616adfeb.rsa.pub",
+            "usr/share/apk/keys/loongarch64/alpine-devel@lists.alpinelinux.org-66ba20fe.rsa.pub",
+            "usr/share/apk/keys/mips64/alpine-devel@lists.alpinelinux.org-5e69ca50.rsa.pub",
+            "usr/share/apk/keys/ppc64le/alpine-devel@lists.alpinelinux.org-58cbb476.rsa.pub",
+            "usr/share/apk/keys/ppc64le/alpine-devel@lists.alpinelinux.org-616abc23.rsa.pub",
+            "usr/share/apk/keys/riscv64/alpine-devel@lists.alpinelinux.org-60ac2099.rsa.pub",
+            "usr/share/apk/keys/riscv64/alpine-devel@lists.alpinelinux.org-616db30d.rsa.pub",
+            "usr/share/apk/keys/s390x/alpine-devel@lists.alpinelinux.org-58e4f17d.rsa.pub",
+            "usr/share/apk/keys/s390x/alpine-devel@lists.alpinelinux.org-616ac3bc.rsa.pub",
+            "usr/share/apk/keys/x86/alpine-devel@lists.alpinelinux.org-4a6a0840.rsa.pub",
+            "usr/share/apk/keys/x86/alpine-devel@lists.alpinelinux.org-5243ef4b.rsa.pub",
+            "usr/share/apk/keys/x86/alpine-devel@lists.alpinelinux.org-61666e3f.rsa.pub",
+            "usr/share/apk/keys/x86_64/alpine-devel@lists.alpinelinux.org-4a6a0840.rsa.pub",
+            "usr/share/apk/keys/x86_64/alpine-devel@lists.alpinelinux.org-5261cecb.rsa.pub",
+            "usr/share/apk/keys/x86_64/alpine-devel@lists.alpinelinux.org-6165ee59.rsa.pub"
+          ],
+          "AnalyzedBy": "apk"
+        },
+        {
+          "ID": "alpine-release@3.24.4-r0",
+          "Name": "alpine-release",
+          "Identifier": {
+            "PURL": "pkg:apk/alpine/alpine-release@3.24.4-r0?arch=aarch64\u0026distro=3.24.2",
+            "UID": "d2d2bbf4c6f8db5d"
+          },
+          "Version": "3.24.4-r0",
+          "Arch": "aarch64",
+          "SrcName": "alpine-base",
+          "SrcVersion": "3.24.4-r0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Maintainer": "Natanael Copa \u003cncopa@alpinelinux.org\u003e",
+          "DependsOn": [
+            "alpine-keys@2.6-r0"
+          ],
+          "Layer": {
+            "Digest": "sha256:bfc0cef2495b951e62df800ce033d842431ca2d962eab4c46c3ece8e352d544d",
+            "DiffID": "sha256:9efd236dab259c8b77c652e6d183b9ec724f176920cb7ab8bc50048d8476e463"
+          },
+          "Digest": "sha1:b6b3380f9ec9838992806dd532a9aa581eb524fd",
+          "InstalledFiles": [
+            "etc/alpine-release",
+            "etc/issue",
+            "etc/os-release",
+            "etc/secfixes.d/alpine",
+            "usr/lib/os-release"
+          ],
+          "AnalyzedBy": "apk"
+        },
+        {
+          "ID": "apk-tools@3.0.9-r0",
+          "Name": "apk-tools",
+          "Identifier": {
+            "PURL": "pkg:apk/alpine/apk-tools@3.0.9-r0?arch=aarch64\u0026distro=3.24.2",
+            "UID": "752aa0df3a51d7ae"
+          },
+          "Version": "3.0.9-r0",
+          "Arch": "aarch64",
+          "SrcName": "apk-tools",
+          "SrcVersion": "3.0.9-r0",
+          "Licenses": [
+            "GPL-2.0-only"
+          ],
+          "Maintainer": "Natanael Copa \u003cncopa@alpinelinux.org\u003e",
+          "DependsOn": [
+            "ca-certificates-bundle@20261020-r0",
+            "libapk@3.0.9-r0",
+            "libcrypto3@3.5.9-r1",
+            "musl@1.2.6-r3",
+            "zlib@1.4-r0"
+          ],
+          "Layer": {
+            "Digest": "sha256:bfc0cef2495b951e62df800ce033d842431ca2d962eab4c46c3ece8e352d544d",
+            "DiffID": "sha256:9efd236dab259c8b77c652e6d183b9ec724f176920cb7ab8bc50048d8476e463"
+          },
+          "Digest": "sha1:df07d00ad4740c053ba097ea6098ecd8356377f4",
+          "InstalledFiles": [
+            "sbin/apk"
+          ],
+          "AnalyzedBy": "apk"
+        },
+        {
+          "ID": "busybox@1.37.0-r31",
+          "Name": "busybox",
+          "Identifier": {
+            "PURL": "pkg:apk/alpine/busybox@1.37.0-r31?arch=aarch64\u0026distro=3.24.2",
+            "UID": "6ab72dc13861ad6e"
+          },
+          "Version": "1.37.0-r31",
+          "Arch": "aarch64",
+          "SrcName": "busybox",
+          "SrcVersion": "1.37.0-r31",
+          "Licenses": [
+            "GPL-2.0-only"
+          ],
+          "Maintainer": "Sören Tempel \u003csoeren+alpine@soeren-tempel.net\u003e",
+          "DependsOn": [
+            "musl@1.2.6-r3"
+          ],
+          "Layer": {
+            "Digest": "sha256:a9986cd6f37dbddae7862a6d4be71683472e7c2ea708e87db14f8a6393c00f00",
+            "DiffID": "sha256:1b349a3334531b575b01d409540dd8aca14ef29abddacd50f36643d7c949db4b"
+          },
+          "Digest": "sha1:71cffc2981f2d54b3937c25be2f5169b3fb04532",
+          "InstalledFiles": [
+            "bin/busybox",
+            "etc/securetty",
+            "etc/busybox-paths.d/busybox",
+            "etc/logrotate.d/acpid",
+            "etc/network/if-up.d/dad",
+            "etc/udhcpc/udhcpc.conf",
+            "usr/share/udhcpc/default.script"
+          ],
+          "AnalyzedBy": "apk"
+        },
+        {
+          "ID": "busybox-binsh@1.37.0-r31",
+          "Name": "busybox-binsh",
+          "Identifier": {
+            "PURL": "pkg:apk/alpine/busybox-binsh@1.37.0-r31?arch=aarch64\u0026distro=3.24.2",
+            "UID": "dd2aa04cf600f874"
+          },
+          "Version": "1.37.0-r31",
+          "Arch": "aarch64",
+          "SrcName": "busybox",
+          "SrcVersion": "1.37.0-r31",
+          "Licenses": [
+            "GPL-2.0-only"
+          ],
+          "Maintainer": "Sören Tempel \u003csoeren+alpine@soeren-tempel.net\u003e",
+          "DependsOn": [
+            "busybox@1.37.0-r31"
+          ],
+          "Layer": {
+            "Digest": "sha256:a9986cd6f37dbddae7862a6d4be71683472e7c2ea708e87db14f8a6393c00f00",
+            "DiffID": "sha256:1b349a3334531b575b01d409540dd8aca14ef29abddacd50f36643d7c949db4b"
+          },
+          "Digest": "sha1:6b1f7722a3e7bb97d04e8ef906fd72c0667ba5d0",
+          "InstalledFiles": [
+            "bin/sh"
+          ],
+          "AnalyzedBy": "apk"
+        },
+        {
+          "ID": "ca-certificates@20261020-r0",
+          "Name": "ca-certificates",
+          "Identifier": {
+            "PURL": "pkg:apk/alpine/ca-certificates@20261020-r0?arch=aarch64\u0026distro=3.24.2",
+            "UID": "42e363647d09ca61"
+          },
+          "Version": "20261020-r0",
+          "Arch": "aarch64",
+          "SrcName": "ca-certificates",
+          "SrcVersion": "20261020-r0",
+          "Licenses": [
+            "MPL-2.0",
+            "MIT"
+          ],
+          "Maintainer": "Natanael Copa \u003cncopa@alpinelinux.org\u003e",
+          "DependsOn": [
+            "busybox-binsh@1.37.0-r31",
+            "libcrypto3@3.5.9-r1",
+            "musl@1.2.6-r3"
+          ],
+          "Layer": {
+            "Digest": "sha256:bfc0cef2495b951e62df800ce033d842431ca2d962eab4c46c3ece8e352d544d",
+            "DiffID": "sha256:9efd236dab259c8b77c652e6d183b9ec724f176920cb7ab8bc50048d8476e463"
+          },
+          "Digest": "sha1:a6ef95d903a909d82579946e87aa64be29f3b363",
+          "InstalledFiles": [
+            "etc/ca-certificates.conf",
+            "etc/apk/protected_paths.d/ca-certificates.list",
+            "etc/ca-certificates/update.d/certhash",
+            "usr/bin/c_rehash",
+            "usr/sbin/update-ca-certificates",
+            "usr/share/ca-certificates/mozilla/ACCVRAIZ1.crt",
+            "usr/share/ca-certificates/mozilla/AC_RAIZ_FNMT-RCM.crt",
+            "usr/share/ca-certificates/mozilla/AC_RAIZ_FNMT-RCM_SERVIDORES_SEGUROS.crt",
+            "usr/share/ca-certificates/mozilla/ANF_Secure_Server_Root_CA.crt",
+            "usr/share/ca-certificates/mozilla/Actalis_Authentication_Root_CA.crt",
+            "usr/share/ca-certificates/mozilla/Amazon_Root_CA_1.crt",
+            "usr/share/ca-certificates/mozilla/Amazon_Root_CA_2.crt",
+            "usr/share/ca-certificates/mozilla/Amazon_Root_CA_3.crt",
+            "usr/share/ca-certificates/mozilla/Amazon_Root_CA_4.crt",
+            "usr/share/ca-certificates/mozilla/Atos_TrustedRoot_Root_CA_ECC_TLS_2021.crt",
+            "usr/share/ca-certificates/mozilla/Atos_TrustedRoot_Root_CA_RSA_TLS_2021.crt",
+            "usr/share/ca-certificates/mozilla/Autoridad_de_Certificacion_Firmaprofesional_CIF_A62634068.crt",
+            "usr/share/ca-certificates/mozilla/BJCA_Global_Root_CA1.crt",
+            "usr/share/ca-certificates/mozilla/BJCA_Global_Root_CA2.crt",
+            "usr/share/ca-certificates/mozilla/Buypass_Class_2_Root_CA.crt",
+            "usr/share/ca-certificates/mozilla/Buypass_Class_3_Root_CA.crt",
+            "usr/share/ca-certificates/mozilla/CA_Disig_Root_R2.crt",
+            "usr/share/ca-certificates/mozilla/CFCA_EV_ROOT.crt",
+            "usr/share/ca-certificates/mozilla/COMODO_ECC_Certification_Authority.crt",
+            "usr/share/ca-certificates/mozilla/COMODO_RSA_Certification_Authority.crt",
+            "usr/share/ca-certificates/mozilla/Certainly_Root_E1.crt",
+            "usr/share/ca-certificates/mozilla/Certainly_Root_R1.crt",
+            "usr/share/ca-certificates/mozilla/Certigna_Root_CA.crt",
+            "usr/share/ca-certificates/mozilla/Certum_EC-384_CA.crt",
+            "usr/share/ca-certificates/mozilla/Certum_Trusted_Network_CA.crt",
+            "usr/share/ca-certificates/mozilla/Certum_Trusted_Network_CA_2.crt",
+            "usr/share/ca-certificates/mozilla/Certum_Trusted_Root_CA.crt",
+            "usr/share/ca-certificates/mozilla/D-TRUST_BR_Root_CA_1_2020.crt",
+            "usr/share/ca-certificates/mozilla/D-TRUST_BR_Root_CA_2_2023.crt",
+            "usr/share/ca-certificates/mozilla/D-TRUST_EV_Root_CA_1_2020.crt",
+            "usr/share/ca-certificates/mozilla/D-TRUST_EV_Root_CA_2_2023.crt",
+            "usr/share/ca-certificates/mozilla/D-TRUST_Root_Class_3_CA_2_2009.crt",
+            "usr/share/ca-certificates/mozilla/D-TRUST_Root_Class_3_CA_2_EV_2009.crt",
+            "usr/share/ca-certificates/mozilla/DigiCert_Assured_ID_Root_G2.crt",
+            "usr/share/ca-certificates/mozilla/DigiCert_Assured_ID_Root_G3.crt",
+            "usr/share/ca-certificates/mozilla/DigiCert_Global_Root_G2.crt",
+            "usr/share/ca-certificates/mozilla/DigiCert_Global_Root_G3.crt",
+            "usr/share/ca-certificates/mozilla/DigiCert_TLS_ECC_P384_Root_G5.crt",
+            "usr/share/ca-certificates/mozilla/DigiCert_TLS_RSA4096_Root_G5.crt",
+            "usr/share/ca-certificates/mozilla/DigiCert_Trusted_Root_G4.crt",
+            "usr/share/ca-certificates/mozilla/GDCA_TrustAUTH_R5_ROOT.crt",
+            "usr/share/ca-certificates/mozilla/GTS_Root_R1.crt",
+            "usr/share/ca-certificates/mozilla/GTS_Root_R3.crt",
+            "usr/share/ca-certificates/mozilla/GTS_Root_R4.crt",
+            "usr/share/ca-certificates/mozilla/GlobalSign_ECC_Root_CA_-_R4.crt",
+            "usr/share/ca-certificates/mozilla/GlobalSign_ECC_Root_CA_-_R5.crt",
+            "usr/share/ca-certificates/mozilla/GlobalSign_Root_CA_-_R3.crt",
+            "usr/share/ca-certificates/mozilla/GlobalSign_Root_CA_-_R6.crt",
+            "usr/share/ca-certificates/mozilla/GlobalSign_Root_E46.crt",
+            "usr/share/ca-certificates/mozilla/GlobalSign_Root_R46.crt",
+            "usr/share/ca-certificates/mozilla/Go_Daddy_Root_Certificate_Authority_-_G2.crt",
+            "usr/share/ca-certificates/mozilla/HARICA_TLS_ECC_Root_CA_2021.crt",
+            "usr/share/ca-certificates/mozilla/HARICA_TLS_RSA_Root_CA_2021.crt",
+            "usr/share/ca-certificates/mozilla/Hellenic_Academic_and_Research_Institutions_ECC_RootCA_2015.crt",
+            "usr/share/ca-certificates/mozilla/Hellenic_Academic_and_Research_Institutions_RootCA_2015.crt",
+            "usr/share/ca-certificates/mozilla/HiPKI_Root_CA_-_G1.crt",
+            "usr/share/ca-certificates/mozilla/Hongkong_Post_Root_CA_3.crt",
+            "usr/share/ca-certificates/mozilla/ISRG_Root_X1.crt",
+            "usr/share/ca-certificates/mozilla/ISRG_Root_X2.crt",
+            "usr/share/ca-certificates/mozilla/IdenTrust_Commercial_Root_CA_1.crt",
+            "usr/share/ca-certificates/mozilla/IdenTrust_Public_Sector_Root_CA_1.crt",
+            "usr/share/ca-certificates/mozilla/Izenpe.com.crt",
+            "usr/share/ca-certificates/mozilla/Microsec_e-Szigno_Root_CA_2009.crt",
+            "usr/share/ca-certificates/mozilla/Microsoft_ECC_Root_Certificate_Authority_2017.crt",
+            "usr/share/ca-certificates/mozilla/Microsoft_RSA_Root_Certificate_Authority_2017.crt",
+            "usr/share/ca-certificates/mozilla/NAVER_Global_Root_Certification_Authority.crt",
+            "usr/share/ca-certificates/mozilla/NetLock_Arany_=Class_Gold=_Főtanúsítvány.crt",
+            "usr/share/ca-certificates/mozilla/OISTE_Server_Root_ECC_G1.crt",
+            "usr/share/ca-certificates/mozilla/OISTE_Server_Root_RSA_G1.crt",
+            "usr/share/ca-certificates/mozilla/OISTE_WISeKey_Global_Root_GB_CA.crt",
+            "usr/share/ca-certificates/mozilla/OISTE_WISeKey_Global_Root_GC_CA.crt",
+            "usr/share/ca-certificates/mozilla/QuoVadis_Root_CA_1_G3.crt",
+            "usr/share/ca-certificates/mozilla/QuoVadis_Root_CA_2_G3.crt",
+            "usr/share/ca-certificates/mozilla/QuoVadis_Root_CA_3_G3.crt",
+            "usr/share/ca-certificates/mozilla/SECOM_TLS_ECC_Root_CA_2024.crt",
+            "usr/share/ca-certificates/mozilla/SECOM_TLS_RSA_Root_CA_2024.crt",
+            "usr/share/ca-certificates/mozilla/SSL.com_EV_Root_Certification_Authority_ECC.crt",
+            "usr/share/ca-certificates/mozilla/SSL.com_EV_Root_Certification_Authority_RSA_R2.crt",
+            "usr/share/ca-certificates/mozilla/SSL.com_Root_Certification_Authority_ECC.crt",
+            "usr/share/ca-certificates/mozilla/SSL.com_Root_Certification_Authority_RSA.crt",
+            "usr/share/ca-certificates/mozilla/SSL.com_TLS_ECC_Root_CA_2022.crt",
+            "usr/share/ca-certificates/mozilla/SSL.com_TLS_RSA_Root_CA_2022.crt",
+            "usr/share/ca-certificates/mozilla/SZAFIR_ROOT_CA2.crt",
+            "usr/share/ca-certificates/mozilla/Sectigo_Public_Server_Authentication_Root_E46.crt",
+            "usr/share/ca-certificates/mozilla/Sectigo_Public_Server_Authentication_Root_R46.crt",
+            "usr/share/ca-certificates/mozilla/SecureSign_Root_CA14.crt",
+            "usr/share/ca-certificates/mozilla/SecureSign_Root_CA15.crt",
+            "usr/share/ca-certificates/mozilla/Security_Communication_ECC_RootCA1.crt",
+            "usr/share/ca-certificates/mozilla/Security_Communication_RootCA2.crt",
+            "usr/share/ca-certificates/mozilla/Starfield_Root_Certificate_Authority_-_G2.crt",
+            "usr/share/ca-certificates/mozilla/Starfield_Services_Root_Certificate_Authority_-_G2.crt",
+            "usr/share/ca-certificates/mozilla/SwissSign_RSA_TLS_Root_CA_2022_-_1.crt",
+            "usr/share/ca-certificates/mozilla/T-TeleSec_GlobalRoot_Class_2.crt",
+            "usr/share/ca-certificates/mozilla/T-TeleSec_GlobalRoot_Class_3.crt",
+            "usr/share/ca-certificates/mozilla/TUBITAK_Kamu_SM_SSL_Kok_Sertifikasi_-_Surum_1.crt",
+            "usr/share/ca-certificates/mozilla/TWCA_CYBER_Root_CA.crt",
+            "usr/share/ca-certificates/mozilla/TWCA_Global_Root_CA.crt",
+            "usr/share/ca-certificates/mozilla/TWCA_Root_Certification_Authority.crt",
+            "usr/share/ca-certificates/mozilla/Telekom_Security_TLS_ECC_Root_2020.crt",
+            "usr/share/ca-certificates/mozilla/Telekom_Security_TLS_RSA_Root_2023.crt",
+            "usr/share/ca-certificates/mozilla/Telia_EC_TLS_Root_CA_v3.crt",
+            "usr/share/ca-certificates/mozilla/Telia_RSA_TLS_Root_CA_v3.crt",
+            "usr/share/ca-certificates/mozilla/Telia_Root_CA_v2.crt",
+            "usr/share/ca-certificates/mozilla/TrustAsia_Global_Root_CA_G3.crt",
+            "usr/share/ca-certificates/mozilla/TrustAsia_Global_Root_CA_G4.crt",
+            "usr/share/ca-certificates/mozilla/TrustAsia_TLS_ECC_Root_CA.crt",
+            "usr/share/ca-certificates/mozilla/TrustAsia_TLS_RSA_Root_CA.crt",
+            "usr/share/ca-certificates/mozilla/TunTrust_Root_CA.crt",
+            "usr/share/ca-certificates/mozilla/UCA_Extended_Validation_Root.crt",
+            "usr/share/ca-certificates/mozilla/UCA_Global_G2_Root.crt",
+            "usr/share/ca-certificates/mozilla/USERTrust_ECC_Certification_Authority.crt",
+            "usr/share/ca-certificates/mozilla/USERTrust_RSA_Certification_Authority.crt",
+            "usr/share/ca-certificates/mozilla/certSIGN_Root_CA_G2.crt",
+            "usr/share/ca-certificates/mozilla/e-Szigno_Root_CA_2017.crt",
+            "usr/share/ca-certificates/mozilla/e-Szigno_TLS_Root_CA_2023.crt",
+            "usr/share/ca-certificates/mozilla/emSign_Root_CA_-_G1.crt",
+            "usr/share/ca-certificates/mozilla/vTrus_ECC_Root_CA.crt",
+            "usr/share/ca-certificates/mozilla/vTrus_Root_CA.crt"
+          ],
+          "AnalyzedBy": "apk"
+        },
+        {
+          "ID": "ca-certificates-bundle@20261020-r0",
+          "Name": "ca-certificates-bundle",
+          "Identifier": {
+            "PURL": "pkg:apk/alpine/ca-certificates-bundle@20261020-r0?arch=aarch64\u0026distro=3.24.2",
+            "UID": "8c8506518dd3fac9"
+          },
+          "Version": "20261020-r0",
+          "Arch": "aarch64",
+          "SrcName": "ca-certificates",
+          "SrcVersion": "20261020-r0",
+          "Licenses": [
+            "MPL-2.0",
+            "MIT"
+          ],
+          "Maintainer": "Natanael Copa \u003cncopa@alpinelinux.org\u003e",
+          "Layer": {
+            "Digest": "sha256:bfc0cef2495b951e62df800ce033d842431ca2d962eab4c46c3ece8e352d544d",
+            "DiffID": "sha256:9efd236dab259c8b77c652e6d183b9ec724f176920cb7ab8bc50048d8476e463"
+          },
+          "Digest": "sha1:d53ced4643e66fc2388cab5ea6b4ac688bb7296f",
+          "InstalledFiles": [
+            "etc/ssl/cert.pem",
+            "etc/ssl/certs/ca-certificates.crt",
+            "etc/ssl1.1/cert.pem",
+            "etc/ssl1.1/certs"
+          ],
+          "AnalyzedBy": "apk"
+        },
+        {
+          "ID": "java-cacerts@1.1-r0",
+          "Name": "java-cacerts",
+          "Identifier": {
+            "PURL": "pkg:apk/alpine/java-cacerts@1.1-r0?arch=aarch64\u0026distro=3.24.2",
+            "UID": "f1112bf65a27cb23"
+          },
+          "Version": "1.1-r0",
+          "Arch": "aarch64",
+          "SrcName": "java-cacerts",
+          "SrcVersion": "1.1-r0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Maintainer": "Natanael Copa \u003cncopa@alpinelinux.org\u003e",
+          "DependsOn": [
+            "busybox-binsh@1.37.0-r31",
+            "ca-certificates@20261020-r0",
+            "p11-kit-trust@0.26.2-r0",
+            "p11-kit@0.26.2-r0"
+          ],
+          "Layer": {
+            "Digest": "sha256:bfc0cef2495b951e62df800ce033d842431ca2d962eab4c46c3ece8e352d544d",
+            "DiffID": "sha256:9efd236dab259c8b77c652e6d183b9ec724f176920cb7ab8bc50048d8476e463"
+          },
+          "Digest": "sha1:7db6589fb86690eec757d0ce968092edc9bc08f9",
+          "InstalledFiles": [
+            "etc/ca-certificates/update.d/java-cacerts"
+          ],
+          "AnalyzedBy": "apk"
+        },
+        {
+          "ID": "java-common@1.0-r2",
+          "Name": "java-common",
+          "Identifier": {
+            "PURL": "pkg:apk/alpine/java-common@1.0-r2?arch=aarch64\u0026distro=3.24.2",
+            "UID": "66df048f4d004925"
+          },
+          "Version": "1.0-r2",
+          "Arch": "aarch64",
+          "SrcName": "java-common",
+          "SrcVersion": "1.0-r2",
+          "Licenses": [
+            "GPL-2.0-or-later"
+          ],
+          "Maintainer": "Simon Frankenberger \u003csimon-alpine@fraho.eu\u003e",
+          "DependsOn": [
+            "busybox-binsh@1.37.0-r31"
+          ],
+          "Layer": {
+            "Digest": "sha256:bfc0cef2495b951e62df800ce033d842431ca2d962eab4c46c3ece8e352d544d",
+            "DiffID": "sha256:9efd236dab259c8b77c652e6d183b9ec724f176920cb7ab8bc50048d8476e463"
+          },
+          "Digest": "sha1:f36837e06047fd98ed0deb9e0e8bb2b181097887",
+          "InstalledFiles": [
+            "usr/bin/java"
+          ],
+          "AnalyzedBy": "apk"
+        },
+        {
+          "ID": "libapk@3.0.9-r0",
+          "Name": "libapk",
+          "Identifier": {
+            "PURL": "pkg:apk/alpine/libapk@3.0.9-r0?arch=aarch64\u0026distro=3.24.2",
+            "UID": "b0972d6f16bebafd"
+          },
+          "Version": "3.0.9-r0",
+          "Arch": "aarch64",
+          "SrcName": "apk-tools",
+          "SrcVersion": "3.0.9-r0",
+          "Licenses": [
+            "GPL-2.0-only"
+          ],
+          "Maintainer": "Natanael Copa \u003cncopa@alpinelinux.org\u003e",
+          "DependsOn": [
+            "libcrypto3@3.5.9-r1",
+            "libssl3@3.5.9-r1",
+            "musl@1.2.6-r3",
+            "zlib@1.4-r0"
+          ],
+          "Layer": {
+            "Digest": "sha256:bfc0cef2495b951e62df800ce033d842431ca2d962eab4c46c3ece8e352d544d",
+            "DiffID": "sha256:9efd236dab259c8b77c652e6d183b9ec724f176920cb7ab8bc50048d8476e463"
+          },
+          "Digest": "sha1:768ecbe668787842f57b9613a87d3c794e29c49b",
+          "InstalledFiles": [
+            "usr/lib/libapk.so.3.0.0"
+          ],
+          "AnalyzedBy": "apk"
+        },
+        {
+          "ID": "libcrypto3@3.5.9-r1",
+          "Name": "libcrypto3",
+          "Identifier": {
+            "PURL": "pkg:apk/alpine/libcrypto3@3.5.9-r1?arch=aarch64\u0026distro=3.24.2",
+            "UID": "3197e2587d92bc97"
+          },
+          "Version": "3.5.9-r1",
+          "Arch": "aarch64",
+          "SrcName": "openssl",
+          "SrcVersion": "3.5.9-r1",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Maintainer": "Natanael Copa \u003cncopa@alpinelinux.org\u003e",
+          "DependsOn": [
+            "musl@1.2.6-r3"
+          ],
+          "Layer": {
+            "Digest": "sha256:bfc0cef2495b951e62df800ce033d842431ca2d962eab4c46c3ece8e352d544d",
+            "DiffID": "sha256:9efd236dab259c8b77c652e6d183b9ec724f176920cb7ab8bc50048d8476e463"
+          },
+          "Digest": "sha1:8f9157f333d80d492cbc7a4b224e9beb29aa2993",
+          "InstalledFiles": [
+            "etc/ssl/ct_log_list.cnf",
+            "etc/ssl/ct_log_list.cnf.dist",
+            "etc/ssl/openssl.cnf",
+            "etc/ssl/openssl.cnf.dist",
+            "usr/lib/libcrypto.so.3",
+            "usr/lib/engines-3/afalg.so",
+            "usr/lib/engines-3/capi.so",
+            "usr/lib/engines-3/loader_attic.so",
+            "usr/lib/engines-3/padlock.so",
+            "usr/lib/ossl-modules/legacy.so"
+          ],
+          "AnalyzedBy": "apk"
+        },
+        {
+          "ID": "libffi@3.5.2-r1",
+          "Name": "libffi",
+          "Identifier": {
+            "PURL": "pkg:apk/alpine/libffi@3.5.2-r1?arch=aarch64\u0026distro=3.24.2",
+            "UID": "7287fe6887fa026e"
+          },
+          "Version": "3.5.2-r1",
+          "Arch": "aarch64",
+          "SrcName": "libffi",
+          "SrcVersion": "3.5.2-r1",
+          "Licenses": [
+            "MIT"
+          ],
+          "Maintainer": "Natanael Copa \u003cncopa@alpinelinux.org\u003e",
+          "DependsOn": [
+            "musl@1.2.6-r3"
+          ],
+          "Layer": {
+            "Digest": "sha256:bfc0cef2495b951e62df800ce033d842431ca2d962eab4c46c3ece8e352d544d",
+            "DiffID": "sha256:9efd236dab259c8b77c652e6d183b9ec724f176920cb7ab8bc50048d8476e463"
+          },
+          "Digest": "sha1:baaa3a1f7a8c6582f59bdb3ea5dcea090978af40",
+          "InstalledFiles": [
+            "usr/lib/libffi.so.8",
+            "usr/lib/libffi.so.8.2.0"
+          ],
+          "AnalyzedBy": "apk"
+        },
+        {
+          "ID": "libssl3@3.5.9-r1",
+          "Name": "libssl3",
+          "Identifier": {
+            "PURL": "pkg:apk/alpine/libssl3@3.5.9-r1?arch=aarch64\u0026distro=3.24.2",
+            "UID": "e9c9392132b52421"
+          },
+          "Version": "3.5.9-r1",
+          "Arch": "aarch64",
+          "SrcName": "openssl",
+          "SrcVersion": "3.5.9-r1",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Maintainer": "Natanael Copa \u003cncopa@alpinelinux.org\u003e",
+          "DependsOn": [
+            "libcrypto3@3.5.9-r1",
+            "musl@1.2.6-r3"
+          ],
+          "Layer": {
+            "Digest": "sha256:bfc0cef2495b951e62df800ce033d842431ca2d962eab4c46c3ece8e352d544d",
+            "DiffID": "sha256:9efd236dab259c8b77c652e6d183b9ec724f176920cb7ab8bc50048d8476e463"
+          },
+          "Digest": "sha1:28d9205fc10dcdb1088683000e38fa61a2261cc2",
+          "InstalledFiles": [
+            "usr/lib/libssl.so.3"
+          ],
+          "AnalyzedBy": "apk"
+        },
+        {
+          "ID": "libtasn1@4.21.0-r0",
+          "Name": "libtasn1",
+          "Identifier": {
+            "PURL": "pkg:apk/alpine/libtasn1@4.21.0-r0?arch=aarch64\u0026distro=3.24.2",
+            "UID": "78baf83907fe6902"
+          },
+          "Version": "4.21.0-r0",
+          "Arch": "aarch64",
+          "SrcName": "libtasn1",
+          "SrcVersion": "4.21.0-r0",
+          "Licenses": [
+            "LGPL-2.1-or-later"
+          ],
+          "Maintainer": "Natanael Copa \u003cncopa@alpinelinux.org\u003e",
+          "DependsOn": [
+            "musl@1.2.6-r3"
+          ],
+          "Layer": {
+            "Digest": "sha256:bfc0cef2495b951e62df800ce033d842431ca2d962eab4c46c3ece8e352d544d",
+            "DiffID": "sha256:9efd236dab259c8b77c652e6d183b9ec724f176920cb7ab8bc50048d8476e463"
+          },
+          "Digest": "sha1:411c59abac766b94c3f2fbcd3d51860957514066",
+          "InstalledFiles": [
+            "usr/lib/libtasn1.so.6",
+            "usr/lib/libtasn1.so.6.6.5"
+          ],
+          "AnalyzedBy": "apk"
+        },
+        {
+          "ID": "musl@1.2.6-r3",
+          "Name": "musl",
+          "Identifier": {
+            "PURL": "pkg:apk/alpine/musl@1.2.6-r3?arch=aarch64\u0026distro=3.24.2",
+            "UID": "b836d5e005347926"
+          },
+          "Version": "1.2.6-r3",
+          "Arch": "aarch64",
+          "SrcName": "musl",
+          "SrcVersion": "1.2.6-r3",
+          "Licenses": [
+            "MIT"
+          ],
+          "Maintainer": "Natanael Copa \u003cncopa@alpinelinux.org\u003e",
+          "Layer": {
+            "Digest": "sha256:bfc0cef2495b951e62df800ce033d842431ca2d962eab4c46c3ece8e352d544d",
+            "DiffID": "sha256:9efd236dab259c8b77c652e6d183b9ec724f176920cb7ab8bc50048d8476e463"
+          },
+          "Digest": "sha1:2f159d022523c7a6b78729a6632985cb7714fbe6",
+          "InstalledFiles": [
+            "lib/ld-musl-aarch64.so.1",
+            "lib/libc.musl-aarch64.so.1"
+          ],
+          "AnalyzedBy": "apk"
+        },
+        {
+          "ID": "musl-utils@1.2.6-r3",
+          "Name": "musl-utils",
+          "Identifier": {
+            "PURL": "pkg:apk/alpine/musl-utils@1.2.6-r3?arch=aarch64\u0026distro=3.24.2",
+            "UID": "10298f539cdcabfb"
+          },
+          "Version": "1.2.6-r3",
+          "Arch": "aarch64",
+          "SrcName": "musl",
+          "SrcVersion": "1.2.6-r3",
+          "Licenses": [
+            "MIT",
+            "BSD-2-Clause",
+            "GPL-2.0-or-later"
+          ],
+          "Maintainer": "Natanael Copa \u003cncopa@alpinelinux.org\u003e",
+          "DependsOn": [
+            "musl@1.2.6-r3",
+            "scanelf@1.3.9-r1"
+          ],
+          "Layer": {
+            "Digest": "sha256:bfc0cef2495b951e62df800ce033d842431ca2d962eab4c46c3ece8e352d544d",
+            "DiffID": "sha256:9efd236dab259c8b77c652e6d183b9ec724f176920cb7ab8bc50048d8476e463"
+          },
+          "Digest": "sha1:c38121afffd1f2dd7681f7ac66058a3cd723d030",
+          "InstalledFiles": [
+            "sbin/ldconfig",
+            "usr/bin/getconf",
+            "usr/bin/getent",
+            "usr/bin/iconv",
+            "usr/bin/ldd"
+          ],
+          "AnalyzedBy": "apk"
+        },
+        {
+          "ID": "openjdk17-jre-headless@17.0.21.1_p2-r0",
+          "Name": "openjdk17-jre-headless",
+          "Identifier": {
+            "PURL": "pkg:apk/alpine/openjdk17-jre-headless@17.0.21.1_p2-r0?arch=aarch64\u0026distro=3.24.2",
+            "UID": "bcf328a01318ec"
+          },
+          "Version": "17.0.21.1_p2-r0",
+          "Arch": "aarch64",
+          "SrcName": "openjdk17",
+          "SrcVersion": "17.0.21.1_p2-r0",
+          "Licenses": [
+            "GPL-2.0-with-classpath-exception"
+          ],
+          "Maintainer": "Simon Frankenberger \u003csimon-alpine@fraho.eu\u003e",
+          "DependsOn": [
+            "java-cacerts@1.1-r0",
+            "java-common@1.0-r2",
+            "musl@1.2.6-r3",
+            "zlib@1.4-r0"
+          ],
+          "Layer": {
+            "Digest": "sha256:bfc0cef2495b951e62df800ce033d842431ca2d962eab4c46c3ece8e352d544d",
+            "DiffID": "sha256:9efd236dab259c8b77c652e6d183b9ec724f176920cb7ab8bc50048d8476e463"
+          },
+          "Digest": "sha1:53d5415d86142f74468df3e194a72a8317aa469c",
+          "InstalledFiles": [
+            "usr/lib/jvm/java-17-openjdk/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/README.md",
+            "usr/lib/jvm/java-17-openjdk/jre",
+            "usr/lib/jvm/java-17-openjdk/release",
+            "usr/lib/jvm/java-17-openjdk/bin/java",
+            "usr/lib/jvm/java-17-openjdk/bin/jfr",
+            "usr/lib/jvm/java-17-openjdk/bin/jrunscript",
+            "usr/lib/jvm/java-17-openjdk/bin/keytool",
+            "usr/lib/jvm/java-17-openjdk/bin/rmiregistry",
+            "usr/lib/jvm/java-17-openjdk/conf/logging.properties",
+            "usr/lib/jvm/java-17-openjdk/conf/net.properties",
+            "usr/lib/jvm/java-17-openjdk/conf/sound.properties",
+            "usr/lib/jvm/java-17-openjdk/conf/management/jmxremote.access",
+            "usr/lib/jvm/java-17-openjdk/conf/management/jmxremote.password.template",
+            "usr/lib/jvm/java-17-openjdk/conf/management/management.properties",
+            "usr/lib/jvm/java-17-openjdk/conf/sdp/sdp.conf.template",
+            "usr/lib/jvm/java-17-openjdk/conf/security/java.policy",
+            "usr/lib/jvm/java-17-openjdk/conf/security/java.security",
+            "usr/lib/jvm/java-17-openjdk/conf/security/policy/README.txt",
+            "usr/lib/jvm/java-17-openjdk/conf/security/policy/limited/default_US_export.policy",
+            "usr/lib/jvm/java-17-openjdk/conf/security/policy/limited/default_local.policy",
+            "usr/lib/jvm/java-17-openjdk/conf/security/policy/limited/exempt_local.policy",
+            "usr/lib/jvm/java-17-openjdk/conf/security/policy/unlimited/default_US_export.policy",
+            "usr/lib/jvm/java-17-openjdk/conf/security/policy/unlimited/default_local.policy",
+            "usr/lib/jvm/java-17-openjdk/legal/java.base/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/java.base/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/java.base/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/java.base/aes.md",
+            "usr/lib/jvm/java-17-openjdk/legal/java.base/asm.md",
+            "usr/lib/jvm/java-17-openjdk/legal/java.base/c-libutl.md",
+            "usr/lib/jvm/java-17-openjdk/legal/java.base/cldr.md",
+            "usr/lib/jvm/java-17-openjdk/legal/java.base/gcc.md",
+            "usr/lib/jvm/java-17-openjdk/legal/java.base/icu.md",
+            "usr/lib/jvm/java-17-openjdk/legal/java.base/public_suffix.md",
+            "usr/lib/jvm/java-17-openjdk/legal/java.base/siphash.md",
+            "usr/lib/jvm/java-17-openjdk/legal/java.base/unicode.md",
+            "usr/lib/jvm/java-17-openjdk/legal/java.compiler/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/java.compiler/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/java.compiler/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/java.datatransfer/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/java.datatransfer/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/java.datatransfer/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/java.desktop/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/java.desktop/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/java.desktop/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/java.desktop/colorimaging.md",
+            "usr/lib/jvm/java-17-openjdk/legal/java.desktop/harfbuzz.md",
+            "usr/lib/jvm/java-17-openjdk/legal/java.desktop/mesa3d.md",
+            "usr/lib/jvm/java-17-openjdk/legal/java.desktop/pipewire.md",
+            "usr/lib/jvm/java-17-openjdk/legal/java.desktop/xwd.md",
+            "usr/lib/jvm/java-17-openjdk/legal/java.instrument/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/java.instrument/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/java.instrument/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/java.logging/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/java.logging/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/java.logging/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/java.management/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/java.management/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/java.management/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/java.management.rmi/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/java.management.rmi/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/java.management.rmi/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/java.naming/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/java.naming/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/java.naming/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/java.net.http/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/java.net.http/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/java.net.http/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/java.prefs/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/java.prefs/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/java.prefs/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/java.rmi/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/java.rmi/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/java.rmi/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/java.scripting/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/java.scripting/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/java.scripting/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/java.se/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/java.se/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/java.se/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/java.security.jgss/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/java.security.jgss/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/java.security.jgss/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/java.security.sasl/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/java.security.sasl/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/java.security.sasl/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/java.smartcardio/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/java.smartcardio/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/java.smartcardio/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/java.smartcardio/pcsclite.md",
+            "usr/lib/jvm/java-17-openjdk/legal/java.sql/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/java.sql/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/java.sql/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/java.sql.rowset/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/java.sql.rowset/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/java.sql.rowset/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/java.transaction.xa/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/java.transaction.xa/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/java.transaction.xa/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/java.xml/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/java.xml/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/java.xml/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/java.xml/bcel.md",
+            "usr/lib/jvm/java-17-openjdk/legal/java.xml/dom.md",
+            "usr/lib/jvm/java-17-openjdk/legal/java.xml/jcup.md",
+            "usr/lib/jvm/java-17-openjdk/legal/java.xml/xalan.md",
+            "usr/lib/jvm/java-17-openjdk/legal/java.xml/xerces.md",
+            "usr/lib/jvm/java-17-openjdk/legal/java.xml.crypto/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/java.xml.crypto/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/java.xml.crypto/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/java.xml.crypto/santuario.md",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.accessibility/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.accessibility/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.accessibility/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.attach/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.attach/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.attach/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.charsets/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.charsets/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.charsets/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.compiler/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.compiler/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.compiler/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.crypto.cryptoki/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.crypto.cryptoki/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.crypto.cryptoki/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.crypto.cryptoki/pkcs11cryptotoken.md",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.crypto.cryptoki/pkcs11wrapper.md",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.crypto.ec/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.crypto.ec/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.crypto.ec/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.dynalink/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.dynalink/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.dynalink/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.dynalink/dynalink.md",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.editpad/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.editpad/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.editpad/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.hotspot.agent/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.hotspot.agent/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.hotspot.agent/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.httpserver/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.httpserver/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.httpserver/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.incubator.foreign/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.incubator.foreign/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.incubator.foreign/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.incubator.vector/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.incubator.vector/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.incubator.vector/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.internal.ed/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.internal.ed/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.internal.ed/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.internal.jvmstat/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.internal.jvmstat/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.internal.jvmstat/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.internal.le/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.internal.le/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.internal.le/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.internal.le/jline.md",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.internal.opt/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.internal.opt/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.internal.opt/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.internal.opt/jopt-simple.md",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.internal.vm.ci/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.internal.vm.ci/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.internal.vm.ci/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.internal.vm.compiler/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.internal.vm.compiler/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.internal.vm.compiler/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.internal.vm.compiler.management/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.internal.vm.compiler.management/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.internal.vm.compiler.management/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.jartool/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.jartool/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.jartool/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.javadoc/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.javadoc/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.javadoc/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.javadoc/jquery.md",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.javadoc/jqueryUI.md",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.jcmd/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.jcmd/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.jcmd/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.jconsole/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.jconsole/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.jconsole/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.jdeps/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.jdeps/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.jdeps/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.jdi/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.jdi/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.jdi/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.jdwp.agent/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.jdwp.agent/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.jdwp.agent/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.jfr/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.jfr/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.jfr/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.jlink/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.jlink/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.jlink/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.jpackage/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.jpackage/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.jpackage/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.jshell/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.jshell/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.jshell/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.jsobject/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.jsobject/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.jsobject/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.jstatd/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.jstatd/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.jstatd/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.localedata/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.localedata/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.localedata/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.localedata/cldr.md",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.localedata/thaidict.md",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.management/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.management/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.management/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.management.agent/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.management.agent/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.management.agent/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.management.jfr/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.management.jfr/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.management.jfr/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.naming.dns/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.naming.dns/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.naming.dns/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.naming.rmi/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.naming.rmi/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.naming.rmi/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.net/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.net/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.net/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.nio.mapmode/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.nio.mapmode/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.nio.mapmode/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.random/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.random/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.random/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.sctp/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.sctp/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.sctp/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.security.auth/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.security.auth/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.security.auth/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.security.jgss/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.security.jgss/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.security.jgss/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.unsupported/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.unsupported/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.unsupported/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.unsupported.desktop/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.unsupported.desktop/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.unsupported.desktop/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.xml.dom/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.xml.dom/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.xml.dom/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.zipfs/ADDITIONAL_LICENSE_INFO",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.zipfs/ASSEMBLY_EXCEPTION",
+            "usr/lib/jvm/java-17-openjdk/legal/jdk.zipfs/LICENSE",
+            "usr/lib/jvm/java-17-openjdk/lib/classlist",
+            "usr/lib/jvm/java-17-openjdk/lib/jexec",
+            "usr/lib/jvm/java-17-openjdk/lib/jrt-fs.jar",
+            "usr/lib/jvm/java-17-openjdk/lib/jspawnhelper",
+            "usr/lib/jvm/java-17-openjdk/lib/jvm.cfg",
+            "usr/lib/jvm/java-17-openjdk/lib/libattach.so",
+            "usr/lib/jvm/java-17-openjdk/lib/libawt.so",
+            "usr/lib/jvm/java-17-openjdk/lib/libawt_headless.so",
+            "usr/lib/jvm/java-17-openjdk/lib/libdt_socket.so",
+            "usr/lib/jvm/java-17-openjdk/lib/libextnet.so",
+            "usr/lib/jvm/java-17-openjdk/lib/libinstrument.so",
+            "usr/lib/jvm/java-17-openjdk/lib/libj2gss.so",
+            "usr/lib/jvm/java-17-openjdk/lib/libj2pcsc.so",
+            "usr/lib/jvm/java-17-openjdk/lib/libj2pkcs11.so",
+            "usr/lib/jvm/java-17-openjdk/lib/libjaas.so",
+            "usr/lib/jvm/java-17-openjdk/lib/libjava.so",
+            "usr/lib/jvm/java-17-openjdk/lib/libjdwp.so",
+            "usr/lib/jvm/java-17-openjdk/lib/libjimage.so",
+            "usr/lib/jvm/java-17-openjdk/lib/libjli.so",
+            "usr/lib/jvm/java-17-openjdk/lib/libjsig.so",
+            "usr/lib/jvm/java-17-openjdk/lib/libmanagement.so",
+            "usr/lib/jvm/java-17-openjdk/lib/libmanagement_agent.so",
+            "usr/lib/jvm/java-17-openjdk/lib/libmanagement_ext.so",
+            "usr/lib/jvm/java-17-openjdk/lib/libmlib_image.so",
+            "usr/lib/jvm/java-17-openjdk/lib/libnet.so",
+            "usr/lib/jvm/java-17-openjdk/lib/libnio.so",
+            "usr/lib/jvm/java-17-openjdk/lib/libprefs.so",
+            "usr/lib/jvm/java-17-openjdk/lib/librmi.so",
+            "usr/lib/jvm/java-17-openjdk/lib/libsaproc.so",
+            "usr/lib/jvm/java-17-openjdk/lib/libsctp.so",
+            "usr/lib/jvm/java-17-openjdk/lib/libsyslookup.so",
+            "usr/lib/jvm/java-17-openjdk/lib/libverify.so",
+            "usr/lib/jvm/java-17-openjdk/lib/libzip.so",
+            "usr/lib/jvm/java-17-openjdk/lib/modules",
+            "usr/lib/jvm/java-17-openjdk/lib/psfont.properties.ja",
+            "usr/lib/jvm/java-17-openjdk/lib/psfontj2d.properties",
+            "usr/lib/jvm/java-17-openjdk/lib/tzdb.dat",
+            "usr/lib/jvm/java-17-openjdk/lib/jfr/default.jfc",
+            "usr/lib/jvm/java-17-openjdk/lib/jfr/profile.jfc",
+            "usr/lib/jvm/java-17-openjdk/lib/security/blocked.certs",
+            "usr/lib/jvm/java-17-openjdk/lib/security/cacerts",
+            "usr/lib/jvm/java-17-openjdk/lib/security/default.policy",
+            "usr/lib/jvm/java-17-openjdk/lib/security/public_suffix_list.dat",
+            "usr/lib/jvm/java-17-openjdk/lib/server/classes.jsa",
+            "usr/lib/jvm/java-17-openjdk/lib/server/classes_nocoops.jsa",
+            "usr/lib/jvm/java-17-openjdk/lib/server/libjsig.so",
+            "usr/lib/jvm/java-17-openjdk/lib/server/libjvm.so"
+          ],
+          "AnalyzedBy": "apk"
+        },
+        {
+          "ID": "p11-kit@0.26.2-r0",
+          "Name": "p11-kit",
+          "Identifier": {
+            "PURL": "pkg:apk/alpine/p11-kit@0.26.2-r0?arch=aarch64\u0026distro=3.24.2",
+            "UID": "a989b30f470a9d73"
+          },
+          "Version": "0.26.2-r0",
+          "Arch": "aarch64",
+          "SrcName": "p11-kit",
+          "SrcVersion": "0.26.2-r0",
+          "Licenses": [
+            "BSD-3-Clause"
+          ],
+          "Maintainer": "Patrycja Rosa \u003calpine@ptrcnull.me\u003e",
+          "DependsOn": [
+            "libffi@3.5.2-r1",
+            "libtasn1@4.21.0-r0",
+            "musl@1.2.6-r3"
+          ],
+          "Layer": {
+            "Digest": "sha256:bfc0cef2495b951e62df800ce033d842431ca2d962eab4c46c3ece8e352d544d",
+            "DiffID": "sha256:9efd236dab259c8b77c652e6d183b9ec724f176920cb7ab8bc50048d8476e463"
+          },
+          "Digest": "sha1:6ed520f836d1fb6c0dff740e9b7b7d3ce5b4ba2a",
+          "InstalledFiles": [
+            "etc/pkcs11/pkcs11.conf.example",
+            "usr/bin/p11-kit",
+            "usr/lib/libp11-kit.so.0",
+            "usr/lib/libp11-kit.so.0.4.8",
+            "usr/libexec/p11-kit/p11-kit-remote",
+            "usr/libexec/p11-kit/trust-extract-compat"
+          ],
+          "AnalyzedBy": "apk"
+        },
+        {
+          "ID": "p11-kit-trust@0.26.2-r0",
+          "Name": "p11-kit-trust",
+          "Identifier": {
+            "PURL": "pkg:apk/alpine/p11-kit-trust@0.26.2-r0?arch=aarch64\u0026distro=3.24.2",
+            "UID": "72b906cd8786c94"
+          },
+          "Version": "0.26.2-r0",
+          "Arch": "aarch64",
+          "SrcName": "p11-kit",
+          "SrcVersion": "0.26.2-r0",
+          "Licenses": [
+            "BSD-3-Clause"
+          ],
+          "Maintainer": "Patrycja Rosa \u003calpine@ptrcnull.me\u003e",
+          "DependsOn": [
+            "libtasn1@4.21.0-r0",
+            "musl@1.2.6-r3",
+            "p11-kit@0.26.2-r0"
+          ],
+          "Layer": {
+            "Digest": "sha256:bfc0cef2495b951e62df800ce033d842431ca2d962eab4c46c3ece8e352d544d",
+            "DiffID": "sha256:9efd236dab259c8b77c652e6d183b9ec724f176920cb7ab8bc50048d8476e463"
+          },
+          "Digest": "sha1:da6b8158c857a3dd084850eac96f5385d654dbe2",
+          "InstalledFiles": [
+            "usr/bin/trust",
+            "usr/lib/pkcs11/p11-kit-trust.so",
+            "usr/share/p11-kit/modules/p11-kit-trust.module"
+          ],
+          "AnalyzedBy": "apk"
+        },
+        {
+          "ID": "scanelf@1.3.9-r1",
+          "Name": "scanelf",
+          "Identifier": {
+            "PURL": "pkg:apk/alpine/scanelf@1.3.9-r1?arch=aarch64\u0026distro=3.24.2",
+            "UID": "80fc822077279234"
+          },
+          "Version": "1.3.9-r1",
+          "Arch": "aarch64",
+          "SrcName": "pax-utils",
+          "SrcVersion": "1.3.9-r1",
+          "Licenses": [
+            "GPL-2.0-only"
+          ],
+          "Maintainer": "Natanael Copa \u003cncopa@alpinelinux.org\u003e",
+          "DependsOn": [
+            "musl@1.2.6-r3"
+          ],
+          "Layer": {
+            "Digest": "sha256:a9986cd6f37dbddae7862a6d4be71683472e7c2ea708e87db14f8a6393c00f00",
+            "DiffID": "sha256:1b349a3334531b575b01d409540dd8aca14ef29abddacd50f36643d7c949db4b"
+          },
+          "Digest": "sha1:dc8c1ca6362d648f03640184baf8914b62b643fb",
+          "InstalledFiles": [
+            "usr/bin/scanelf"
+          ],
+          "AnalyzedBy": "apk"
+        },
+        {
+          "ID": "ssl_client@1.37.0-r31",
+          "Name": "ssl_client",
+          "Identifier": {
+            "PURL": "pkg:apk/alpine/ssl_client@1.37.0-r31?arch=aarch64\u0026distro=3.24.2",
+            "UID": "6b76a58bb4704ebd"
+          },
+          "Version": "1.37.0-r31",
+          "Arch": "aarch64",
+          "SrcName": "busybox",
+          "SrcVersion": "1.37.0-r31",
+          "Licenses": [
+            "GPL-2.0-only"
+          ],
+          "Maintainer": "Sören Tempel \u003csoeren+alpine@soeren-tempel.net\u003e",
+          "DependsOn": [
+            "libcrypto3@3.5.9-r1",
+            "libssl3@3.5.9-r1",
+            "musl@1.2.6-r3"
+          ],
+          "Layer": {
+            "Digest": "sha256:a9986cd6f37dbddae7862a6d4be71683472e7c2ea708e87db14f8a6393c00f00",
+            "DiffID": "sha256:1b349a3334531b575b01d409540dd8aca14ef29abddacd50f36643d7c949db4b"
+          },
+          "Digest": "sha1:4107c3f70dda302e0c3ed46299419245a8a280b4",
+          "InstalledFiles": [
+            "usr/bin/ssl_client"
+          ],
+          "AnalyzedBy": "apk"
+        },
+        {
+          "ID": "zlib@1.4-r0",
+          "Name": "zlib",
+          "Identifier": {
+            "PURL": "pkg:apk/alpine/zlib@1.4-r0?arch=aarch64\u0026distro=3.24.2",
+            "UID": "2d019f912b8adc24"
+          },
+          "Version": "1.4-r0",
+          "Arch": "aarch64",
+          "SrcName": "zlib",
+          "SrcVersion": "1.4-r0",
+          "Licenses": [
+            "Zlib"
+          ],
+          "Maintainer": "Natanael Copa \u003cncopa@alpinelinux.org\u003e",
+          "DependsOn": [
+            "musl@1.2.6-r3"
+          ],
+          "Layer": {
+            "Digest": "sha256:bfc0cef2495b951e62df800ce033d842431ca2d962eab4c46c3ece8e352d544d",
+            "DiffID": "sha256:9efd236dab259c8b77c652e6d183b9ec724f176920cb7ab8bc50048d8476e463"
+          },
+          "Digest": "sha1:7009c8146f90855e208cdf0b60f35df08bfec1c3",
+          "InstalledFiles": [
+            "usr/lib/libz.so.1",
+            "usr/lib/libz.so.1.4"
+          ],
+          "AnalyzedBy": "apk"
+        }
+      ]
+    },
+    {
+      "Target": "Java",
+      "Class": "lang-pkgs",
+      "Type": "jar",
+      "Packages": [
+        {
+          "Name": "ch.qos.logback:logback-classic",
+          "Identifier": {
+            "PURL": "pkg:maven/ch.qos.logback/logback-classic@1.5.38",
+            "UID": "22cfb9fd130673a2"
+          },
+          "Version": "1.5.38",
+          "Licenses": [
+            "EPL-2.0",
+            "LGPL-2.1-only"
+          ],
+          "Layer": {
+            "Digest": "sha256:4658c035ed6d0dce5f3a6fb34270fac78b64bd150f99365272bda0be05f64269",
+            "DiffID": "sha256:1d9e07179aeeebbcd8d3eef090bc66fe1789ff2db0c11d4f59aad0e974204c94"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/logback-classic-1.5.38.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "ch.qos.logback:logback-core",
+          "Identifier": {
+            "PURL": "pkg:maven/ch.qos.logback/logback-core@1.5.38",
+            "UID": "8ea0a432d66c6efc"
+          },
+          "Version": "1.5.38",
+          "Licenses": [
+            "EPL-2.0",
+            "LGPL-2.1-only"
+          ],
+          "Layer": {
+            "Digest": "sha256:4658c035ed6d0dce5f3a6fb34270fac78b64bd150f99365272bda0be05f64269",
+            "DiffID": "sha256:1d9e07179aeeebbcd8d3eef090bc66fe1789ff2db0c11d4f59aad0e974204c94"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/logback-core-1.5.38.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "com.example:simple-java-app",
+          "Identifier": {
+            "PURL": "pkg:maven/com.example/simple-java-app@1.0.0",
+            "UID": "2d13effabeda3586"
+          },
+          "Version": "1.0.0",
+          "Layer": {
+            "Digest": "sha256:4658c035ed6d0dce5f3a6fb34270fac78b64bd150f99365272bda0be05f64269",
+            "DiffID": "sha256:1d9e07179aeeebbcd8d3eef090bc66fe1789ff2db0c11d4f59aad0e974204c94"
+          },
+          "FilePath": "app/app.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "com.fasterxml.jackson.core:jackson-annotations",
+          "Identifier": {
+            "PURL": "pkg:maven/com.fasterxml.jackson.core/jackson-annotations@2.21",
+            "UID": "63e952e911fda08e"
+          },
+          "Version": "2.21",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:4658c035ed6d0dce5f3a6fb34270fac78b64bd150f99365272bda0be05f64269",
+            "DiffID": "sha256:1d9e07179aeeebbcd8d3eef090bc66fe1789ff2db0c11d4f59aad0e974204c94"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/jackson-annotations-2.21.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "commons-logging:commons-logging",
+          "Identifier": {
+            "PURL": "pkg:maven/commons-logging/commons-logging@1.3.6",
+            "UID": "1619762e80600bb9"
+          },
+          "Version": "1.3.6",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:4658c035ed6d0dce5f3a6fb34270fac78b64bd150f99365272bda0be05f64269",
+            "DiffID": "sha256:1d9e07179aeeebbcd8d3eef090bc66fe1789ff2db0c11d4f59aad0e974204c94"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/commons-logging-1.3.6.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "io.micrometer:micrometer-commons",
+          "Identifier": {
+            "PURL": "pkg:maven/io.micrometer/micrometer-commons@1.17.2",
+            "UID": "ad6cdfe3e47278cf"
+          },
+          "Version": "1.17.2",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:4658c035ed6d0dce5f3a6fb34270fac78b64bd150f99365272bda0be05f64269",
+            "DiffID": "sha256:1d9e07179aeeebbcd8d3eef090bc66fe1789ff2db0c11d4f59aad0e974204c94"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/micrometer-commons-1.17.2.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "io.micrometer:micrometer-core",
+          "Identifier": {
+            "PURL": "pkg:maven/io.micrometer/micrometer-core@1.17.2",
+            "UID": "ea35c1118c12e974"
+          },
+          "Version": "1.17.2",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:4658c035ed6d0dce5f3a6fb34270fac78b64bd150f99365272bda0be05f64269",
+            "DiffID": "sha256:1d9e07179aeeebbcd8d3eef090bc66fe1789ff2db0c11d4f59aad0e974204c94"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/micrometer-core-1.17.2.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "io.micrometer:micrometer-jakarta9",
+          "Identifier": {
+            "PURL": "pkg:maven/io.micrometer/micrometer-jakarta9@1.17.2",
+            "UID": "87b21b27ad6c1e78"
+          },
+          "Version": "1.17.2",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:4658c035ed6d0dce5f3a6fb34270fac78b64bd150f99365272bda0be05f64269",
+            "DiffID": "sha256:1d9e07179aeeebbcd8d3eef090bc66fe1789ff2db0c11d4f59aad0e974204c94"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/micrometer-jakarta9-1.17.2.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "io.micrometer:micrometer-observation",
+          "Identifier": {
+            "PURL": "pkg:maven/io.micrometer/micrometer-observation@1.17.2",
+            "UID": "af595a0bb211f8c"
+          },
+          "Version": "1.17.2",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:4658c035ed6d0dce5f3a6fb34270fac78b64bd150f99365272bda0be05f64269",
+            "DiffID": "sha256:1d9e07179aeeebbcd8d3eef090bc66fe1789ff2db0c11d4f59aad0e974204c94"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/micrometer-observation-1.17.2.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "jakarta.annotation:jakarta.annotation-api",
+          "Identifier": {
+            "PURL": "pkg:maven/jakarta.annotation/jakarta.annotation-api@3.0.0",
+            "UID": "45b01f07f691bf02"
+          },
+          "Version": "3.0.0",
+          "Licenses": [
+            "EPL-2.0",
+            "GPL-2.0-with-classpath-exception"
+          ],
+          "Layer": {
+            "Digest": "sha256:4658c035ed6d0dce5f3a6fb34270fac78b64bd150f99365272bda0be05f64269",
+            "DiffID": "sha256:1d9e07179aeeebbcd8d3eef090bc66fe1789ff2db0c11d4f59aad0e974204c94"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/jakarta.annotation-api-3.0.0.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "org.apache.logging.log4j:log4j-api",
+          "Identifier": {
+            "PURL": "pkg:maven/org.apache.logging.log4j/log4j-api@2.25.5",
+            "UID": "ac302f7f486be7b"
+          },
+          "Version": "2.25.5",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:4658c035ed6d0dce5f3a6fb34270fac78b64bd150f99365272bda0be05f64269",
+            "DiffID": "sha256:1d9e07179aeeebbcd8d3eef090bc66fe1789ff2db0c11d4f59aad0e974204c94"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/log4j-api-2.25.5.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "org.apache.logging.log4j:log4j-core",
+          "Identifier": {
+            "PURL": "pkg:maven/org.apache.logging.log4j/log4j-core@2.14.1",
+            "UID": "927b145e4679fc89"
+          },
+          "Version": "2.14.1",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:4658c035ed6d0dce5f3a6fb34270fac78b64bd150f99365272bda0be05f64269",
+            "DiffID": "sha256:1d9e07179aeeebbcd8d3eef090bc66fe1789ff2db0c11d4f59aad0e974204c94"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/log4j-core-2.14.1.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "org.apache.logging.log4j:log4j-to-slf4j",
+          "Identifier": {
+            "PURL": "pkg:maven/org.apache.logging.log4j/log4j-to-slf4j@2.25.5",
+            "UID": "4dea70b92dd74466"
+          },
+          "Version": "2.25.5",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:4658c035ed6d0dce5f3a6fb34270fac78b64bd150f99365272bda0be05f64269",
+            "DiffID": "sha256:1d9e07179aeeebbcd8d3eef090bc66fe1789ff2db0c11d4f59aad0e974204c94"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/log4j-to-slf4j-2.25.5.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "org.apache.tomcat.embed:tomcat-embed-core",
+          "Identifier": {
+            "PURL": "pkg:maven/org.apache.tomcat.embed/tomcat-embed-core@11.0.27",
+            "UID": "43a4cc43421701a3"
+          },
+          "Version": "11.0.27",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:4658c035ed6d0dce5f3a6fb34270fac78b64bd150f99365272bda0be05f64269",
+            "DiffID": "sha256:1d9e07179aeeebbcd8d3eef090bc66fe1789ff2db0c11d4f59aad0e974204c94"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/tomcat-embed-core-11.0.27.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "org.apache.tomcat.embed:tomcat-embed-el",
+          "Identifier": {
+            "PURL": "pkg:maven/org.apache.tomcat.embed/tomcat-embed-el@11.0.27",
+            "UID": "ad5db9184ed13bae"
+          },
+          "Version": "11.0.27",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:4658c035ed6d0dce5f3a6fb34270fac78b64bd150f99365272bda0be05f64269",
+            "DiffID": "sha256:1d9e07179aeeebbcd8d3eef090bc66fe1789ff2db0c11d4f59aad0e974204c94"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/tomcat-embed-el-11.0.27.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "org.apache.tomcat.embed:tomcat-embed-websocket",
+          "Identifier": {
+            "PURL": "pkg:maven/org.apache.tomcat.embed/tomcat-embed-websocket@11.0.27",
+            "UID": "2595a691d66385b3"
+          },
+          "Version": "11.0.27",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:4658c035ed6d0dce5f3a6fb34270fac78b64bd150f99365272bda0be05f64269",
+            "DiffID": "sha256:1d9e07179aeeebbcd8d3eef090bc66fe1789ff2db0c11d4f59aad0e974204c94"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/tomcat-embed-websocket-11.0.27.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "org.hdrhistogram:HdrHistogram",
+          "Identifier": {
+            "PURL": "pkg:maven/org.hdrhistogram/HdrHistogram@2.2.2",
+            "UID": "7cb935aa43fca745"
+          },
+          "Version": "2.2.2",
+          "Licenses": [
+            "CC0-1.0",
+            "BSD-2-Clause"
+          ],
+          "Layer": {
+            "Digest": "sha256:4658c035ed6d0dce5f3a6fb34270fac78b64bd150f99365272bda0be05f64269",
+            "DiffID": "sha256:1d9e07179aeeebbcd8d3eef090bc66fe1789ff2db0c11d4f59aad0e974204c94"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/HdrHistogram-2.2.2.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "org.jspecify:jspecify",
+          "Identifier": {
+            "PURL": "pkg:maven/org.jspecify/jspecify@1.0.1",
+            "UID": "e9ab7d1b2ce2b2fe"
+          },
+          "Version": "1.0.1",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:4658c035ed6d0dce5f3a6fb34270fac78b64bd150f99365272bda0be05f64269",
+            "DiffID": "sha256:1d9e07179aeeebbcd8d3eef090bc66fe1789ff2db0c11d4f59aad0e974204c94"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/jspecify-1.0.1.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "org.slf4j:jul-to-slf4j",
+          "Identifier": {
+            "PURL": "pkg:maven/org.slf4j/jul-to-slf4j@2.0.20",
+            "UID": "e17af8778fd5f877"
+          },
+          "Version": "2.0.20",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:4658c035ed6d0dce5f3a6fb34270fac78b64bd150f99365272bda0be05f64269",
+            "DiffID": "sha256:1d9e07179aeeebbcd8d3eef090bc66fe1789ff2db0c11d4f59aad0e974204c94"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/jul-to-slf4j-2.0.20.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "org.slf4j:slf4j-api",
+          "Identifier": {
+            "PURL": "pkg:maven/org.slf4j/slf4j-api@2.0.20",
+            "UID": "ecbc2d0fddfc63ec"
+          },
+          "Version": "2.0.20",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:4658c035ed6d0dce5f3a6fb34270fac78b64bd150f99365272bda0be05f64269",
+            "DiffID": "sha256:1d9e07179aeeebbcd8d3eef090bc66fe1789ff2db0c11d4f59aad0e974204c94"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/slf4j-api-2.0.20.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "org.springframework.boot:spring-boot",
+          "Identifier": {
+            "PURL": "pkg:maven/org.springframework.boot/spring-boot@4.1.2",
+            "UID": "938c3a413a16f7f3"
+          },
+          "Version": "4.1.2",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:4658c035ed6d0dce5f3a6fb34270fac78b64bd150f99365272bda0be05f64269",
+            "DiffID": "sha256:1d9e07179aeeebbcd8d3eef090bc66fe1789ff2db0c11d4f59aad0e974204c94"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/spring-boot-4.1.2.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "org.springframework.boot:spring-boot-actuator",
+          "Identifier": {
+            "PURL": "pkg:maven/org.springframework.boot/spring-boot-actuator@4.1.2",
+            "UID": "3659372196482bf2"
+          },
+          "Version": "4.1.2",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:4658c035ed6d0dce5f3a6fb34270fac78b64bd150f99365272bda0be05f64269",
+            "DiffID": "sha256:1d9e07179aeeebbcd8d3eef090bc66fe1789ff2db0c11d4f59aad0e974204c94"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/spring-boot-actuator-4.1.2.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "org.springframework.boot:spring-boot-actuator-autoconfigure",
+          "Identifier": {
+            "PURL": "pkg:maven/org.springframework.boot/spring-boot-actuator-autoconfigure@4.1.2",
+            "UID": "f4fac71f06d7ae26"
+          },
+          "Version": "4.1.2",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:4658c035ed6d0dce5f3a6fb34270fac78b64bd150f99365272bda0be05f64269",
+            "DiffID": "sha256:1d9e07179aeeebbcd8d3eef090bc66fe1789ff2db0c11d4f59aad0e974204c94"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/spring-boot-actuator-autoconfigure-4.1.2.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "org.springframework.boot:spring-boot-autoconfigure",
+          "Identifier": {
+            "PURL": "pkg:maven/org.springframework.boot/spring-boot-autoconfigure@4.1.2",
+            "UID": "39c3952f48da9db2"
+          },
+          "Version": "4.1.2",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:4658c035ed6d0dce5f3a6fb34270fac78b64bd150f99365272bda0be05f64269",
+            "DiffID": "sha256:1d9e07179aeeebbcd8d3eef090bc66fe1789ff2db0c11d4f59aad0e974204c94"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/spring-boot-autoconfigure-4.1.2.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "org.springframework.boot:spring-boot-health",
+          "Identifier": {
+            "PURL": "pkg:maven/org.springframework.boot/spring-boot-health@4.1.2",
+            "UID": "2bea7115f96da141"
+          },
+          "Version": "4.1.2",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:4658c035ed6d0dce5f3a6fb34270fac78b64bd150f99365272bda0be05f64269",
+            "DiffID": "sha256:1d9e07179aeeebbcd8d3eef090bc66fe1789ff2db0c11d4f59aad0e974204c94"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/spring-boot-health-4.1.2.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "org.springframework.boot:spring-boot-http-converter",
+          "Identifier": {
+            "PURL": "pkg:maven/org.springframework.boot/spring-boot-http-converter@4.1.2",
+            "UID": "4b3ef06b628a39d7"
+          },
+          "Version": "4.1.2",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:4658c035ed6d0dce5f3a6fb34270fac78b64bd150f99365272bda0be05f64269",
+            "DiffID": "sha256:1d9e07179aeeebbcd8d3eef090bc66fe1789ff2db0c11d4f59aad0e974204c94"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/spring-boot-http-converter-4.1.2.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "org.springframework.boot:spring-boot-jackson",
+          "Identifier": {
+            "PURL": "pkg:maven/org.springframework.boot/spring-boot-jackson@4.1.2",
+            "UID": "84d04cd990b95d60"
+          },
+          "Version": "4.1.2",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:4658c035ed6d0dce5f3a6fb34270fac78b64bd150f99365272bda0be05f64269",
+            "DiffID": "sha256:1d9e07179aeeebbcd8d3eef090bc66fe1789ff2db0c11d4f59aad0e974204c94"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/spring-boot-jackson-4.1.2.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "org.springframework.boot:spring-boot-jarmode-tools",
+          "Identifier": {
+            "PURL": "pkg:maven/org.springframework.boot/spring-boot-jarmode-tools@4.1.2",
+            "UID": "f88ecce99e4ac986"
+          },
+          "Version": "4.1.2",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:4658c035ed6d0dce5f3a6fb34270fac78b64bd150f99365272bda0be05f64269",
+            "DiffID": "sha256:1d9e07179aeeebbcd8d3eef090bc66fe1789ff2db0c11d4f59aad0e974204c94"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/spring-boot-jarmode-tools-4.1.2.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "org.springframework.boot:spring-boot-micrometer-metrics",
+          "Identifier": {
+            "PURL": "pkg:maven/org.springframework.boot/spring-boot-micrometer-metrics@4.1.2",
+            "UID": "4d81aad05c4b5fdf"
+          },
+          "Version": "4.1.2",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:4658c035ed6d0dce5f3a6fb34270fac78b64bd150f99365272bda0be05f64269",
+            "DiffID": "sha256:1d9e07179aeeebbcd8d3eef090bc66fe1789ff2db0c11d4f59aad0e974204c94"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/spring-boot-micrometer-metrics-4.1.2.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "org.springframework.boot:spring-boot-micrometer-observation",
+          "Identifier": {
+            "PURL": "pkg:maven/org.springframework.boot/spring-boot-micrometer-observation@4.1.2",
+            "UID": "72188d9e3c0344b2"
+          },
+          "Version": "4.1.2",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:4658c035ed6d0dce5f3a6fb34270fac78b64bd150f99365272bda0be05f64269",
+            "DiffID": "sha256:1d9e07179aeeebbcd8d3eef090bc66fe1789ff2db0c11d4f59aad0e974204c94"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/spring-boot-micrometer-observation-4.1.2.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "org.springframework.boot:spring-boot-servlet",
+          "Identifier": {
+            "PURL": "pkg:maven/org.springframework.boot/spring-boot-servlet@4.1.2",
+            "UID": "e495f93cbee38f8e"
+          },
+          "Version": "4.1.2",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:4658c035ed6d0dce5f3a6fb34270fac78b64bd150f99365272bda0be05f64269",
+            "DiffID": "sha256:1d9e07179aeeebbcd8d3eef090bc66fe1789ff2db0c11d4f59aad0e974204c94"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/spring-boot-servlet-4.1.2.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "org.springframework.boot:spring-boot-tomcat",
+          "Identifier": {
+            "PURL": "pkg:maven/org.springframework.boot/spring-boot-tomcat@4.1.2",
+            "UID": "78b5ad934337d1e2"
+          },
+          "Version": "4.1.2",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:4658c035ed6d0dce5f3a6fb34270fac78b64bd150f99365272bda0be05f64269",
+            "DiffID": "sha256:1d9e07179aeeebbcd8d3eef090bc66fe1789ff2db0c11d4f59aad0e974204c94"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/spring-boot-tomcat-4.1.2.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "org.springframework.boot:spring-boot-web-server",
+          "Identifier": {
+            "PURL": "pkg:maven/org.springframework.boot/spring-boot-web-server@4.1.2",
+            "UID": "dfb87418856e96d9"
+          },
+          "Version": "4.1.2",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:4658c035ed6d0dce5f3a6fb34270fac78b64bd150f99365272bda0be05f64269",
+            "DiffID": "sha256:1d9e07179aeeebbcd8d3eef090bc66fe1789ff2db0c11d4f59aad0e974204c94"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/spring-boot-web-server-4.1.2.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "org.springframework.boot:spring-boot-webmvc",
+          "Identifier": {
+            "PURL": "pkg:maven/org.springframework.boot/spring-boot-webmvc@4.1.2",
+            "UID": "638dae0fc5f756cb"
+          },
+          "Version": "4.1.2",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:4658c035ed6d0dce5f3a6fb34270fac78b64bd150f99365272bda0be05f64269",
+            "DiffID": "sha256:1d9e07179aeeebbcd8d3eef090bc66fe1789ff2db0c11d4f59aad0e974204c94"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/spring-boot-webmvc-4.1.2.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "org.springframework:spring-aop",
+          "Identifier": {
+            "PURL": "pkg:maven/org.springframework/spring-aop@7.0.10",
+            "UID": "898170215efe9c58"
+          },
+          "Version": "7.0.10",
+          "Licenses": [
+            "Apache-2.0",
+            "BSD-3-Clause"
+          ],
+          "Layer": {
+            "Digest": "sha256:4658c035ed6d0dce5f3a6fb34270fac78b64bd150f99365272bda0be05f64269",
+            "DiffID": "sha256:1d9e07179aeeebbcd8d3eef090bc66fe1789ff2db0c11d4f59aad0e974204c94"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/spring-aop-7.0.10.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "org.springframework:spring-beans",
+          "Identifier": {
+            "PURL": "pkg:maven/org.springframework/spring-beans@7.0.10",
+            "UID": "a7ccdde5f3db071a"
+          },
+          "Version": "7.0.10",
+          "Licenses": [
+            "Apache-2.0",
+            "BSD-3-Clause"
+          ],
+          "Layer": {
+            "Digest": "sha256:4658c035ed6d0dce5f3a6fb34270fac78b64bd150f99365272bda0be05f64269",
+            "DiffID": "sha256:1d9e07179aeeebbcd8d3eef090bc66fe1789ff2db0c11d4f59aad0e974204c94"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/spring-beans-7.0.10.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "org.springframework:spring-context",
+          "Identifier": {
+            "PURL": "pkg:maven/org.springframework/spring-context@7.0.10",
+            "UID": "7641864889b4cc66"
+          },
+          "Version": "7.0.10",
+          "Licenses": [
+            "Apache-2.0",
+            "BSD-3-Clause"
+          ],
+          "Layer": {
+            "Digest": "sha256:4658c035ed6d0dce5f3a6fb34270fac78b64bd150f99365272bda0be05f64269",
+            "DiffID": "sha256:1d9e07179aeeebbcd8d3eef090bc66fe1789ff2db0c11d4f59aad0e974204c94"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/spring-context-7.0.10.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "org.springframework:spring-core",
+          "Identifier": {
+            "PURL": "pkg:maven/org.springframework/spring-core@7.0.10",
+            "UID": "4291e085dc38c61b"
+          },
+          "Version": "7.0.10",
+          "Licenses": [
+            "Apache-2.0",
+            "BSD-3-Clause"
+          ],
+          "Layer": {
+            "Digest": "sha256:4658c035ed6d0dce5f3a6fb34270fac78b64bd150f99365272bda0be05f64269",
+            "DiffID": "sha256:1d9e07179aeeebbcd8d3eef090bc66fe1789ff2db0c11d4f59aad0e974204c94"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/spring-core-7.0.10.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "org.springframework:spring-expression",
+          "Identifier": {
+            "PURL": "pkg:maven/org.springframework/spring-expression@7.0.10",
+            "UID": "595f145cf987b1e1"
+          },
+          "Version": "7.0.10",
+          "Licenses": [
+            "Apache-2.0",
+            "BSD-3-Clause"
+          ],
+          "Layer": {
+            "Digest": "sha256:4658c035ed6d0dce5f3a6fb34270fac78b64bd150f99365272bda0be05f64269",
+            "DiffID": "sha256:1d9e07179aeeebbcd8d3eef090bc66fe1789ff2db0c11d4f59aad0e974204c94"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/spring-expression-7.0.10.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "org.springframework:spring-web",
+          "Identifier": {
+            "PURL": "pkg:maven/org.springframework/spring-web@7.0.10",
+            "UID": "a7d31e99c9e8badc"
+          },
+          "Version": "7.0.10",
+          "Licenses": [
+            "Apache-2.0",
+            "BSD-3-Clause"
+          ],
+          "Layer": {
+            "Digest": "sha256:4658c035ed6d0dce5f3a6fb34270fac78b64bd150f99365272bda0be05f64269",
+            "DiffID": "sha256:1d9e07179aeeebbcd8d3eef090bc66fe1789ff2db0c11d4f59aad0e974204c94"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/spring-web-7.0.10.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "org.springframework:spring-webmvc",
+          "Identifier": {
+            "PURL": "pkg:maven/org.springframework/spring-webmvc@7.0.10",
+            "UID": "27ae51f2b0e68faf"
+          },
+          "Version": "7.0.10",
+          "Licenses": [
+            "Apache-2.0",
+            "BSD-3-Clause"
+          ],
+          "Layer": {
+            "Digest": "sha256:4658c035ed6d0dce5f3a6fb34270fac78b64bd150f99365272bda0be05f64269",
+            "DiffID": "sha256:1d9e07179aeeebbcd8d3eef090bc66fe1789ff2db0c11d4f59aad0e974204c94"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/spring-webmvc-7.0.10.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "org.yaml:snakeyaml",
+          "Identifier": {
+            "PURL": "pkg:maven/org.yaml/snakeyaml@2.6",
+            "UID": "77b25ab2a7820645"
+          },
+          "Version": "2.6",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:4658c035ed6d0dce5f3a6fb34270fac78b64bd150f99365272bda0be05f64269",
+            "DiffID": "sha256:1d9e07179aeeebbcd8d3eef090bc66fe1789ff2db0c11d4f59aad0e974204c94"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/snakeyaml-2.6.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "tools.jackson.core:jackson-core",
+          "Identifier": {
+            "PURL": "pkg:maven/tools.jackson.core/jackson-core@3.1.7",
+            "UID": "28ad3f2a5a93c4a7"
+          },
+          "Version": "3.1.7",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:4658c035ed6d0dce5f3a6fb34270fac78b64bd150f99365272bda0be05f64269",
+            "DiffID": "sha256:1d9e07179aeeebbcd8d3eef090bc66fe1789ff2db0c11d4f59aad0e974204c94"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/jackson-core-3.1.7.jar",
+          "AnalyzedBy": "jar"
+        },
+        {
+          "Name": "tools.jackson.core:jackson-databind",
+          "Identifier": {
+            "PURL": "pkg:maven/tools.jackson.core/jackson-databind@3.1.7",
+            "UID": "5c972dd26551928a"
+          },
+          "Version": "3.1.7",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:4658c035ed6d0dce5f3a6fb34270fac78b64bd150f99365272bda0be05f64269",
+            "DiffID": "sha256:1d9e07179aeeebbcd8d3eef090bc66fe1789ff2db0c11d4f59aad0e974204c94"
+          },
+          "FilePath": "app/app.jar/BOOT-INF/lib/jackson-databind-3.1.7.jar",
+          "AnalyzedBy": "jar"
+        }
+      ],
+      "Vulnerabilities": [
+        {
+          "VulnerabilityID": "CVE-2021-44228",
+          "VendorIDs": [
+            "GHSA-jfh8-c2jp-5v3q"
+          ],
+          "PkgName": "org.apache.logging.log4j:log4j-core",
+          "PkgPath": "app/app.jar/BOOT-INF/lib/log4j-core-2.14.1.jar",
+          "PkgIdentifier": {
+            "PURL": "pkg:maven/org.apache.logging.log4j/log4j-core@2.14.1",
+            "UID": "927b145e4679fc89"
+          },
+          "InstalledVersion": "2.14.1",
+          "FixedVersion": "2.15.0, 2.3.1, 2.12.2",
+          "Status": "fixed",
+          "Layer": {
+            "Digest": "sha256:4658c035ed6d0dce5f3a6fb34270fac78b64bd150f99365272bda0be05f64269",
+            "DiffID": "sha256:1d9e07179aeeebbcd8d3eef090bc66fe1789ff2db0c11d4f59aad0e974204c94"
+          },
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2021-44228",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory Maven",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Amaven"
+          },
+          "Fingerprint": "sha256:d99f9c0867c396f94de78ea7a46a40215e21d4c05a119f266543dce7ffdaca40",
+          "Title": "log4j-core: Remote code execution in Log4j 2.x when logs contain an attacker-controlled string value",
+          "Description": "Apache Log4j2 2.0-beta9 through 2.15.0 (excluding security releases 2.12.2, 2.12.3, and 2.3.1) JNDI features used in configuration, log messages, and parameters do not protect against attacker controlled LDAP and other JNDI related endpoints. An attacker who can control log messages or log message parameters can execute arbitrary code loaded from LDAP servers when message lookup substitution is enabled. From log4j 2.15.0, this behavior has been disabled by default. From version 2.16.0 (along with 2.12.2, 2.12.3, and 2.3.1), this functionality has been completely removed. Note that this vulnerability is specific to log4j-core and does not affect log4net, log4cxx, or other Apache Logging Services projects.",
+          "Severity": "CRITICAL",
+          "CweIDs": [
+            "CWE-20",
+            "CWE-400",
+            "CWE-502",
+            "CWE-917"
+          ],
+          "VendorSeverity": {
+            "amazon": 4,
+            "ghsa": 4,
+            "nvd": 4,
+            "redhat": 4,
+            "ubuntu": 3
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H/E:H",
+              "V3Score": 10
+            },
+            "nvd": {
+              "V2Vector": "AV:N/AC:M/Au:N/C:C/I:C/A:C",
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+              "V2Score": 9.3,
+              "V3Score": 10
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+              "V3Score": 9.8
+            }
+          },
+          "References": [
+            "http://packetstormsecurity.com/files/165225/Apache-Log4j2-2.14.1-Remote-Code-Execution.html",
+            "http://packetstormsecurity.com/files/165260/VMware-Security-Advisory-2021-0028.html",
+            "http://packetstormsecurity.com/files/165261/Apache-Log4j2-2.14.1-Information-Disclosure.html",
+            "http://packetstormsecurity.com/files/165270/Apache-Log4j2-2.14.1-Remote-Code-Execution.html",
+            "http://packetstormsecurity.com/files/165281/Log4j2-Log4Shell-Regexes.html",
+            "http://packetstormsecurity.com/files/165282/Log4j-Payload-Generator.html",
+            "http://packetstormsecurity.com/files/165306/L4sh-Log4j-Remote-Code-Execution.html",
+            "http://packetstormsecurity.com/files/165307/Log4j-Remote-Code-Execution-Word-Bypassing.html",
+            "http://packetstormsecurity.com/files/165311/log4j-scan-Extensive-Scanner.html",
+            "http://packetstormsecurity.com/files/165371/VMware-Security-Advisory-2021-0028.4.html",
+            "http://packetstormsecurity.com/files/165532/Log4Shell-HTTP-Header-Injection.html",
+            "http://packetstormsecurity.com/files/165642/VMware-vCenter-Server-Unauthenticated-Log4Shell-JNDI-Injection-Remote-Code-Execution.html",
+            "http://packetstormsecurity.com/files/165673/UniFi-Network-Application-Unauthenticated-Log4Shell-Remote-Code-Execution.html",
+            "http://packetstormsecurity.com/files/167794/Open-Xchange-App-Suite-7.10.x-Cross-Site-Scripting-Command-Injection.html",
+            "http://packetstormsecurity.com/files/167917/MobileIron-Log4Shell-Remote-Command-Execution.html",
+            "http://packetstormsecurity.com/files/171626/AD-Manager-Plus-7122-Remote-Code-Execution.html",
+            "http://seclists.org/fulldisclosure/2022/Dec/2",
+            "http://seclists.org/fulldisclosure/2022/Jul/11",
+            "http://seclists.org/fulldisclosure/2022/Mar/23",
+            "http://www.openwall.com/lists/oss-security/2021/12/10/1",
+            "http://www.openwall.com/lists/oss-security/2021/12/10/2",
+            "http://www.openwall.com/lists/oss-security/2021/12/10/3",
+            "http://www.openwall.com/lists/oss-security/2021/12/13/1",
+            "http://www.openwall.com/lists/oss-security/2021/12/13/2",
+            "http://www.openwall.com/lists/oss-security/2021/12/14/4",
+            "http://www.openwall.com/lists/oss-security/2021/12/15/3",
+            "https://access.redhat.com/security/cve/CVE-2021-44228",
+            "https://cert-portal.siemens.com/productcert/pdf/ssa-397453.pdf",
+            "https://cert-portal.siemens.com/productcert/pdf/ssa-479842.pdf",
+            "https://cert-portal.siemens.com/productcert/pdf/ssa-661247.pdf",
+            "https://cert-portal.siemens.com/productcert/pdf/ssa-714170.pdf",
+            "https://github.com/advisories/GHSA-7rjr-3q55-vv33",
+            "https://github.com/advisories/GHSA-jfh8-c2jp-5v3q",
+            "https://github.com/apache/logging-log4j2",
+            "https://github.com/apache/logging-log4j2/commit/c77b3cb39312b83b053d23a2158b99ac7de44dd3",
+            "https://github.com/apache/logging-log4j2/pull/608",
+            "https://github.com/cisagov/log4j-affected-db",
+            "https://github.com/cisagov/log4j-affected-db/blob/develop/SOFTWARE-LIST.md",
+            "https://github.com/github/advisory-database/pull/5501",
+            "https://github.com/nu11secur1ty/CVE-mitre/tree/main/CVE-2021-44228",
+            "https://github.com/tangxiaofeng7/apache-log4j-poc",
+            "https://issues.apache.org/jira/browse/LOG4J2-3198",
+            "https://issues.apache.org/jira/browse/LOG4J2-3201",
+            "https://issues.apache.org/jira/browse/LOG4J2-3214",
+            "https://issues.apache.org/jira/browse/LOG4J2-3221",
+            "https://lists.debian.org/debian-lts-announce/2021/12/msg00007.html",
+            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/M5CSVUNV4HWZZXGOKNSK6L7RPM7BOKIB",
+            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/M5CSVUNV4HWZZXGOKNSK6L7RPM7BOKIB/",
+            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/VU57UJDCFIASIO35GC55JMKSRXJMCDFM",
+            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/VU57UJDCFIASIO35GC55JMKSRXJMCDFM/",
+            "https://logging.apache.org/log4j/2.x/changes-report.html#a2.15.0",
+            "https://logging.apache.org/log4j/2.x/manual/lookups.html#JndiLookup",
+            "https://logging.apache.org/log4j/2.x/manual/migration.html",
+            "https://logging.apache.org/log4j/2.x/security.html",
+            "https://msrc-blog.microsoft.com/2021/12/11/microsofts-response-to-cve-2021-44228-apache-log4j2",
+            "https://msrc-blog.microsoft.com/2021/12/11/microsofts-response-to-cve-2021-44228-apache-log4j2/",
+            "https://nvd.nist.gov/vuln/detail/CVE-2021-44228",
+            "https://packetstormsecurity.com/files/165673/UniFi-Network-Application-Unauthenticated-Log4Shell-Remote-Code-Execution.html",
+            "https://packetstormsecurity.com/files/167794/Open-Xchange-App-Suite-7.10.x-Cross-Site-Scripting-Command-Injection.html",
+            "https://packetstormsecurity.com/files/167917/MobileIron-Log4Shell-Remote-Command-Execution.html",
+            "https://packetstormsecurity.com/files/171626/AD-Manager-Plus-7122-Remote-Code-Execution.html",
+            "https://psirt.global.sonicwall.com/vuln-detail/SNWLID-2021-0032",
+            "https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-apache-log4j-qRuKNEbd",
+            "https://seclists.org/fulldisclosure/2022/Dec/2",
+            "https://seclists.org/fulldisclosure/2022/Jul/11",
+            "https://seclists.org/fulldisclosure/2022/Mar/23",
+            "https://security.netapp.com/advisory/ntap-20211210-0007",
+            "https://security.netapp.com/advisory/ntap-20211210-0007/",
+            "https://support.apple.com/kb/HT213189",
+            "https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-apache-log4j-qRuKNEbd",
+            "https://twitter.com/kurtseifried/status/1469345530182455296",
+            "https://ubuntu.com/security/notices/USN-5192-1",
+            "https://ubuntu.com/security/notices/USN-5192-2",
+            "https://ubuntu.com/security/notices/USN-5197-1",
+            "https://wiki.ubuntu.com/SecurityTeam/KnowledgeBase/Log4Shell",
+            "https://www.bentley.com/en/common-vulnerability-exposure/be-2022-0001",
+            "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+            "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2021-44228",
+            "https://www.cve.org/CVERecord?id=CVE-2021-44228",
+            "https://www.debian.org/security/2021/dsa-5020",
+            "https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00646.html",
+            "https://www.kb.cert.org/vuls/id/930724",
+            "https://www.lunasec.io/docs/blog/log4j-zero-day/",
+            "https://www.nu11secur1ty.com/2021/12/cve-2021-44228.html",
+            "https://www.oracle.com/security-alerts/alert-cve-2021-44228.html",
+            "https://www.oracle.com/security-alerts/cpuapr2022.html",
+            "https://www.oracle.com/security-alerts/cpujan2022.html"
+          ],
+          "PublishedDate": "2021-12-10T10:15:09.143Z",
+          "LastModifiedDate": "2026-08-11T19:33:44.513Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2021-45046",
+          "VendorIDs": [
+            "GHSA-7rjr-3q55-vv33"
+          ],
+          "PkgName": "org.apache.logging.log4j:log4j-core",
+          "PkgPath": "app/app.jar/BOOT-INF/lib/log4j-core-2.14.1.jar",
+          "PkgIdentifier": {
+            "PURL": "pkg:maven/org.apache.logging.log4j/log4j-core@2.14.1",
+            "UID": "927b145e4679fc89"
+          },
+          "InstalledVersion": "2.14.1",
+          "FixedVersion": "2.16.0, 2.12.2, 2.3.1",
+          "Status": "fixed",
+          "Layer": {
+            "Digest": "sha256:4658c035ed6d0dce5f3a6fb34270fac78b64bd150f99365272bda0be05f64269",
+            "DiffID": "sha256:1d9e07179aeeebbcd8d3eef090bc66fe1789ff2db0c11d4f59aad0e974204c94"
+          },
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2021-45046",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory Maven",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Amaven"
+          },
+          "Fingerprint": "sha256:1a0e58f5ea74977a5e5453f7f47f0e5d149fde2601e8c58ce9bcfe06ba750ba1",
+          "Title": "log4j-core: DoS in log4j 2.x with thread context message pattern and context lookup pattern (incomplete fix for CVE-2021-44228)",
+          "Description": "It was found that the fix to address CVE-2021-44228 in Apache Log4j 2.15.0 was incomplete in certain non-default configurations. This could allows attackers with control over Thread Context Map (MDC) input data when the logging configuration uses a non-default Pattern Layout with either a Context Lookup (for example, $${ctx:loginId}) or a Thread Context Map pattern (%X, %mdc, or %MDC) to craft malicious input data using a JNDI Lookup pattern resulting in an information leak and remote code execution in some environments and local code execution in all environments. Log4j 2.16.0 (Java 8) and 2.12.2 (Java 7) fix this issue by removing support for message lookup patterns and disabling JNDI functionality by default.",
+          "Severity": "CRITICAL",
+          "CweIDs": [
+            "CWE-917"
+          ],
+          "VendorSeverity": {
+            "amazon": 4,
+            "ghsa": 4,
+            "nvd": 4,
+            "redhat": 2,
+            "ubuntu": 3
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:H",
+              "V3Score": 9.1
+            },
+            "nvd": {
+              "V2Vector": "AV:N/AC:H/Au:N/C:P/I:P/A:P",
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:H",
+              "V2Score": 5.1,
+              "V3Score": 9
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+              "V3Score": 8.1
+            }
+          },
+          "References": [
+            "http://www.openwall.com/lists/oss-security/2021/12/14/4",
+            "http://www.openwall.com/lists/oss-security/2021/12/15/3",
+            "http://www.openwall.com/lists/oss-security/2021/12/18/1",
+            "https://access.redhat.com/security/cve/CVE-2021-44228",
+            "https://access.redhat.com/security/cve/CVE-2021-45046",
+            "https://cert-portal.siemens.com/productcert/pdf/ssa-397453.pdf",
+            "https://cert-portal.siemens.com/productcert/pdf/ssa-479842.pdf",
+            "https://cert-portal.siemens.com/productcert/pdf/ssa-661247.pdf",
+            "https://cert-portal.siemens.com/productcert/pdf/ssa-714170.pdf",
+            "https://github.com/apache/logging-log4j2/compare/rel/2.3...rel/2.3.1",
+            "https://issues.apache.org/jira/browse/LOG4J2-3221",
+            "https://lists.apache.org/thread/83y7dx5xvn3h5290q1twn16tltolv88f",
+            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/EOKPQGV24RRBBI4TBZUDQMM4MEH7MXCY",
+            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/EOKPQGV24RRBBI4TBZUDQMM4MEH7MXCY/",
+            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/SIG7FZULMNK2XF6FZRU4VWYDQXNMUGAJ",
+            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/SIG7FZULMNK2XF6FZRU4VWYDQXNMUGAJ/",
+            "https://logging.apache.org/log4j/2.x/security.html",
+            "https://logging.apache.org/security.html#CVE-2021-45046",
+            "https://nvd.nist.gov/vuln/detail/CVE-2021-45046",
+            "https://psirt.global.sonicwall.com/vuln-detail/SNWLID-2021-0032",
+            "https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-apache-log4j-qRuKNEbd",
+            "https://security.gentoo.org/glsa/202310-16",
+            "https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-apache-log4j-qRuKNEbd",
+            "https://ubuntu.com/security/notices/USN-5197-1",
+            "https://wiki.ubuntu.com/SecurityTeam/KnowledgeBase/Log4Shell",
+            "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+            "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2021-45046",
+            "https://www.cve.org/CVERecord?id=CVE-2021-44228",
+            "https://www.cve.org/CVERecord?id=CVE-2021-45046",
+            "https://www.debian.org/security/2021/dsa-5022",
+            "https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00646.html",
+            "https://www.kb.cert.org/vuls/id/930724",
+            "https://www.openwall.com/lists/oss-security/2021/12/14/4",
+            "https://www.openwall.com/lists/oss-security/2021/12/15/3",
+            "https://www.openwall.com/lists/oss-security/2021/12/18/1",
+            "https://www.oracle.com/security-alerts/alert-cve-2021-44228.html",
+            "https://www.oracle.com/security-alerts/cpuapr2022.html",
+            "https://www.oracle.com/security-alerts/cpujan2022.html",
+            "https://www.oracle.com/security-alerts/cpujul2022.html"
+          ],
+          "PublishedDate": "2021-12-14T19:15:07.733Z",
+          "LastModifiedDate": "2026-06-17T04:13:05.57Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2021-45105",
+          "VendorIDs": [
+            "GHSA-p6xc-xr62-6r2g"
+          ],
+          "PkgName": "org.apache.logging.log4j:log4j-core",
+          "PkgPath": "app/app.jar/BOOT-INF/lib/log4j-core-2.14.1.jar",
+          "PkgIdentifier": {
+            "PURL": "pkg:maven/org.apache.logging.log4j/log4j-core@2.14.1",
+            "UID": "927b145e4679fc89"
+          },
+          "InstalledVersion": "2.14.1",
+          "FixedVersion": "2.12.3, 2.17.0, 2.3.1",
+          "Status": "fixed",
+          "Layer": {
+            "Digest": "sha256:4658c035ed6d0dce5f3a6fb34270fac78b64bd150f99365272bda0be05f64269",
+            "DiffID": "sha256:1d9e07179aeeebbcd8d3eef090bc66fe1789ff2db0c11d4f59aad0e974204c94"
+          },
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2021-45105",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory Maven",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Amaven"
+          },
+          "Fingerprint": "sha256:b5c1c1b52dfb9aa817dd94bb3ee4dd1973bbecf89c5ee90320634db768cb0d73",
+          "Title": "log4j-core: DoS in log4j 2.x with Thread Context Map (MDC) input data contains a recursive lookup and context lookup pattern",
+          "Description": "Apache Log4j2 versions 2.0-alpha1 through 2.16.0 (excluding 2.12.3 and 2.3.1) did not protect from uncontrolled recursion from self-referential lookups. This allows an attacker with control over Thread Context Map data to cause a denial of service when a crafted string is interpreted. This issue was fixed in Log4j 2.17.0, 2.12.3, and 2.3.1.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-20",
+            "CWE-674"
+          ],
+          "VendorSeverity": {
+            "amazon": 4,
+            "ghsa": 3,
+            "nvd": 2,
+            "redhat": 2,
+            "ubuntu": 2
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:N/A:H",
+              "V3Score": 8.6
+            },
+            "nvd": {
+              "V2Vector": "AV:N/AC:M/Au:N/C:N/I:N/A:P",
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V2Score": 4.3,
+              "V3Score": 5.9
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 5.9
+            }
+          },
+          "References": [
+            "http://www.openwall.com/lists/oss-security/2021/12/19/1",
+            "https://access.redhat.com/security/cve/CVE-2021-45105",
+            "https://cert-portal.siemens.com/productcert/pdf/ssa-479842.pdf",
+            "https://cert-portal.siemens.com/productcert/pdf/ssa-501673.pdf",
+            "https://issues.apache.org/jira/browse/LOG4J2-3230",
+            "https://lists.debian.org/debian-lts-announce/2021/12/msg00017.html",
+            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/EOKPQGV24RRBBI4TBZUDQMM4MEH7MXCY",
+            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/SIG7FZULMNK2XF6FZRU4VWYDQXNMUGAJ",
+            "https://logging.apache.org/log4j/2.x/security.html",
+            "https://logging.apache.org/log4j/2.x/security.html#CVE-2021-45105",
+            "https://nvd.nist.gov/vuln/detail/CVE-2021-45105",
+            "https://psirt.global.sonicwall.com/vuln-detail/SNWLID-2021-0032",
+            "https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-apache-log4j-qRuKNEbd",
+            "https://security.netapp.com/advisory/ntap-20211218-0001",
+            "https://security.netapp.com/advisory/ntap-20211218-0001/",
+            "https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-apache-log4j-qRuKNEbd",
+            "https://ubuntu.com/security/notices/USN-5203-1",
+            "https://ubuntu.com/security/notices/USN-5222-1",
+            "https://wiki.ubuntu.com/SecurityTeam/KnowledgeBase/Log4Shell",
+            "https://www.cve.org/CVERecord?id=CVE-2021-45105",
+            "https://www.debian.org/security/2021/dsa-5024",
+            "https://www.kb.cert.org/vuls/id/930724",
+            "https://www.openwall.com/lists/oss-security/2021/12/19/1",
+            "https://www.oracle.com/security-alerts/cpuapr2022.html",
+            "https://www.oracle.com/security-alerts/cpujan2022.html",
+            "https://www.oracle.com/security-alerts/cpujul2022.html",
+            "https://www.zerodayinitiative.com/advisories/ZDI-21-1541",
+            "https://www.zerodayinitiative.com/advisories/ZDI-21-1541/"
+          ],
+          "PublishedDate": "2021-12-18T12:15:07.433Z",
+          "LastModifiedDate": "2026-08-25T16:28:27.31Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2021-44832",
+          "VendorIDs": [
+            "GHSA-8489-44mv-ggj8"
+          ],
+          "PkgName": "org.apache.logging.log4j:log4j-core",
+          "PkgPath": "app/app.jar/BOOT-INF/lib/log4j-core-2.14.1.jar",
+          "PkgIdentifier": {
+            "PURL": "pkg:maven/org.apache.logging.log4j/log4j-core@2.14.1",
+            "UID": "927b145e4679fc89"
+          },
+          "InstalledVersion": "2.14.1",
+          "FixedVersion": "2.3.2, 2.12.4, 2.17.1",
+          "Status": "fixed",
+          "Layer": {
+            "Digest": "sha256:4658c035ed6d0dce5f3a6fb34270fac78b64bd150f99365272bda0be05f64269",
+            "DiffID": "sha256:1d9e07179aeeebbcd8d3eef090bc66fe1789ff2db0c11d4f59aad0e974204c94"
+          },
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2021-44832",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory Maven",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Amaven"
+          },
+          "Fingerprint": "sha256:e591b96450cf9910bafe97e434d74744f51a8465f0e612dc050deef9cca8b381",
+          "Title": "log4j-core: remote code execution via JDBC Appender",
+          "Description": "Apache Log4j2 versions 2.0-beta7 through 2.17.0 (excluding security fix releases 2.3.2 and 2.12.4) are vulnerable to a remote code execution (RCE) attack when a configuration uses a JDBC Appender with a JNDI LDAP data source URI when an attacker has control of the target LDAP server. This issue is fixed by limiting JNDI data source names to the java protocol in Log4j2 versions 2.17.1, 2.12.4, and 2.3.2.",
+          "Severity": "MEDIUM",
+          "CweIDs": [
+            "CWE-20",
+            "CWE-74"
+          ],
+          "VendorSeverity": {
+            "amazon": 4,
+            "ghsa": 2,
+            "nvd": 2,
+            "redhat": 2,
+            "ubuntu": 2
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H",
+              "V3Score": 6.6
+            },
+            "nvd": {
+              "V2Vector": "AV:N/AC:M/Au:S/C:C/I:C/A:C",
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H",
+              "V2Score": 8.5,
+              "V3Score": 6.6
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H",
+              "V3Score": 6.6
+            }
+          },
+          "References": [
+            "http://www.openwall.com/lists/oss-security/2021/12/28/1",
+            "https://access.redhat.com/security/cve/CVE-2021-44832",
+            "https://cert-portal.siemens.com/productcert/pdf/ssa-784507.pdf",
+            "https://github.com/apache/logging-log4j2",
+            "https://github.com/apache/logging-log4j2/commit/05db5f9527254632b59aed2a1d78a32c5ab74f16",
+            "https://issues.apache.org/jira/browse/LOG4J2-3293",
+            "https://lists.apache.org/thread/s1o5vlo78ypqxnzn6p8zf6t9shtq5143",
+            "https://lists.debian.org/debian-lts-announce/2021/12/msg00036.html",
+            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/EVV25FXL4FU5X6X5BSL7RLQ7T6F65MRA",
+            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/EVV25FXL4FU5X6X5BSL7RLQ7T6F65MRA/",
+            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/T57MPJUW3MA6QGWZRTMCHHMMPQNVKGFC",
+            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/T57MPJUW3MA6QGWZRTMCHHMMPQNVKGFC/",
+            "https://nvd.nist.gov/vuln/detail/CVE-2021-44832",
+            "https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-apache-log4j-qRuKNEbd",
+            "https://security.netapp.com/advisory/ntap-20220104-0001",
+            "https://security.netapp.com/advisory/ntap-20220104-0001/",
+            "https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-apache-log4j-qRuKNEbd",
+            "https://ubuntu.com/security/notices/USN-5222-1",
+            "https://www.cve.org/CVERecord?id=CVE-2021-44832",
+            "https://www.oracle.com/security-alerts/cpuapr2022.html",
+            "https://www.oracle.com/security-alerts/cpujan2022.html",
+            "https://www.oracle.com/security-alerts/cpujul2022.html"
+          ],
+          "PublishedDate": "2021-12-28T20:15:08.4Z",
+          "LastModifiedDate": "2026-06-17T04:12:52.013Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2025-68161",
+          "VendorIDs": [
+            "GHSA-vc5p-v9hr-52mj"
+          ],
+          "PkgName": "org.apache.logging.log4j:log4j-core",
+          "PkgPath": "app/app.jar/BOOT-INF/lib/log4j-core-2.14.1.jar",
+          "PkgIdentifier": {
+            "PURL": "pkg:maven/org.apache.logging.log4j/log4j-core@2.14.1",
+            "UID": "927b145e4679fc89"
+          },
+          "InstalledVersion": "2.14.1",
+          "FixedVersion": "2.25.3",
+          "Status": "fixed",
+          "Layer": {
+            "Digest": "sha256:4658c035ed6d0dce5f3a6fb34270fac78b64bd150f99365272bda0be05f64269",
+            "DiffID": "sha256:1d9e07179aeeebbcd8d3eef090bc66fe1789ff2db0c11d4f59aad0e974204c94"
+          },
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-68161",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory Maven",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Amaven"
+          },
+          "Fingerprint": "sha256:c16cee309dda86fd7106fd35bc90ea719862943f0f9be21d57b66f4693cd2b56",
+          "Title": "Apache Log4j: Apache Log4j Core: Information disclosure via missing TLS hostname verification",
+          "Description": "The Socket Appender in Apache Log4j Core versions 2.0-beta9 through 2.25.2 does not perform TLS hostname verification of the peer certificate, even when the  verifyHostName https://logging.apache.org/log4j/2.x/manual/appenders/network.html#SslConfiguration-attr-verifyHostName  configuration attribute or the  log4j2.sslVerifyHostName https://logging.apache.org/log4j/2.x/manual/systemproperties.html#log4j2.sslVerifyHostName  system property is set to true.\n\nThis issue may allow a man-in-the-middle attacker to intercept or redirect log traffic under the following conditions:\n\n  *  The attacker is able to intercept or redirect network traffic between the client and the log receiver.\n  *  The attacker can present a server certificate issued by a certification authority trusted by the Socket Appender’s configured trust store (or by the default Java trust store if no custom trust store is configured).\n\n\nUsers are advised to upgrade to Apache Log4j Core version 2.25.3, which addresses this issue.\n\nAs an alternative mitigation, the Socket Appender may be configured to use a private or restricted trust root to limit the set of trusted certificates.",
+          "Severity": "MEDIUM",
+          "CweIDs": [
+            "CWE-297",
+            "CWE-295"
+          ],
+          "VendorSeverity": {
+            "amazon": 2,
+            "ghsa": 2,
+            "nvd": 2,
+            "redhat": 2
+          },
+          "CVSS": {
+            "ghsa": {
+              "V40Vector": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:L/SA:N",
+              "V40Score": 6.3
+            },
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:N",
+              "V3Score": 4.8
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N",
+              "V3Score": 5.9
+            }
+          },
+          "References": [
+            "http://www.openwall.com/lists/oss-security/2025/12/18/1",
+            "https://access.redhat.com/security/cve/CVE-2025-68161",
+            "https://advisory.echohq.com/cve/CVE-2025-68161",
+            "https://github.com/apache/logging-log4j2",
+            "https://github.com/apache/logging-log4j2/commit/3b93748497e1adbbd027fda8a5e7268ec5d0d578",
+            "https://github.com/apache/logging-log4j2/pull/4002",
+            "https://lists.apache.org/thread/xr33kyxq3sl67lwb61ggvm1fzc8k7dvx",
+            "https://lists.debian.org/debian-lts-announce/2026/01/msg00015.html",
+            "https://logging.apache.org/cyclonedx/vdr.xml",
+            "https://logging.apache.org/log4j/2.x/manual/appenders/network.html#SslConfiguration-attr-verifyHostName",
+            "https://logging.apache.org/log4j/2.x/manual/systemproperties.html#log4j2.sslVerifyHostName",
+            "https://logging.apache.org/security.html#CVE-2025-68161",
+            "https://nvd.nist.gov/vuln/detail/CVE-2025-68161",
+            "https://www.cve.org/CVERecord?id=CVE-2025-68161"
+          ],
+          "PublishedDate": "2025-12-18T21:15:57.96Z",
+          "LastModifiedDate": "2026-06-17T09:58:39.58Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-34477",
+          "VendorIDs": [
+            "GHSA-6hg6-v5c8-fphq"
+          ],
+          "PkgName": "org.apache.logging.log4j:log4j-core",
+          "PkgPath": "app/app.jar/BOOT-INF/lib/log4j-core-2.14.1.jar",
+          "PkgIdentifier": {
+            "PURL": "pkg:maven/org.apache.logging.log4j/log4j-core@2.14.1",
+            "UID": "927b145e4679fc89"
+          },
+          "InstalledVersion": "2.14.1",
+          "FixedVersion": "2.25.4",
+          "Status": "fixed",
+          "Layer": {
+            "Digest": "sha256:4658c035ed6d0dce5f3a6fb34270fac78b64bd150f99365272bda0be05f64269",
+            "DiffID": "sha256:1d9e07179aeeebbcd8d3eef090bc66fe1789ff2db0c11d4f59aad0e974204c94"
+          },
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-34477",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory Maven",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Amaven"
+          },
+          "Fingerprint": "sha256:dbed0469cd638d5081f31980a001151560c9c41e23defb4cba74bf9eadc3ef3a",
+          "Title": "org.apache.logging.log4j/log4j-core: Apache Log4j Core: Man-in-the-middle attack due to incomplete hostname verification",
+          "Description": "The fix for  CVE-2025-68161 https://logging.apache.org/security.html#CVE-2025-68161  was incomplete: it addressed hostname verification only when enabled via the  log4j2.sslVerifyHostName https://logging.apache.org/log4j/2.x/manual/systemproperties.html#log4j2.sslVerifyHostName  system property, but not when configured through the  verifyHostName https://logging.apache.org/log4j/2.x/manual/appenders/network.html#SslConfiguration-attr-verifyHostName  attribute of the \u003cSsl\u003e element.\n\nAlthough the verifyHostName configuration attribute was introduced in Log4j Core 2.12.0, it was silently ignored in all versions through 2.25.3, leaving TLS connections vulnerable to interception regardless of the configured value.\n\nA network-based attacker may be able to perform a man-in-the-middle attack when all of the following conditions are met:\n\n  *  An SMTP, Socket, or Syslog appender is in use.\n  *  TLS is configured via a nested \u003cSsl\u003e element.\n  *  The attacker can present a certificate issued by a CA trusted by the appender's configured trust store, or by the default Java trust store if none is configured.\nThis issue does not affect users of the HTTP appender, which uses a separate  verifyHostname https://logging.apache.org/log4j/2.x/manual/appenders/network.html#HttpAppender-attr-verifyHostName  attribute that was not subject to this bug and verifies host names by default.\n\nUsers are advised to upgrade to Apache Log4j Core 2.25.4, which corrects this issue.",
+          "Severity": "MEDIUM",
+          "CweIDs": [
+            "CWE-297",
+            "CWE-295"
+          ],
+          "VendorSeverity": {
+            "ghsa": 2,
+            "nvd": 2,
+            "redhat": 2
+          },
+          "CVSS": {
+            "ghsa": {
+              "V40Vector": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:L/SA:N",
+              "V40Score": 6.3
+            },
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:N",
+              "V3Score": 5.9
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:N",
+              "V3Score": 6.8
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2026-34477",
+            "https://advisory.echohq.com/cve/CVE-2026-34477",
+            "https://github.com/apache/logging-log4j2",
+            "https://github.com/apache/logging-log4j2/pull/4075",
+            "https://lists.apache.org/thread/lkx8cl46t2bvkcwfcb2pd43ygc097lq4",
+            "https://logging.apache.org/cyclonedx/vdr.xml",
+            "https://logging.apache.org/log4j/2.x/manual/appenders/network.html#SslConfiguration-attr-verifyHostName",
+            "https://logging.apache.org/security.html#CVE-2026-34477",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-34477",
+            "https://www.cve.org/CVERecord?id=CVE-2026-34477"
+          ],
+          "PublishedDate": "2026-04-10T16:16:30.843Z",
+          "LastModifiedDate": "2026-10-26T22:10:00.163Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-34479",
+          "VendorIDs": [
+            "GHSA-h383-gmxw-35v2"
+          ],
+          "PkgName": "org.apache.logging.log4j:log4j-core",
+          "PkgPath": "app/app.jar/BOOT-INF/lib/log4j-core-2.14.1.jar",
+          "PkgIdentifier": {
+            "PURL": "pkg:maven/org.apache.logging.log4j/log4j-core@2.14.1",
+            "UID": "927b145e4679fc89"
+          },
+          "InstalledVersion": "2.14.1",
+          "FixedVersion": "2.25.4",
+          "Status": "fixed",
+          "Layer": {
+            "Digest": "sha256:4658c035ed6d0dce5f3a6fb34270fac78b64bd150f99365272bda0be05f64269",
+            "DiffID": "sha256:1d9e07179aeeebbcd8d3eef090bc66fe1789ff2db0c11d4f59aad0e974204c94"
+          },
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-34479",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory Maven",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Amaven"
+          },
+          "Fingerprint": "sha256:8532ee777eb5c929f28630b57add7b9048f16c9d09cbe7ecca07ceec9f793ce5",
+          "Title": "org.apache.logging.log4j/log4j-1.2-api: Apache Log4j 1-to-Log4j 2 bridge: Log processing denial of service due to improper XML escaping",
+          "Description": "The Log4j1XmlLayout from the Apache Log4j 1-to-Log4j 2 bridge fails to escape characters forbidden by the XML 1.0 standard, producing malformed XML output. Conforming XML parsers are required to reject documents containing such characters with a fatal error, which may cause downstream log processing systems to drop or fail to index affected records.\n\nTwo groups of users are affected:\n\n  *  Those using Log4j1XmlLayout directly in a Log4j Core 2 configuration file.\n  *  Those using the Log4j 1 configuration compatibility layer with org.apache.log4j.xml.XMLLayout specified as the layout class.\n\n\nUsers are advised to upgrade to Apache Log4j 1-to-Log4j 2 bridge version 2.25.4, which corrects this issue.\n\nNote: The Apache Log4j 1-to-Log4j 2 bridge is deprecated and will not be present in Log4j 3. Users are encouraged to consult the  Log4j 1 to Log4j 2 migration guide https://logging.apache.org/log4j/2.x/migrate-from-log4j1.html , and specifically the section on eliminating reliance on the bridge.",
+          "Severity": "MEDIUM",
+          "CweIDs": [
+            "CWE-116"
+          ],
+          "VendorSeverity": {
+            "ghsa": 2,
+            "nvd": 3,
+            "redhat": 2,
+            "ubuntu": 2
+          },
+          "CVSS": {
+            "ghsa": {
+              "V40Vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:N/SC:N/SI:L/SA:N",
+              "V40Score": 6.9
+            },
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N",
+              "V3Score": 7.5
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+              "V3Score": 5.3
+            }
+          },
+          "References": [
+            "http://www.openwall.com/lists/oss-security/2026/04/10/8",
+            "https://access.redhat.com/security/cve/CVE-2026-34479",
+            "https://advisory.echohq.com/cve/CVE-2026-34479",
+            "https://github.com/apache/logging-log4j2",
+            "https://github.com/apache/logging-log4j2/pull/4078",
+            "https://lists.apache.org/thread/gd0hp6mj17rn3kj279vgy4p7kd4zz5on",
+            "https://logging.apache.org/cyclonedx/vdr.xml",
+            "https://logging.apache.org/log4j/2.x/migrate-from-log4j1.html",
+            "https://logging.apache.org/security.html#CVE-2026-34479",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-34479",
+            "https://www.cve.org/CVERecord?id=CVE-2026-34479"
+          ],
+          "PublishedDate": "2026-04-10T16:16:31.27Z",
+          "LastModifiedDate": "2026-10-26T21:10:00.17Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-34480",
+          "VendorIDs": [
+            "GHSA-3pxv-7cmr-fjr4"
+          ],
+          "PkgName": "org.apache.logging.log4j:log4j-core",
+          "PkgPath": "app/app.jar/BOOT-INF/lib/log4j-core-2.14.1.jar",
+          "PkgIdentifier": {
+            "PURL": "pkg:maven/org.apache.logging.log4j/log4j-core@2.14.1",
+            "UID": "927b145e4679fc89"
+          },
+          "InstalledVersion": "2.14.1",
+          "FixedVersion": "2.25.4",
+          "Status": "fixed",
+          "Layer": {
+            "Digest": "sha256:4658c035ed6d0dce5f3a6fb34270fac78b64bd150f99365272bda0be05f64269",
+            "DiffID": "sha256:1d9e07179aeeebbcd8d3eef090bc66fe1789ff2db0c11d4f59aad0e974204c94"
+          },
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-34480",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory Maven",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Amaven"
+          },
+          "Fingerprint": "sha256:6cbdfa3eee9c63158d15db7c6504868b2828cefec4025a72edb6e568b8f3905b",
+          "Title": "org.apache.logging.log4j/log4j-core: Apache Log4j Core: Invalid XML output causes denial of service in logging",
+          "Description": "Apache Log4j Core's  XmlLayout https://logging.apache.org/log4j/2.x/manual/layouts.html#XmlLayout , in versions up to and including 2.25.3, fails to sanitize characters forbidden by the  XML 1.0 specification https://www.w3.org/TR/xml/#charsets  producing invalid XML output whenever a log message or MDC value contains such characters.\n\nThe impact depends on the StAX implementation in use:\n\n  *  JRE built-in StAX: Forbidden characters are silently written to the output, producing malformed XML. Conforming parsers must reject such documents with a fatal error, which may cause downstream log-processing systems to drop the affected records.\n  *  Alternative StAX implementations (e.g.,  Woodstox https://github.com/FasterXML/woodstox , a transitive dependency of the Jackson XML Dataformat module): An exception is thrown during the logging call, and the log event is never delivered to its intended appender, only to Log4j's internal status logger.\n\n\nUsers are advised to upgrade to Apache Log4j Core 2.25.4, which corrects this issue by sanitizing forbidden characters before XML output.",
+          "Severity": "MEDIUM",
+          "CweIDs": [
+            "CWE-116"
+          ],
+          "VendorSeverity": {
+            "ghsa": 2,
+            "nvd": 3,
+            "redhat": 2,
+            "ubuntu": 2
+          },
+          "CVSS": {
+            "ghsa": {
+              "V40Vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:N/SC:N/SI:L/SA:N",
+              "V40Score": 6.9
+            },
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N",
+              "V3Score": 7.5
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+              "V3Score": 5.3
+            }
+          },
+          "References": [
+            "http://www.openwall.com/lists/oss-security/2026/04/10/9",
+            "https://access.redhat.com/security/cve/CVE-2026-34480",
+            "https://advisory.echohq.com/cve/CVE-2026-34480",
+            "https://github.com/apache/logging-log4j2",
+            "https://github.com/apache/logging-log4j2/pull/4077",
+            "https://lists.apache.org/thread/5x0hcnng0chhghp6jgjdp3qmbbhfjzhb",
+            "https://logging.apache.org/cyclonedx/vdr.xml",
+            "https://logging.apache.org/log4j/2.x/manual/layouts.html#XmlLayout",
+            "https://logging.apache.org/security.html#CVE-2026-34480",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-34480",
+            "https://www.cve.org/CVERecord?id=CVE-2026-34480"
+          ],
+          "PublishedDate": "2026-04-10T16:16:31.463Z",
+          "LastModifiedDate": "2026-10-26T22:10:00.163Z"
+        }
+      ]
+    }
+  ]
+}
