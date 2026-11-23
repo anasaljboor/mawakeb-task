@@ -1,0 +1,33 @@
+# Chapter 3 verification (2026-11-23T00:11Z)
+
+## Workload
+NAME                     READY   UP-TO-DATE   AVAILABLE   AGE    CONTAINERS   IMAGES                                  SELECTOR
+deployment.apps/beacon   2/2     2            2           7m9s   app          docker.io/library/beacon:33c3ee19e7c2   app.kubernetes.io/name=beacon
+
+NAME                         READY   STATUS    RESTARTS   AGE     IP            NODE            NOMINATED NODE   READINESS GATES
+pod/beacon-7f779c8dd-g2npt   1/1     Running   0          4m40s   10.244.1.10   beacon-worker   <none>           <none>
+pod/beacon-7f779c8dd-swzcg   1/1     Running   0          96s     10.244.1.12   beacon-worker   <none>           <none>
+
+NAME             TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)   AGE    SELECTOR
+service/beacon   ClusterIP   10.96.2.174   <none>        80/TCP    7m9s   app.kubernetes.io/name=beacon
+
+NAME                               CLASS     HOSTS                     ADDRESS   PORTS   AGE
+ingress.networking.k8s.io/beacon   traefik   beacon.127.0.0.1.nip.io             80      7m9s
+
+## Smoke test through Ingress
+GET /                -> hello anas
+GET /actuator/health -> {"groups":["liveness","readiness"],"status":"UP"}
+smoke test passed
+
+## Pod deletion (one pod) under load
+requests=104 ok=104 failed=0
+
+## Failed rollout (image does-not-exist) under load
+deploy.sh exit=1, rolled back declaratively, requests=189 ok=189 failed=0
+
+## Rollout history
+deployment.apps/beacon 
+REVISION  CHANGE-CAUSE
+4         image=docker.io/library/beacon:does-not-exist commit=33c3ee19e7c2
+5         rollback to image=docker.io/library/beacon:33c3ee19e7c2 after failed image=docker.io/library/beacon:does-not-exist
+

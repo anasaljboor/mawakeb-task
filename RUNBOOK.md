@@ -1,6 +1,6 @@
 # Beacon of Release — Runbook
 
-Rebuild the lab from this repository alone. Status: Chapters 1–2 complete.
+Rebuild the lab from this repository alone. Status: Chapters 1–3 complete.
 
 ## Architecture
 
@@ -150,6 +150,34 @@ docker run --rm -d --name beacon -p 8080:8080 --read-only --tmpfs /tmp --cap-dro
 ./scripts/scan.sh beacon:dev
 ```
 
+## Chapter 3 — application on Kubernetes
+
+Manifests in [k8s/](k8s/): `configmap.yaml` (`YOUR_NAME`), `deployment.yaml`, `service.yaml` (ClusterIP, internal),
+`ingress.yaml` (class `traefik`, host `beacon.127.0.0.1.nip.io`).
+
+- 2 replicas on the `apps` node, rolling update with `maxUnavailable: 0`, `progressDeadlineSeconds: 120`.
+- Startup, readiness (`/actuator/health/readiness`) and liveness (`/actuator/health/liveness`) probes.
+- Requests 100m/256Mi, limits 500m/512Mi.
+- `runAsNonRoot` (UID 10001), `allowPrivilegeEscalation: false`, `capabilities.drop: [ALL]`, seccomp `RuntimeDefault`,
+  `readOnlyRootFilesystem: true`, `emptyDir` on `/tmp`, no service account token. Passes PSA `restricted` in enforce mode.
+- `preStop` sleep 5 s so Traefik drains a terminating pod before it stops.
+
+The image is the placeholder `__IMAGE__`. `scripts/deploy.sh <image>` renders it, refuses `latest` or untagged images,
+records `kubernetes.io/change-cause` (image and commit), applies, and waits for the rollout. If the rollout fails it
+re-applies the previous image (declarative rollback, keeps `last-applied-configuration` consistent) and exits 1.
+`scripts/smoke-test.sh <url>` checks the greeting and health.
+
+Until Chapter 4 pushes to Docker Hub, deploy a locally built image:
+```bash
+TAG=$(git rev-parse --short=12 HEAD)
+docker build -t beacon:$TAG . && ./scripts/scan.sh beacon:$TAG
+kind load docker-image beacon:$TAG --name beacon
+./scripts/deploy.sh docker.io/library/beacon:$TAG
+./scripts/smoke-test.sh http://beacon.127.0.0.1.nip.io
+```
+Change the greeting: edit `YOUR_NAME` in `k8s/configmap.yaml`, deploy, then
+`kubectl rollout restart deployment/beacon -n beacon` (env vars are read at start-up).
+
 ## Verification evidence
 
 | Claim | Evidence |
@@ -159,6 +187,7 @@ docker run --rm -d --name beacon -p 8080:8080 --read-only --tmpfs /tmp --cap-dro
 | Least privilege | [docs/evidence/rbac-can-i.txt](docs/evidence/rbac-can-i.txt) |
 | Idempotent Terraform | second `terraform plan -detailed-exitcode` → exit 0 |
 | Jenkins from code | job `beacon`, credential `dockerhub`, cloud namespace `jenkins-agents`, 79 plugins, 0 load errors |
+| App reachable through Ingress, healthy, self-healing, safe rollback | [docs/evidence/ch3-verification.txt](docs/evidence/ch3-verification.txt): one pod deleted under load 104/104 OK; failed rollout rolled back under load 189/189 OK |
 
 ## Teardown
 
