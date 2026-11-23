@@ -1,0 +1,2 @@
+time="2026-11-23T02:17:44Z" level=info msg=Syncing app-namespace=argocd application=beacon impersonationEnabled=true project=beacon serviceAccount="system:serviceaccount:beacon:argocd-sync" skipHooks=false started=false syncId=00001-zmHxG
+2026-11-23T02:17:44Z Tasks (dry-run) (as system:serviceaccount:beacon:argocd-sync)
