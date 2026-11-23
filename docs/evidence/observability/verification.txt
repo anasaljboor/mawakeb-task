@@ -1,0 +1,46 @@
+# Observability verification (2026-11-23T03:38Z), read through the Grafana API
+
+## Datasources
+- Loki (uid loki)
+- Prometheus (uid prometheus)
+  health prometheus: OK
+  health loki: OK
+
+## Prometheus scrape targets
+   1 apiserver up
+   2 beacon up
+   2 coredns up
+   1 kps-grafana up
+   1 kps-operator up
+   2 kps-prometheus up
+   1 kube-state-metrics up
+   9 kubelet up
+   1 monitoring/traefik up
+
+## Beacon alert rules
+- BeaconDown: inactive  [sum(up{job="beacon"}) < 1]
+- BeaconHighErrorRate: inactive  [sum(rate(http_server_requests_seconds_count{namespace="beacon",status=~"5.."}[5m])) / clamp_min(sum(rate(http_server_requests_seconds_count{namespace="beacon"}[5m])), 0.000000001) > 0.05]
+- BeaconPodRestarting: inactive  [increase(kube_pod_container_status_restarts_total{namespace="beacon"}[15m]) > 2]
+
+## Dashboard Beacon (uid beacon): every Prometheus panel query
+- Available replicas: 1 series, first value 2
+- Requests / s (excluding probes): 1 series, first value 0
+- 5xx ratio (5m): 1 series, first value 0
+- Container restarts (1h): 1 series, first value 2.0307765151
+- Request rate by URI and status: 5 series, first value 0.5999801368
+- Latency p50 / p95 / p99 (GET /): 1 series, first value 0.0010823994
+- JVM heap used by pod: 2 series, first value 27902744
+- Container CPU by pod: 2 series, first value 0.0255274131
+- Traefik requests by service and code: 13 series, first value 0
+- Running image (digest): 2 series, first value 1
+
+## Loki streams by namespace (last 1h)
+- argocd
+- beacon
+- jenkins
+- jenkins-agents
+- traefik
+
+## Running image vs GitOps
+- running:  docker.io/anasaljboor/beacon@sha256:5d6d9658ee5f333c30b157172d5b4b1baf7de33079481bdad1c8c95276cd453f
+- gitops:   199680f170f4 (Synced, Healthy)

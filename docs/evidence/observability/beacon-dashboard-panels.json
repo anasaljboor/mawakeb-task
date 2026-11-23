@@ -1,0 +1,19 @@
+{
+  "title": "Beacon",
+  "version": 2,
+  "panels": [
+    "Available replicas",
+    "Requests / s (excluding probes)",
+    "5xx ratio (5m)",
+    "Container restarts (1h)",
+    "Request rate by URI and status",
+    "Latency p50 / p95 / p99 (GET /)",
+    "JVM heap used by pod",
+    "Container CPU by pod",
+    "Traefik requests by service and code",
+    "Running image (digest)",
+    "Ingress access log (Traefik, Beacon route)",
+    "Beacon logs",
+    "Pipeline and GitOps logs (Jenkins, ArgoCD)"
+  ]
+}
