@@ -10,6 +10,8 @@ APP="${ARGOCD_APP:-beacon}"
 TIMEOUT="${SYNC_TIMEOUT:-300}"
 MESSAGE="${COMMIT_MESSAGE:-deploy ${IMAGE_REF}}"
 SCRIPTS="$(cd "$(dirname "$0")" && pwd)"
+MANIFESTS="${MANIFESTS_DIR:-$SCRIPTS/../k8s}"
+MANIFEST_FILES="configmap.yaml deployment.yaml service.yaml ingress.yaml"
 
 case "$IMAGE_REF" in
   *@sha256:*) ;;
@@ -71,10 +73,16 @@ previous="$(sed -n 's/^ *digest: *//p' "$APP_PATH/kustomization.yaml")"
 echo "gitops: current digest ${previous}"
 echo "gitops: promoting      ${IMAGE_REF#*@}"
 
+for f in $MANIFEST_FILES; do
+  [ -s "$MANIFESTS/$f" ] || { echo "missing manifest $MANIFESTS/$f" >&2; exit 2; }
+  cp "$MANIFESTS/$f" "$APP_PATH/$f"
+done
 (cd "$APP_PATH" && kustomize edit set image "beacon=${IMAGE_REF}")
+kubectl kustomize "$APP_PATH" >/dev/null
+git diff --stat
 committed=false
 if git diff --quiet; then
-  echo "gitops: already at this digest, nothing to commit"
+  echo "gitops: manifests and digest already current, nothing to commit"
 else
   git_ commit --quiet -am "$MESSAGE"
   push_with_retry

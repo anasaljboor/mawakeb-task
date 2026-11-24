@@ -143,7 +143,7 @@ pipeline {
               }
               sh 'git log -1 --format="commit:  %H%nauthor:  %an%ndate:    %cI%nsubject: %s"'
             }
-            stash name: 'deploy-files', includes: 'scripts/**'
+            stash name: 'deploy-files', includes: 'scripts/**,k8s/**'
           }
         }
 
@@ -189,11 +189,11 @@ pipeline {
 
         stage('4. Publish') {
           steps {
-            withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'DH_USER', passwordVariable: 'DH_TOKEN')]) {
+            withCredentials([usernamePassword(credentialsId: 'registry', usernameVariable: 'REGISTRY_USER', passwordVariable: 'REGISTRY_TOKEN')]) {
               sh '''
-                echo "$DH_TOKEN" | docker login --username "$DH_USER" --password-stdin docker.io
+                echo "$REGISTRY_TOKEN" | docker login --username "$REGISTRY_USER" --password-stdin "$REGISTRY_SERVER"
                 docker push "$IMAGE_TAG"
-                docker logout docker.io
+                docker logout "$REGISTRY_SERVER"
               '''
             }
             script {

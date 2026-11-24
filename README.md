@@ -8,6 +8,6 @@ Prometheus/Grafana/Loki observability. The assignment is in [TASK.md](TASK.md).
 credentials, security design, pipeline, GitOps, observability, evidence, teardown, known limitations, troubleshooting.
 
 ```bash
-cp terraform/terraform.tfvars.example terraform/terraform.tfvars
+cp terraform/environments/local/platform/terraform.tfvars.example terraform/environments/local/platform/terraform.tfvars
 ./scripts/bootstrap.sh
 ```

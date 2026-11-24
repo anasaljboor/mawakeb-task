@@ -1,0 +1,162 @@
+fullnameOverride: jenkins
+
+controller:
+  image:
+    tag: "${jenkins_image_tag}"
+
+  numExecutors: 0
+  testEnabled: false
+  jenkinsUrl: "http://${jenkins_hostname}"
+
+  admin:
+    createSecret: false
+    existingSecret: "${admin_secret}"
+
+  podSecurityContextOverride:
+    runAsUser: 1000
+    runAsGroup: 1000
+    runAsNonRoot: true
+    fsGroup: 1000
+    fsGroupChangePolicy: OnRootMismatch
+    seccompProfile:
+      type: RuntimeDefault
+
+  nodeSelector:
+    workload: apps
+
+  resources:
+    requests:
+      cpu: 500m
+      memory: 1Gi
+    limits:
+      cpu: "2"
+      memory: 2Gi
+  javaOpts: "-XX:MaxRAMPercentage=75"
+
+  installPlugins:
+%{ for p in plugins ~}
+    - ${p}
+%{ endfor ~}
+  installLatestPlugins: false
+  installLatestSpecifiedPlugins: false
+  overwritePlugins: true
+
+  additionalExistingSecrets:
+    - name: "${registry_secret}"
+      keyName: username
+    - name: "${registry_secret}"
+      keyName: token
+    - name: "${gitops_secret}"
+      keyName: username
+    - name: "${gitops_secret}"
+      keyName: token
+
+  ingress:
+    enabled: true
+    ingressClassName: traefik
+    hostName: "${jenkins_hostname}"
+
+  JCasC:
+    defaultConfig: true
+    configScripts:
+      globals: |
+        jenkins:
+          globalNodeProperties:
+            - envVars:
+                env:
+                  - key: REGISTRY_SERVER
+                    value: "${registry_server}"
+                  - key: IMAGE_REPO
+                    value: "${image_repo}"
+                  - key: APP_HOSTNAME
+                    value: "${app_hostname}"
+                  - key: INGRESS_URL
+                    value: "${ingress_url}"
+                  - key: GITOPS_REPO
+                    value: "${gitops_repo_url}"
+                  - key: GITOPS_BRANCH
+                    value: "${gitops_branch}"
+                  - key: GITOPS_APP_PATH
+                    value: "${gitops_app_path}"
+                  - key: ARGOCD_NAMESPACE
+                    value: "${ns_argocd}"
+                  - key: ARGOCD_APP
+                    value: beacon
+      credentials: |
+        credentials:
+          system:
+            domainCredentials:
+              - credentials:
+                  - usernamePassword:
+                      scope: GLOBAL
+                      id: registry
+                      description: Container registry push token
+                      username: "$${${registry_secret}-username}"
+                      password: "$${${registry_secret}-token}"
+                  - usernamePassword:
+                      scope: GLOBAL
+                      id: gitops
+                      description: GitHub token for the GitOps repository (contents read/write)
+                      username: "$${${gitops_secret}-username}"
+                      password: "$${${gitops_secret}-token}"
+      jobs: |
+        jobs:
+          - script: >
+              pipelineJob('beacon') {
+                description('Build, test, scan, publish and deploy simple-java-app')
+                properties {
+                  pipelineTriggers {
+                    triggers {
+                      pollSCM {
+                        scmpoll_spec('H/2 * * * *')
+                      }
+                    }
+                  }
+                }
+                definition {
+                  cpsScm {
+                    lightweight(true)
+                    scriptPath('Jenkinsfile')
+                    scm {
+                      git {
+                        remote {
+                          url('${git_repo_url}')
+                        }
+                        branch('*/${git_branch}')
+                      }
+                    }
+                  }
+                }
+              }
+
+agent:
+  enabled: true
+  namespace: "${ns_agents}"
+  useDefaultServiceAccount: false
+  serviceAccount: "${agent_sa}"
+  jenkinsUrl: "http://jenkins.${ns_jenkins}.svc.cluster.local:8080"
+  jenkinsTunnel: "jenkins-agent.${ns_jenkins}.svc.cluster.local:50000"
+  nodeSelector:
+    workload: builds
+  yamlMergeStrategy: merge
+  yamlTemplate: |-
+    spec:
+      tolerations:
+        - key: dedicated
+          operator: Equal
+          value: builds
+          effect: NoSchedule
+
+persistence:
+  enabled: true
+  existingClaim: "${home_claim}"
+
+rbac:
+  create: false
+
+serviceAccount:
+  create: false
+  name: "${controller_sa}"
+
+serviceAccountAgent:
+  create: false

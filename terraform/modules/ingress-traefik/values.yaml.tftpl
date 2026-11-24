@@ -1,0 +1,58 @@
+deployment:
+  replicas: 1
+
+ingressClass:
+  enabled: true
+  isDefaultClass: false
+  name: traefik
+
+gateway:
+  enabled: false
+
+providers:
+  kubernetesCRD:
+    enabled: true
+  kubernetesIngress:
+    enabled: true
+%{ if ingress_endpoint_ip != "" ~}
+    publishedService:
+      enabled: false
+    ingressEndpoint:
+      ip: ${ingress_endpoint_ip}
+%{ else ~}
+    publishedService:
+      enabled: true
+%{ endif ~}
+
+%{ if service_type == "NodePort" ~}
+ports:
+  web:
+    nodePort: ${http_node_port}
+  websecure:
+    nodePort: ${https_node_port}
+
+%{ endif ~}
+service:
+  spec:
+    type: ${service_type}
+%{ if service_type == "LoadBalancer" ~}
+    externalTrafficPolicy: Local
+%{ endif ~}
+%{ if length(service_annotations) > 0 ~}
+  annotations:
+    ${indent(4, yamlencode(service_annotations))}
+%{ endif ~}
+
+nodeSelector:
+  ${indent(2, yamlencode(node_selector))}
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+  limits:
+    cpu: 500m
+    memory: 256Mi
+
+accessLog:
+  enabled: true

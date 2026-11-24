@@ -1,0 +1,9 @@
+terraform {
+  backend "azurerm" {
+    resource_group_name  = "beacon-tfstate"
+    storage_account_name = "<globally-unique-storage-account>"
+    container_name       = "tfstate"
+    key                  = "azure/cluster.tfstate"
+    use_azuread_auth     = true
+  }
+}

@@ -2,34 +2,44 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
-for tool in docker kind kubectl helm terraform openssl; do
+CLUSTER=terraform/environments/local/cluster
+PLATFORM=terraform/environments/local/platform
+
+for tool in docker kubectl helm terraform openssl curl jq; do
   command -v "$tool" >/dev/null || { echo "missing prerequisite: $tool" >&2; exit 1; }
 done
 docker info >/dev/null 2>&1 || { echo "Docker is not running" >&2; exit 1; }
 
-[ -f terraform/terraform.tfvars ] || {
-  echo "terraform/terraform.tfvars not found: copy terraform/terraform.tfvars.example and fill it in" >&2
+[ -f "$PLATFORM/terraform.tfvars" ] || {
+  echo "$PLATFORM/terraform.tfvars not found: copy terraform.tfvars.example next to it and fill it in" >&2
   exit 1
 }
 
-./scripts/cluster-up.sh
+apply_stack() {
+  local dir="$1" name="$2" answer
+  terraform -chdir="$dir" init -input=false
+  terraform -chdir="$dir" plan -input=false -out=tfplan
+  read -r -p "Apply the $name plan? [y/N] " answer
+  [ "$answer" = "y" ] || { rm -f "$dir/tfplan"; echo "Aborted"; exit 1; }
+  terraform -chdir="$dir" apply -input=false tfplan
+  rm -f "$dir/tfplan"
+  chmod 600 "$dir"/terraform.tfstate*
+  if terraform -chdir="$dir" plan -input=false -detailed-exitcode >/dev/null; then
+    echo "$name second plan: no changes"
+  else
+    echo "$name second plan is not clean: run 'terraform -chdir=$dir plan' and review" >&2
+    exit 1
+  fi
+}
+
+apply_stack "$CLUSTER" "cluster"
+kubectl config use-context "$(terraform -chdir="$CLUSTER" output -raw context_name)" >/dev/null
 
 source scripts/secrets-env.sh
-
-terraform -chdir=terraform init -input=false
-terraform -chdir=terraform plan -input=false -out=tfplan
-read -r -p "Apply this plan? [y/N] " answer
-[ "$answer" = "y" ] || { rm -f terraform/tfplan; echo "Aborted"; exit 1; }
-terraform -chdir=terraform apply -input=false tfplan
-rm -f terraform/tfplan
-chmod 600 terraform/terraform.tfstate*
-
-if terraform -chdir=terraform plan -input=false -detailed-exitcode >/dev/null; then
-  echo "Second plan: no changes"
-else
-  echo "Second plan is not clean: run 'terraform -chdir=terraform plan' and review" >&2
-  exit 1
-fi
+for v in TF_VAR_registry_token TF_VAR_github_token TF_VAR_jenkins_admin_password TF_VAR_grafana_admin_password; do
+  [ -n "${!v:-}" ] || { echo "$v is empty: rerun and paste the token at the prompt" >&2; exit 1; }
+done
+apply_stack "$PLATFORM" "platform"
 
 check_url() {
   local name="$1" url="$2" code=000
@@ -42,10 +52,11 @@ check_url() {
   [ "$code" = "200" ] || { echo "$name is not reachable through the ingress: see Troubleshooting in RUNBOOK.md" >&2; return 1; }
 }
 
+urls="$(terraform -chdir="$PLATFORM" output -json urls)"
 failed=0
-check_url Jenkins "$(terraform -chdir=terraform output -raw jenkins_url)/login" || failed=1
-check_url ArgoCD  "$(terraform -chdir=terraform output -raw argocd_url)/" || failed=1
-check_url Grafana "${GRAFANA_URL:-http://grafana.127.0.0.1.nip.io}/login" || failed=1
+check_url Jenkins "$(jq -r .jenkins <<<"$urls")/login" || failed=1
+check_url ArgoCD  "$(jq -r .argocd <<<"$urls")/" || failed=1
+check_url Grafana "$(jq -r .grafana <<<"$urls" | sed 's|/d/beacon$||')/login" || failed=1
 
 app_state="$(kubectl get application beacon -n argocd -o jsonpath='{.status.sync.status} {.status.health.status}' 2>/dev/null || true)"
 app_error="$(kubectl get application beacon -n argocd -o jsonpath='{.status.conditions[*].message}' 2>/dev/null || true)"

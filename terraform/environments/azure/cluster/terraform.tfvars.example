@@ -1,0 +1,17 @@
+deploy_azure = false
+
+subscription_id = "00000000-0000-0000-0000-000000000000"
+tenant_id       = "00000000-0000-0000-0000-000000000000"
+location        = "uaenorth"
+name_prefix     = "beacon-prod"
+acr_name        = "beaconprodacr"
+key_vault_name  = "beacon-prod-kv"
+
+admin_group_object_ids        = []
+operator_principal_ids        = []
+platform_reader_principal_ids = []
+admin_ip_ranges               = []
+
+budget_monthly_amount = 400
+budget_start_date     = "2026-12-01T00:00:00Z"
+budget_contact_emails = []

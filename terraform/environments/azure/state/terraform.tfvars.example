@@ -1,0 +1,10 @@
+deploy_azure = false
+
+subscription_id      = "00000000-0000-0000-0000-000000000000"
+tenant_id            = "00000000-0000-0000-0000-000000000000"
+location             = "uaenorth"
+resource_group_name  = "beacon-tfstate"
+storage_account_name = "beacontfstate"
+
+admin_ip_ranges            = []
+state_writer_principal_ids = []

@@ -1,0 +1,9 @@
+output "resource_group_name" { value = try(azurerm_resource_group.this[0].name, null) }
+output "aks_name" { value = try(module.aks[0].name, null) }
+output "aks_oidc_issuer_url" { value = try(module.aks[0].oidc_issuer_url, null) }
+output "acr_login_server" { value = try(module.registry[0].login_server, null) }
+output "acr_ci_push_token" { value = try(module.registry[0].ci_push_token_name, null) }
+output "key_vault_name" { value = var.deploy_azure ? var.key_vault_name : null }
+output "key_vault_secret_names" { value = local.key_vault_secret_names }
+output "ingress_public_ip" { value = try(azurerm_public_ip.ingress[0].ip_address, null) }
+output "ingress_public_ip_name" { value = try(azurerm_public_ip.ingress[0].name, null) }

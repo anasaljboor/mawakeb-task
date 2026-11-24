@@ -1,0 +1,3 @@
+git_repo_url      = "https://github.com/anasaljboor/mawakeb-task.git"
+registry_username = "anasaljboor"
+gitops_repo_url   = "https://github.com/anasaljboor/beacon-gitops.git"
