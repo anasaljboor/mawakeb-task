@@ -34,14 +34,14 @@ kubectl get secret grafana-admin -n monitoring -o jsonpath='{.data.admin-passwor
 | Ch2 Kubernetes plugin with temporary agents, JCasC, reproducible plugin list, job from code, no setup clicks | [values.yaml.tftpl](terraform/modules/jenkins/values.yaml.tftpl), [plugins.txt](terraform/modules/jenkins/plugins.txt) | 79 plugins, 0 load errors; no wizard |
 | Ch2 credentials out of Git and outputs; secret injection and state protection documented | write-only `data_wo` + ephemeral variables; [Credentials](#credentials-and-secrets), [Terraform state](#terraform-state) | `grep` of the token in state → `0` |
 | Ch2 pinned providers and charts, committed lock files, non-secret outputs, example inputs | every root under `terraform/environments/` | `.terraform.lock.hcl` and `terraform.tfvars.example` per root |
-| Ch2 init → reviewed plan → apply; second plan clean; teardown and surviving data | `scripts/bootstrap.sh` (stops for review), [Teardown](#teardown) | cluster stack: second plan clean; platform stack: re-verified at each bootstrap |
+| Ch2 init → reviewed plan → apply; second plan clean; teardown and surviving data | `scripts/bootstrap.sh` (stops for review), [Teardown](#teardown) | [terraform-modules.md](docs/evidence/terraform-modules.md): rebuild from zero, second plan exit 0 for both stacks, tokens in state 0 |
 | Ch3 `k8s/deployment.yaml`, `service.yaml`, `ingress.yaml` | [k8s/](k8s/) | — |
 | Ch3 ingress controller + hostname resolution | [terraform/modules/ingress-traefik](terraform/modules/ingress-traefik); nip.io documented | — |
 | Ch3 probes, requests/limits, non-root, no escalation, dropped caps, read-only root + writable tmp, `YOUR_NAME` from config, internal Service, digests not `latest` | [k8s/](k8s/) + digest in `beacon-gitops` | PSA `restricted` enforce dry run; [ch3-verification.txt](docs/evidence/ch3-verification.txt) |
 | Ch3 reachable through Ingress, healthy, recovers after pod deletion | — | [ch3-verification.txt](docs/evidence/ch3-verification.txt): 104/104 OK |
 | Ch4 root `Jenkinsfile` on Kubernetes agents, gates 1–6 in order | [Jenkinsfile](Jenkinsfile), [Pipeline](#pipeline-chapter-4--gitops) | [ch4-pipeline.md](docs/evidence/ch4-pipeline.md) |
-| Ch4 test results kept on failure; Trivy fails closed; report, DB time, scanner version archived | Jenkinsfile stages 2–3 | builds #4, #6, #13 |
-| Ch4 Jenkins credentials, push to Docker Hub with commit tag, capture digest | stage 4 (`registry` credential = Docker Hub locally) | `release.json` |
+| Ch4 test results kept on failure; Trivy fails closed; report, DB time, scanner version archived | Jenkinsfile stages 2–3 | builds #4, #6, #13; a rejected GitOps push also fails closed (new layout #3) |
+| Ch4 Jenkins credentials, push to Docker Hub with commit tag, capture digest | stage 4 (`registry` credential = Docker Hub locally) | `release.json`; new layout builds #2–#3 publish with `registry` |
 | Ch4 deploy that digest, wait with timeout, smoke test through Ingress, restore known-good on failure, record result | stage 5 via GitOps (Optional: ArgoCD owns deployment) | build #10 (rollback), #14–#15 (GitOps), `release.json` |
 | Ch4 how agents build images; DinD risks and isolation; no cluster-admin for deploy; no racing | [Security design](#security-design), `lock` + `disableConcurrentBuilds` | — |
 | Final Trial: app, Dockerfile, Jenkinsfile, Terraform, Jenkins config, manifests, runbook | this repository + `beacon-gitops` | this file |
@@ -391,6 +391,7 @@ workload identity are enabled on the cluster for that next step).
 | Jenkins from code | job, credentials, cloud and 79 plugins created with no clicks; 0 plugin load errors |
 | Workload resilience | [ch3-verification.txt](docs/evidence/ch3-verification.txt): pod deleted under load 104/104 OK; failed rollout rolled back under load 189/189 OK |
 | Pipeline gates and exact digest | [ch4-pipeline.md](docs/evidence/ch4-pipeline.md) |
+| Module/environment layout rebuilt from zero | [terraform-modules.md](docs/evidence/terraform-modules.md) |
 | GitOps promotion | [gitops-repo-log.txt](docs/evidence/gitops/gitops-repo-log.txt), [build14-release.json](docs/evidence/gitops/build14-release.json), [build15-release.json](docs/evidence/gitops/build15-release.json), [argocd-application.json](docs/evidence/gitops/argocd-application.json) |
 | Observability | [verification.txt](docs/evidence/observability/verification.txt), [beacon-dashboard-panels.json](docs/evidence/observability/beacon-dashboard-panels.json) |
 
@@ -419,6 +420,11 @@ Configuration comes back identically from code; only history and metrics are los
 alone keeps `jenkins-home`, because Terraform owns that PVC.
 
 ## Known limitations
+
+- **At hand-in the stored GitHub token is revoked** (GitHub answers 401), so promotions stop at the push and report
+  `failed-gitops-push`; production is unaffected. Rotate it (Credentials → Rotate: new token, `secrets_revision = 2`,
+  apply, restart Jenkins), then Build Now.
+- The `k8s/` startup-probe change (180 s budget) is committed but not yet released to the cluster for the same reason.
 
 - arm64 only (Apple Silicon host, arm64 Kind nodes).
 - Local Terraform state, single operator; Jenkins and ArgoCD poll (no webhooks reach a laptop).
