@@ -232,6 +232,10 @@ pipeline {
             ''')
           }
           env.GITOPS_COMMIT = fileExists('gitops-commit.txt') ? readFile('gitops-commit.txt').trim() : ''
+          if (promote == 3) {
+            env.DEPLOY_RESULT = 'failed-gitops-push'
+            error "Promotion of ${env.IMAGE_REF} failed: GitHub rejected the push to the GitOps repository. Nothing was promoted; production still runs ${env.PREVIOUS_IMAGE ?: '<none>'}. Check the gitops credential."
+          }
           if (promote != 0) {
             env.DEPLOY_RESULT = 'failed-reverted-in-git'
             error "Promotion of ${env.IMAGE_REF} failed (ArgoCD sync/health or smoke test); GitOps commit ${env.GITOPS_COMMIT ?: '<none>'} reverted, previous image ${env.PREVIOUS_IMAGE ?: '<none>'} restored by ArgoCD."

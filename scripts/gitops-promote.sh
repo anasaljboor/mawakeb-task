@@ -59,7 +59,7 @@ push_with_retry() {
   for i in 1 2 3; do
     git_ push --quiet origin "HEAD:$BRANCH" && return 0
     echo "push rejected (attempt $i); rebasing on $BRANCH" >&2
-    git_ pull --quiet --rebase origin "$BRANCH"
+    git_ pull --quiet --rebase origin "$BRANCH" || return 1
   done
   return 1
 }
@@ -69,7 +69,7 @@ trap 'rm -rf "$work"' EXIT
 git_ clone --quiet --branch "$BRANCH" "$GITOPS_REPO" "$work/repo"
 cd "$work/repo"
 
-previous="$(sed -n 's/^ *digest: *//p' "$APP_PATH/kustomization.yaml")"
+previous="$(sed -n 's/^[ -]*digest: *//p' "$APP_PATH/kustomization.yaml")"
 echo "gitops: current digest ${previous}"
 echo "gitops: promoting      ${IMAGE_REF#*@}"
 
@@ -85,7 +85,11 @@ if git diff --quiet; then
   echo "gitops: manifests and digest already current, nothing to commit"
 else
   git_ commit --quiet -am "$MESSAGE"
-  push_with_retry
+  push_with_retry || {
+    echo "PUSH FAILED: GitHub rejected the push to $GITOPS_REPO; nothing was promoted and production is unchanged." >&2
+    echo "Check the gitops credential: a valid fine-grained token with Contents read/write on that repository." >&2
+    exit 3
+  }
   committed=true
 fi
 promoted="$(git rev-parse HEAD)"
