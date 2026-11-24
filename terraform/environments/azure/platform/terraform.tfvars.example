@@ -1,0 +1,14 @@
+deploy_platform = false
+
+subscription_id        = "00000000-0000-0000-0000-000000000000"
+tenant_id              = "00000000-0000-0000-0000-000000000000"
+resource_group_name    = "beacon-prod"
+aks_name               = "beacon-prod-aks"
+key_vault_name         = "beacon-prod-kv"
+acr_login_server       = "beaconprodacr.azurecr.io"
+acr_ci_push_token      = "ci-push"
+ingress_public_ip      = ""
+ingress_public_ip_name = "beacon-prod-ingress"
+
+git_repo_url    = "https://github.com/anasaljboor/mawakeb-task.git"
+gitops_repo_url = "https://github.com/anasaljboor/beacon-gitops.git"

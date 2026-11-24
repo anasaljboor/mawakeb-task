@@ -10,6 +10,8 @@ APP="${ARGOCD_APP:-beacon}"
 TIMEOUT="${SYNC_TIMEOUT:-300}"
 MESSAGE="${COMMIT_MESSAGE:-deploy ${IMAGE_REF}}"
 SCRIPTS="$(cd "$(dirname "$0")" && pwd)"
+MANIFESTS="${MANIFESTS_DIR:-$SCRIPTS/../k8s}"
+MANIFEST_FILES="configmap.yaml deployment.yaml service.yaml ingress.yaml"
 
 case "$IMAGE_REF" in
   *@sha256:*) ;;
@@ -57,7 +59,7 @@ push_with_retry() {
   for i in 1 2 3; do
     git_ push --quiet origin "HEAD:$BRANCH" && return 0
     echo "push rejected (attempt $i); rebasing on $BRANCH" >&2
-    git_ pull --quiet --rebase origin "$BRANCH"
+    git_ pull --quiet --rebase origin "$BRANCH" || return 1
   done
   return 1
 }
@@ -67,17 +69,27 @@ trap 'rm -rf "$work"' EXIT
 git_ clone --quiet --branch "$BRANCH" "$GITOPS_REPO" "$work/repo"
 cd "$work/repo"
 
-previous="$(sed -n 's/^ *digest: *//p' "$APP_PATH/kustomization.yaml")"
+previous="$(sed -n 's/^[ -]*digest: *//p' "$APP_PATH/kustomization.yaml")"
 echo "gitops: current digest ${previous}"
 echo "gitops: promoting      ${IMAGE_REF#*@}"
 
+for f in $MANIFEST_FILES; do
+  [ -s "$MANIFESTS/$f" ] || { echo "missing manifest $MANIFESTS/$f" >&2; exit 2; }
+  cp "$MANIFESTS/$f" "$APP_PATH/$f"
+done
 (cd "$APP_PATH" && kustomize edit set image "beacon=${IMAGE_REF}")
+kubectl kustomize "$APP_PATH" >/dev/null
+git diff --stat
 committed=false
 if git diff --quiet; then
-  echo "gitops: already at this digest, nothing to commit"
+  echo "gitops: manifests and digest already current, nothing to commit"
 else
   git_ commit --quiet -am "$MESSAGE"
-  push_with_retry
+  push_with_retry || {
+    echo "PUSH FAILED: GitHub rejected the push to $GITOPS_REPO; nothing was promoted and production is unchanged." >&2
+    echo "Check the gitops credential: a valid fine-grained token with Contents read/write on that repository." >&2
+    exit 3
+  }
   committed=true
 fi
 promoted="$(git rev-parse HEAD)"

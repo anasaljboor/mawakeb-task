@@ -29,13 +29,9 @@ fi
 
 mkdir -p "$APP_PATH"
 src="$OLDPWD"
-ref="${SEED_REF:-origin/main}"
-for f in configmap service ingress; do
-  git -C "$src" show "$ref:k8s/$f.yaml" > "$APP_PATH/$f.yaml"
+for f in configmap service ingress deployment; do
+  cp "$src/k8s/$f.yaml" "$APP_PATH/$f.yaml"
 done
-git -C "$src" show "$ref:k8s/deployment.yaml" \
-  | sed -e '/^  annotations:$/d' -e '/kubernetes.io\/change-cause/d' -e 's|__IMAGE__|beacon|' \
-  > "$APP_PATH/deployment.yaml"
 
 cat > "$APP_PATH/kustomization.yaml" <<EOF
 apiVersion: kustomize.config.k8s.io/v1beta1

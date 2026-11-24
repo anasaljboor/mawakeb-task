@@ -1,0 +1,15 @@
+{
+  "result": "failed-gitops-push",
+  "build": "3",
+  "buildUrl": "http://jenkins.127.0.0.1.nip.io/job/beacon/3/",
+  "commit": "77354b689c77b72eb3d3bf34c4d4243ec2e804e1",
+  "image": "docker.io/anasaljboor/beacon:77354b689c77",
+  "imageRef": "docker.io/anasaljboor/beacon@sha256:b3e2f615450e5eb02141484e445d94947be37787fbf8c1c1bfe20b728e982ea4",
+  "digest": "sha256:b3e2f615450e5eb02141484e445d94947be37787fbf8c1c1bfe20b728e982ea4",
+  "gitopsRepo": "https://github.com/anasaljboor/beacon-gitops.git",
+  "gitopsCommit": "",
+  "previousImage": "docker.io/anasaljboor/beacon@sha256:5d6d9658ee5f333c30b157172d5b4b1baf7de33079481bdad1c8c95276cd453f",
+  "trivyVersion": "0.76.2",
+  "trivyDbUpdated": "2026-11-24T01:05:31.383410241Z",
+  "recordedAt": "2026-11-24T03:48:49Z"
+}
